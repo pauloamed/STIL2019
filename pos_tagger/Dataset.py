@@ -1,0 +1,126 @@
+def build_char_dict(datasets):
+    print("Building char dict...")
+
+    extracted_chars = set()
+    for dataset in datasets:
+      extracted_chars = extracted_chars.union(dataset.extract_chars())
+    chars = [' ', 'UNK'] + list(sorted(extracted_chars))
+
+    # Criando estruturas do vocabulário
+    char2id = {char: index for index, char in enumerate(chars)}
+    id2char = [char for char, _ in char2id.items()]
+
+    print("Finished building dicts!")
+    return char2id, id2char
+
+class Dataset():
+    def __init__(self, path_to_files, dataset_name, use_delimiters=True, use_train=True, use_val=True):
+        self.name = dataset_name
+
+        # Loading to each dataset subset
+        print("Started loading {} dataset".format(self.name))
+        self.train_data = self.__load_data(path_to_files[0])
+        self.val_data = self.__load_data(path_to_files[1])
+        self.test_data = self.__load_data(path_to_files[2])
+        print("Finished loading {} dataset".format(self.name))
+
+        # Parsing
+        print("Started parsing data from {} dataset".format(self.name))
+        self.train_data, self.word_train_size = self.__parse_data(self.train_data, use_delimiters)
+        self.val_data, self.word_val_size = self.__parse_data(self.val_data, use_delimiters)
+        self.test_data, self.word_test_size = self.__parse_data(self.test_data, use_delimiters)
+        print("Finished parsing data from {} dataset".format(self.name))
+
+        # Setting bool flags
+        self.use_train = use_train
+        self.use_val = use_val
+
+        # Setup tag dicts
+        self.extract_tag_dict()
+
+        # Train, val and test data size
+        self.sent_train_size = len(self.train_data[0])
+        self.sent_val_size = len(self.val_data[0])
+        self.sent_test_size = len(self.test_data[0])
+
+        # Setting training and val loss
+        self.train_loss = 0.0
+        self.val_loss = 0.0
+
+        # Setting test counters
+        self.class_correct = [0 for _ in range(len(self.tag2id))]
+        self.class_total = [0 for _ in range(len(self.tag2id))]
+
+    def extract_chars(self):
+        print("Started extracting chars from {} dataset".format(self.name))
+        ret = {c for sample in self.train_data for token in sample for c in token[0]}
+        print("Finished extracting chars from {} dataset".format(self.name))
+        return ret
+
+    def extract_tag_dict(self):
+        print("Started building tag dict for {} dataset".format(self.name))
+        extracted_tags = {token[1] for sample in self.train_data for token in sample}
+        tags = list(sorted(extracted_tags))
+
+        self.tag2id = {"BOS": 0, "EOS": 1}
+        for tag in tags:
+            if tag not in self.tag2id:
+                self.tag2id[tag] = len(self.tag2id)
+
+        # Criando dicionario para as tags
+        self.id2tag = [tag for tag, _ in self.tag2id.items()]
+
+        print("Finished building tag dict for {} dataset".format(self.name))
+
+    def prepare(self):
+        print("Started preparing {} dataset".format(self.name))
+        self.train_input, self.train_target = self.__prepare_data(self.train_data)
+        self.val_input, self.val_target = self.__prepare_data(self.val_data)
+        self.test_input, self.test_target = self.__prepare_data(self.test_data)
+        print("Finished preparing {} dataset".format(self.name))
+        del self.train_data, self.val_data, self.test_data
+
+    def __prepare_data(self, dataset):
+        inputs = []
+        for sample in dataset:
+            max_len = max([len(token[0]) for token in sample])
+            inputs.append([(token[0] + (max_len - len(token[0])) * ' ') for token in sample])
+        targets = [[self.tag2id.get(token[1], 0) for token in sample] for sample in dataset]
+        return (inputs, targets)
+
+    def __load_data(self, path_to_file):
+        with open(path_to_file, 'r', encoding='utf-8') as f:
+            data = f.read()
+        return data
+
+    def __parse_data(self, data, use_delimiters):
+        counter = 0
+
+        BOW = "\002" if use_delimiters else ""
+        EOW = "\003" if use_delimiters else ""
+        BOS = [["\001", "BOS"]] if use_delimiters else []
+        EOS = [["\004", "EOS"]] if use_delimiters else []
+
+        dataset = []
+        for sample in data.split('\n'):
+            if sample == '':
+                continue
+
+            s = sample.strip().split(' ')
+            counter += len(s)
+            middle = [[BOW + token.rsplit('_', 1)[0] + EOW, token.rsplit('_', 1)[1]]
+                                                                    for token in s]
+            dataset.append(BOS + middle + EOS)
+        return dataset, counter
+
+    def __str__(self):
+        ret = ""
+        ret += ("=================================================================\n")
+        ret += ("{} Dataset\n".format(self.name))
+        ret += ("Train dataset #sents: {} #words: {}\n".format(len(self.train_input), self.word_train_size))
+        ret += ("Val dataset #sents: {} #words: {}\n".format(len(self.val_input), self.word_val_size))
+        ret += ("Test dataset #sents: {} #words: {}\n".format(len(self.test_input),self.word_test_size))
+        ret += ("Tag set: [{}]\n".format(", ".join(self.id2tag)))
+        ret += ("=================================================================\n")
+
+        return ret
