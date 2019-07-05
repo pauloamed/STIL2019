@@ -1,7 +1,3 @@
-import sys
-import random
-import torch
-
 def load_postag_checkpoint(filepath):
     c = torch.load(filepath)
     return c['min_val_loss'], c['optimizer_sd'], c['scheduler_sd']
@@ -70,13 +66,4 @@ def get_batches(datasets, tvt, batch_size=1, policy="emilia"):
 
         print(len(list_batches))
 
-        for inputs, targets, dataset_name in list_batches:
-            inputs, _ = pad(inputs)
-            targets, batch_length = pad(targets)
-            yield inputs, targets, dataset_name, batch_length
-
-
-def pad(batch):
-    desired_length = max([len(sample) for sample in batch])
-    new_batch = [sample + [0]*(desired_length - len(sample)) for sample in batch]
-    return new_batch, desired_length
+        yield from list_batches

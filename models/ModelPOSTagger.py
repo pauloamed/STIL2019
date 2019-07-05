@@ -1,6 +1,3 @@
-import torch
-from torch import nn
-
 class POSTagger(nn.Module):
 
     def __init__(self, charBILSTM, wordBILSTM1, wordBILSTM2, n_bilstm_layers, n_bilstm_hidden, datasets, device):
@@ -38,21 +35,27 @@ class POSTagger(nn.Module):
         classifiers = []
         self.dataset2id = dict()
         for d in datasets:
-           classifiers.append(nn.Linear(self.n_tag_bilstm_hidden * 2, len(d.id2tag)))
-           self.dataset2id[d.name] = len(self.dataset2id)
+            classifiers.append(nn.Linear(self.n_tag_bilstm_hidden * 2, len(d.id2tag)))
+            self.dataset2id[d.name] = len(self.dataset2id)
         self.classifiers = nn.ModuleList(classifiers)
 
         self.dropout = nn.Dropout(0.4)
 
-    def forward(self, inputs, hidden, dataset_name):
+    def forward(self, inputs, dataset_name):
         # Passing the input through the embeding model in order to retrieve the
         # embeddings
-        embeddings1 = self.charBILSTM(inputs)
-        embeddings2, _ = self.wordBILSTM1(embeddings1)
-        embeddings3, _ = self.wordBILSTM2(embeddings2)
+        embeddings1, lens = self.charBILSTM(inputs) # embeddings1: lista (batch) de tensores (frases)
+        embeddings2, lens, _ = self.wordBILSTM1((embeddings1, lens))
+        embeddings3, lens, _ = self.wordBILSTM2((embeddings2, lens))
+
+        # Sequence packing
+        embeddings3 = torch.nn.utils.rnn.pack_sequence(embeddings3, enforce_sorted=False)
+
 
         # Passing the embeddings through the bilstm layer(s)
-        out, hidden = self.tag_bilstm(embeddings3, hidden)
+        out, _ = self.tag_bilstm(embeddings3)
+
+        out, _ = torch.nn.utils.rnn.pad_packed_sequence(out, batch_first=True)
 
         # Applying dropout
         out = self.dropout(out)
@@ -60,14 +63,4 @@ class POSTagger(nn.Module):
         # Passing through the final layer for the current dataset
         out = self.classifiers[self.dataset2id[dataset_name]](out.contiguous().view(-1, self.n_tag_bilstm_hidden*2))
 
-        return out, hidden
-
-    def init_hidden(self, batch_size):
-
-        # Initializing the memory
-        weight = next(self.parameters()).data
-        hidden = (weight.new(self.n_tag_bilstm_layers*2, batch_size, self.n_tag_bilstm_hidden).zero_(),
-                  weight.new(self.n_tag_bilstm_layers*2, batch_size, self.n_tag_bilstm_hidden).zero_())
-        hidden = (hidden[0].to(self.device), hidden[1].to(self.device))
-
-        return hidden
+        return out, max(lens)

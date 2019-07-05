@@ -1,11 +1,3 @@
-import torch
-from torch import nn
-import sys
-import random
-
-import pos_tagger.utils as utils
-
-
 def train(device, model, optimizer, datasets, min_val_loss, state_dict_path, epochs, training_policy, batch_size, clip=5):
 
     name2dataset = {d.name:d for d in datasets}
@@ -18,25 +10,22 @@ def train(device, model, optimizer, datasets, min_val_loss, state_dict_path, epo
             d.train_loss = d.val_loss = 0.0
 
         model.train()
-        for itr in utils.get_batches(datasets, "train", batch_size, training_policy):
+        for itr in get_batches(datasets, "train", batch_size, training_policy):
             # Getting vars
-            inputs, targets, dataset_name, batch_length = itr
+            inputs, targets, dataset_name = itr
+
 
             # Setting the input and the target
-            targets = torch.LongTensor(targets).to(device)
-
-            # Creating new variables for the hidden state, otherwise
-            # we'd backprop through the entire training history
-            h = tuple([each.data for each in model.init_hidden(batch_size)])
+            targets = torch.nn.utils.rnn.pad_sequence(targets, batch_first=True).to(device)
 
             # Running through the model
-            output, _ = model(inputs, h, dataset_name)
+            output, max_len = model(inputs, dataset_name)
 
             # Reseting the gradients
             optimizer.zero_grad()
 
             # Calculating the loss and the gradients
-            loss = criterion(output, targets.view(batch_size*batch_length))
+            loss = criterion(output, targets.view(batch_size*max_len))
             loss.backward()
 
             # Adjusting the weights
@@ -50,7 +39,7 @@ def train(device, model, optimizer, datasets, min_val_loss, state_dict_path, epo
 
 
         model.eval()
-        for itr in utils.get_batches(datasets, "val", batch_size):
+        for itr in get_batches(datasets, "val", batch_size):
 
             # Getting vars
             inputs, targets, dataset_name, batch_length = itr

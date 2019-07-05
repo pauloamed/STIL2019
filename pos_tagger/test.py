@@ -1,12 +1,3 @@
-import torch
-from torch import nn
-import numpy as np
-import pandas as pd
-
-from collections import defaultdict
-
-import pos_tagger.utils as utils
-
 def accuracy(device, model, datasets, batch_size=1):
     name2dataset = {d.name:d for d in datasets}
 
@@ -15,9 +6,11 @@ def accuracy(device, model, datasets, batch_size=1):
         d.class_total = 0
 
     model.eval()
-    for itr in utils.get_batches(datasets, "test", batch_size):
+    for itr in get_batches(datasets, "test", batch_size):
         # Getting vars
         inputs, targets, dataset_name, batch_length = itr
+
+#         print(targets)
 
         # Setting the input and the target
         targets = torch.LongTensor(targets).to(device)
@@ -64,7 +57,7 @@ def confusion_matrix(device, model, datasets, batch_size=1):
     name2dataset = {d.name:d for d in datasets}
 
     model.eval()
-    for itr in utils.get_batches(datasets, "val", batch_size):
+    for itr in get_batches(datasets, "val", batch_size):
         # Getting vars
         inputs, targets, dataset_name, batch_length = itr
 
@@ -112,7 +105,7 @@ def confusion_matrix(device, model, datasets, batch_size=1):
 def wrong_samples(device, model, datasets, batch_size=2):
     name2dataset = {d.name:d for d in datasets}
     model.eval()
-    for itr in utils.get_batches(datasets, "val", batch_size):
+    for itr in get_batches(datasets, "val", batch_size):
         # Getting vars
         inputs, targets, dataset_name, batch_length = itr
 
@@ -165,18 +158,3 @@ def wrong_samples(device, model, datasets, batch_size=2):
                     file.write("{}\n{}\n\n".format(words, tags))
                     continue
         file.close()
-
-
-def custom_test(sentence, my_model, n_datasets):
-    sample = [[sentence.split()]]
-    sample = replace(sample)
-    my_model.eval()
-
-    for i_dataset in range(n_datasets):
-        for x in sample:
-            h = tuple([each.data for each in my_model.init_hidden(1)])
-            output, h = my_model(x, h, i_dataset)
-            _, pred = torch.max(output, 1)
-
-        print([s for s in sample[0][0]])
-        print([list_tag_dicts[i_dataset][1][p.item()] for p in pred])

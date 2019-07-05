@@ -17,6 +17,7 @@ class Dataset():
     def __init__(self, path_to_files, dataset_name, use_delimiters=True, use_train=True, use_val=True):
         self.name = dataset_name
 
+
         # Loading to each dataset subset
         print("Started loading {} dataset".format(self.name))
         self.train_data = self.__load_data(path_to_files[0])
@@ -72,20 +73,17 @@ class Dataset():
 
         print("Finished building tag dict for {} dataset".format(self.name))
 
-    def prepare(self):
+    def prepare(self, char2id):
         print("Started preparing {} dataset".format(self.name))
-        self.train_input, self.train_target = self.__prepare_data(self.train_data)
-        self.val_input, self.val_target = self.__prepare_data(self.val_data)
-        self.test_input, self.test_target = self.__prepare_data(self.test_data)
+        self.train_input, self.train_target = self.__prepare_data(self.train_data, char2id)
+        self.val_input, self.val_target = self.__prepare_data(self.val_data, char2id)
+        self.test_input, self.test_target = self.__prepare_data(self.test_data, char2id)
         print("Finished preparing {} dataset".format(self.name))
         del self.train_data, self.val_data, self.test_data
 
-    def __prepare_data(self, dataset):
-        inputs = []
-        for sample in dataset:
-            max_len = max([len(token[0]) for token in sample])
-            inputs.append([(token[0] + (max_len - len(token[0])) * ' ') for token in sample])
-        targets = [[self.tag2id.get(token[1], 0) for token in sample] for sample in dataset]
+    def __prepare_data(self, dataset, char2id):
+        inputs = [[torch.LongTensor([char2id.get(c, 1) for c in token[0]]) for token in sample] for sample in dataset]
+        targets = [torch.LongTensor([self.tag2id.get(token[1], 0) for token in sample]) for sample in dataset]
         return (inputs, targets)
 
     def __load_data(self, path_to_file):
