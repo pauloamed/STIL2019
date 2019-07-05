@@ -1,4 +1,8 @@
-from torch.nn.utils.rnn import pack_sequence, pad_packed_sequence, pad_sequence
+import torch
+from torch import nn
+import torch.nn.utils.rnn.pack_sequence as pack_sequence, pad_packed_sequence, pad_sequence
+import torch.nn.utils.rnn.pad_packed_sequence as pad_packed_sequence
+import torch.nn.utils.rnn.pad_sequence as pad_sequence
 
 class POSTagger(nn.Module):
 
