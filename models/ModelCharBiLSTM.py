@@ -1,8 +1,6 @@
 import torch
 from torch import nn
-import torch.nn.utils.rnn.pack_sequence as pack_sequence, pad_packed_sequence, pad_sequence
-import torch.nn.utils.rnn.pad_packed_sequence as pad_packed_sequence
-import torch.nn.utils.rnn.pad_sequence as pad_sequence
+import torch.nn.utils.rnn as rnn
 
 class CharBILSTM(nn.Module):
     def __init__(self, char_embedding_size, word_embedding_size, char2id):
@@ -38,13 +36,13 @@ class CharBILSTM(nn.Module):
             embedded_sample = [self.char_embeddings_table(word) for word in sample]
 
             # Sequence packing
-            packed_embedded_sample = pack_sequence(embedded_sample, enforce_sorted=False)
+            packed_embedded_sample = rnn.pack_sequence(embedded_sample, enforce_sorted=False)
 
             # Passes the words on the sentence altogether through the char_bilstm
             output, _ = self.bilstm(packed_seq)
 
             # Sequence unpacking
-            padded_output, output_lens = pad_packed_sequence(output, batch_first=True)
+            padded_output, output_lens = rnn.pad_packed_sequence(output, batch_first=True)
 
             # For each word on the sample, save two outputs from the BILSTM outputs
             # Saving output of reverse lstm (output on 0)
@@ -66,6 +64,6 @@ class CharBILSTM(nn.Module):
             lens.append(len(word_embeddings))
 
         # Padding sequence as needed
-        outputs = pad_sequence(outputs, batch_first=True)
+        outputs = rnn.pad_sequence(outputs, batch_first=True)
 
         return outputs, lens

@@ -1,8 +1,6 @@
 import torch
 from torch import nn
-import torch.nn.utils.rnn.pack_sequence as pack_sequence, pad_packed_sequence, pad_sequence
-import torch.nn.utils.rnn.pad_packed_sequence as pad_packed_sequence
-import torch.nn.utils.rnn.pad_sequence as pad_sequence
+import torch.nn.utils.rnn as rnn
 
 class WordBILSTM(nn.Module):
     def __init__(self, word_embedding_size):
@@ -30,14 +28,14 @@ class WordBILSTM(nn.Module):
         input_embeddings, lens = inputs
 
         # Sequence packing
-        packed_input = pack_padded_sequence(input_embeddings, lens, batch_first=True, enforce_sorted=False)
+        packed_input = rnn.pack_padded_sequence(input_embeddings, lens, batch_first=True, enforce_sorted=False)
 
         # Using the second BILSTM with the recently calculated word embeddings in order
         # to retrieve the sintax embeddings (or semantic)
         output, _ = self.bilstm(packed_input)
 
         # Padding back sequence
-        output, lens = pad_packed_sequence(output, batch_first=True)
+        output, lens = rnn.pad_packed_sequence(output, batch_first=True)
 
         # Split the outputs (forward and reverse outputs) and saves to var
         splitted_output = torch.split(output, self.word_embedding_size, dim=2)

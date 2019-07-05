@@ -1,3 +1,5 @@
+import torch
+
 def build_char_dict(datasets):
     print("Building char dict...")
 

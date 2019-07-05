@@ -1,3 +1,7 @@
+import torch
+from torch import nn
+from pos_tagger.utils import get_batches
+
 def train(device, model, optimizer, datasets, min_val_loss, state_dict_path, epochs, training_policy, batch_size, clip=5):
 
     name2dataset = {d.name:d for d in datasets}

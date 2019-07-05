@@ -1,3 +1,7 @@
+import torch
+from torch import nn
+from pos_tagger.utils import get_batches
+
 def accuracy(device, model, datasets, batch_size=1):
     name2dataset = {d.name:d for d in datasets}
 

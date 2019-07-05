@@ -1,3 +1,5 @@
+import random, sys
+
 def load_postag_checkpoint(filepath):
     c = torch.load(filepath)
     return c['min_val_loss'], c['optimizer_sd'], c['scheduler_sd']

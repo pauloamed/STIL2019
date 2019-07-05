@@ -1,8 +1,6 @@
 import torch
 from torch import nn
-import torch.nn.utils.rnn.pack_sequence as pack_sequence, pad_packed_sequence, pad_sequence
-import torch.nn.utils.rnn.pad_packed_sequence as pad_packed_sequence
-import torch.nn.utils.rnn.pad_sequence as pad_sequence
+from torch.nn.utils import rnn
 
 class POSTagger(nn.Module):
 
@@ -51,13 +49,13 @@ class POSTagger(nn.Module):
         embeddings3, lens, _ = self.wordBILSTM2((embeddings2, lens))
 
         # Sequence packing
-        embeddings3 = pack_sequence(embeddings3, enforce_sorted=False)
+        embeddings3 = rnn.pack_sequence(embeddings3, enforce_sorted=False)
 
 
         # Passing the embeddings through the bilstm layer(s)
         out, _ = self.tag_bilstm(embeddings3)
 
-        out, _ = pad_packed_sequence(out, batch_first=True)
+        out, _ = rnn.pad_packed_sequence(out, batch_first=True)
 
         # Applying dropout
         out = self.dropout(out)
