@@ -26,9 +26,10 @@ def get_batches(datasets, tvt, batch_size=1, policy="emilia"):
             list_inputs.append(d.test_input)
             list_targets.append(d.test_target)
 
-    for i in range(len(datasets)):
-        random.Random(seed).shuffle(list_inputs[i])
-        random.Random(seed).shuffle(list_targets[i])
+    if policy == "visconde":
+        for i in range(len(datasets)):
+            random.Random(seed).shuffle(list_inputs[i])
+            random.Random(seed).shuffle(list_targets[i])
 
     for i in range(len(datasets)):
         list_n_batches.append(len(list_inputs[i])//batch_size)
@@ -45,10 +46,7 @@ def get_batches(datasets, tvt, batch_size=1, policy="emilia"):
                 batch_inputs = list_inputs[i][start:end]
                 batch_targets = list_targets[i][start:end]
 
-                batch_inputs, _ = pad(batch_inputs)
-                batch_targets, batch_length = pad(batch_targets)
-
-                yield batch_inputs, batch_targets, datasets[i].name, batch_length
+                yield batch_inputs, batch_targets, datasets[i].name
 
     elif policy == "visconde": # Shuffle
         for i in range(len(datasets)):
@@ -61,9 +59,5 @@ def get_batches(datasets, tvt, batch_size=1, policy="emilia"):
 
                 list_batches.append((list_inputs[i][start:end],
                                       list_targets[i][start:end], datasets[i].name))
-
-        random.Random(seed).shuffle(list_batches)
-
-        print(len(list_batches))
 
         yield from list_batches

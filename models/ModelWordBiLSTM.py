@@ -1,13 +1,10 @@
 import torch
 from torch import nn
+from torch.nn.utils.rnn import pack_sequence, pad_packed_sequence, pad_sequence
 
 class WordBILSTM(nn.Module):
-    def __init__(self, word_embedding_size, device):
+    def __init__(self, word_embedding_size):
         super().__init__()
-        super(WordBILSTM, self).__init__()
-
-        # Setting the current device
-        self.device = device
 
         # Setting the embedding dimension
         self.word_embedding_size = word_embedding_size
@@ -27,27 +24,26 @@ class WordBILSTM(nn.Module):
 
     def forward(self, inputs):
 
-        # Sequence packing
+        # Input parsing
         input_embeddings, lens = inputs
 
-        packed_seq = torch.nn.utils.rnn.pack_padded_sequence(input_embeddings,
-                                                             lens, batch_first=True,
-                                                             enforce_sorted=False)
+        # Sequence packing
+        packed_input = pack_padded_sequence(input_embeddings, lens, batch_first=True, enforce_sorted=False)
 
         # Using the second BILSTM with the recently calculated word embeddings in order
-        # to retrieve the sintax embeddings
-        output_embeddings, _ = self.bilstm(packed_seq)
+        # to retrieve the sintax embeddings (or semantic)
+        output, _ = self.bilstm(packed_input)
 
-        output_embeddings, output_lens = torch.nn.utils.rnn.pad_packed_sequence(output_embeddings, batch_first=True)
+        # Padding back sequence
+        output, lens = pad_packed_sequence(output, batch_first=True)
 
+        # Split the outputs (forward and reverse outputs) and saves to var
+        splitted_output = torch.split(output, self.word_embedding_size, dim=2)
 
-        # Split the outputs (forward and reverse outputs) and define the final vector as a
-        # linear combination of the splited output
-        splitted_output_embeddings = torch.split(output_embeddings, self.word_embedding_size, dim=2)
+        # Linear transformation into smaller dimension
+        output = self.projection_layer(output)+input_embeddings
 
-        # Linear projection into smaller dimension
-        output = self.projection_layer(output_embeddings)+input_embeddings
-
+        # Dropout
         output = self.dropout(output)
 
-        return (output, output_lens, splitted_output_embeddings)
+        return (output, lens, splitted_output)

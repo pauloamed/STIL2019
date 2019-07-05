@@ -1,11 +1,9 @@
+from torch.nn.utils.rnn import pack_sequence, pad_packed_sequence, pad_sequence
+
 class POSTagger(nn.Module):
 
-    def __init__(self, charBILSTM, wordBILSTM1, wordBILSTM2, n_bilstm_layers, n_bilstm_hidden, datasets, device):
+    def __init__(self, charBILSTM, wordBILSTM1, wordBILSTM2, n_bilstm_layers, n_bilstm_hidden, datasets):
         super().__init__()
-        super(POSTagger, self).__init__()
-
-        # Setting the current device
-        self.device = device
 
         # Retrieving the model size (#layers and #units)
         self.n_tag_bilstm_layers = n_bilstm_layers
@@ -44,18 +42,18 @@ class POSTagger(nn.Module):
     def forward(self, inputs, dataset_name):
         # Passing the input through the embeding model in order to retrieve the
         # embeddings
-        embeddings1, lens = self.charBILSTM(inputs) # embeddings1: lista (batch) de tensores (frases)
+        embeddings1, lens = self.charBILSTM(inputs)
         embeddings2, lens, _ = self.wordBILSTM1((embeddings1, lens))
         embeddings3, lens, _ = self.wordBILSTM2((embeddings2, lens))
 
         # Sequence packing
-        embeddings3 = torch.nn.utils.rnn.pack_sequence(embeddings3, enforce_sorted=False)
+        embeddings3 = pack_sequence(embeddings3, enforce_sorted=False)
 
 
         # Passing the embeddings through the bilstm layer(s)
         out, _ = self.tag_bilstm(embeddings3)
 
-        out, _ = torch.nn.utils.rnn.pad_packed_sequence(out, batch_first=True)
+        out, _ = pad_packed_sequence(out, batch_first=True)
 
         # Applying dropout
         out = self.dropout(out)

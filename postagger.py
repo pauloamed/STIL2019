@@ -29,13 +29,13 @@ for dataset in datasets:
 #########################################################################################
 
 
-charBILSTM = CharBILSTM(CHAR_EMBEDDING_DIM, WORD_EMBEDDING_DIM, char2id, device)
-wordBILSTM1 = WordBILSTM(WORD_EMBEDDING_DIM, device)
-wordBILSTM2 = WordBILSTM(WORD_EMBEDDING_DIM, device)
+charBILSTM = CharBILSTM(CHAR_EMBEDDING_DIM, WORD_EMBEDDING_DIM, char2id)
+wordBILSTM1 = WordBILSTM(WORD_EMBEDDING_DIM)
+wordBILSTM2 = WordBILSTM(WORD_EMBEDDING_DIM)
 
 pos_model = POSTagger(charBILSTM, wordBILSTM1, wordBILSTM2,
                       NUM_BILSTM_LAYERS, BILSTM_SIZE,
-                      datasets, device)
+                      datasets)
 
 pos_model.to(device)
 

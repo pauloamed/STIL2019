@@ -8,19 +8,14 @@ def accuracy(device, model, datasets, batch_size=1):
     model.eval()
     for itr in get_batches(datasets, "test", batch_size):
         # Getting vars
-        inputs, targets, dataset_name, batch_length = itr
+        inputs, targets, dataset_name = itr
 
-#         print(targets)
+        # Setting the input and the target (seding to GPU if needed)
+        inputs = [[word.to(device) for word in sample] for sample in inputs]
+        targets = torch.nn.utils.rnn.pad_sequence(targets, batch_first=True).to(device)
 
-        # Setting the input and the target
-        targets = torch.LongTensor(targets).to(device)
-
-        # Creating new variables for the hidden state, otherwise
-        # we'd backprop through the entire training history
-        val_h = tuple([each.data for each in model.init_hidden(batch_size)])
-
-        # Calculating the output
-        output, val_h = model(inputs, val_h, dataset_name)
+        # Feeding the model
+        output, max_len = model(inputs, dataset_name)
 
         # convert output probabilities to predicted class
         _, pred = torch.max(output, 1)
@@ -59,17 +54,14 @@ def confusion_matrix(device, model, datasets, batch_size=1):
     model.eval()
     for itr in get_batches(datasets, "val", batch_size):
         # Getting vars
-        inputs, targets, dataset_name, batch_length = itr
+        inputs, targets, dataset_name = itr
 
-        # Setting the input and the target
-        targets = torch.LongTensor(targets).to(device)
+        # Setting the input and the target (seding to GPU if needed)
+        inputs = [[word.to(device) for word in sample] for sample in inputs]
+        targets = torch.nn.utils.rnn.pad_sequence(targets, batch_first=True).to(device)
 
-        # Creating new variables for the hidden state, otherwise
-        # we'd backprop through the entire training history
-        val_h = tuple([each.data for each in model.init_hidden(batch_size)])
-
-        # Calculating the output
-        output, val_h = model(inputs, val_h, dataset_name)
+        # Feeding the model
+        output, max_len = model(inputs, dataset_name)
 
         # convert output probabilities to predicted class
         _, pred = torch.max(output, 1)
@@ -104,22 +96,18 @@ def confusion_matrix(device, model, datasets, batch_size=1):
 
 def wrong_samples(device, model, datasets, batch_size=2):
     name2dataset = {d.name:d for d in datasets}
+    file = open("wrong_samples_{}".format(dataset_name),"w", encoding="utf-8")
     model.eval()
     for itr in get_batches(datasets, "val", batch_size):
         # Getting vars
-        inputs, targets, dataset_name, batch_length = itr
+        inputs, targets, dataset_name = itr
 
-        file = open("wrong_samples_{}".format(dataset_name),"w", encoding="utf-8")
+        # Setting the input and the target (seding to GPU if needed)
+        inputs = [[word.to(device) for word in sample] for sample in inputs]
+        targets = torch.nn.utils.rnn.pad_sequence(targets, batch_first=True).to(device)
 
-        # Setting the input and the target
-        targets = torch.LongTensor(targets).to(device)
-
-        # Creating new variables for the hidden state, otherwise
-        # we'd backprop through the entire training history
-        val_h = tuple([each.data for each in model.init_hidden(batch_size)])
-
-        # Calculating the output
-        output, val_h = model(inputs, val_h, dataset_name)
+        # Feeding the model
+        output, max_len = model(inputs, dataset_name)
 
         # convert output probabilities to predicted class
         _, pred = torch.max(output, 1)
@@ -157,4 +145,4 @@ def wrong_samples(device, model, datasets, batch_size=2):
 
                     file.write("{}\n{}\n\n".format(words, tags))
                     continue
-        file.close()
+    file.close()

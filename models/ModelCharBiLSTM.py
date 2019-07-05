@@ -1,15 +1,10 @@
 import torch
 from torch import nn
+from torch.nn.utils.rnn import pack_sequence, pad_packed_sequence, pad_sequence
 
 class CharBILSTM(nn.Module):
-    def __init__(self, char_embedding_size, word_embedding_size, char2id, device, padding_id=0):
+    def __init__(self, char_embedding_size, word_embedding_size, char2id):
         super().__init__()
-        super(CharBILSTM, self).__init__()
-
-        self.padding_id = padding_id
-
-        # Setting the current device
-        self.device = device
 
         # Setting the embeddings dimensions
         self.char_embedding_size = char_embedding_size
@@ -34,42 +29,41 @@ class CharBILSTM(nn.Module):
 
     def forward(self, inputs):
         # For each sample (sentence) on the batch, get a list of 1st-level-word embeddings
-        outputs = []
+        outputs, lens = [], []
         for sample in inputs:
 
             # Retrieving char embeddings for each word in sample
-            sample = [self.char_embeddings_table(x.to(device)) for x in sample]
+            embedded_sample = [self.char_embeddings_table(word) for word in sample]
 
             # Sequence packing
-            packed_seq = torch.nn.utils.rnn.pack_sequence(sample, enforce_sorted=False)
+            packed_embedded_sample = pack_sequence(embedded_sample, enforce_sorted=False)
 
-            # Passes the words on the sentence altogether through the char_bilstm,
-            # retrieving for each word the 1st level word embedding
+            # Passes the words on the sentence altogether through the char_bilstm
             output, _ = self.bilstm(packed_seq)
 
             # Sequence unpacking
-            padded_output, output_lens = torch.nn.utils.rnn.pad_packed_sequence(output, batch_first=True)
-
+            padded_output, output_lens = pad_packed_sequence(output, batch_first=True)
 
             # For each word on the sample, save two outputs from the BILSTM outputs
-            # Saving output of reverse (output on 0)
-            sample_word_embeddings_first_char = padded_output[:,0,self.word_embedding_size:]
+            # Saving output of reverse lstm (output on 0)
+            output_reverse = padded_output[:,0,self.word_embedding_size:]
 
-            # Saving output of forward (output on LENGTH-1)
-            last = [padded_output[i,x-1,:self.word_embedding_size] for i,x in enumerate(output_lens)]
-            sample_word_embeddings_last_char = torch.stack(last)
+            # Saving output of forward lstm (output on LENGTH-1)
+            output_forward = [padded_output[i, word_len-1, :self.word_embedding_size]
+                                           for i, word_len in enumerate(output_lens)]
+            output_forward = torch.stack(output_forward)
 
+            # Concat outputs
+            concat_embeddings = torch.cat((output_reverse, output_forward), dim=1)
 
-            concat_embeddings = torch.cat((sample_word_embeddings_first_char,
-                                       sample_word_embeddings_last_char), dim=1)
-
+            # Projects on a word_embedding dimension
             word_embeddings = self.projection_layer(concat_embeddings)
-#             word_embeddings = self.dropout(word_embeddings)
 
+            # Saves to output
             outputs.append(word_embeddings)
+            lens.append(len(word_embeddings))
 
-
-        lens = torch.LongTensor([len(seq) for seq in outputs])
-        outputs = torch.nn.utils.rnn.pad_sequence(outputs, batch_first=True)
+        # Padding sequence as needed
+        outputs = pad_sequence(outputs, batch_first=True)
 
         return outputs, lens

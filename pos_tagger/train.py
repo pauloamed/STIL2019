@@ -14,11 +14,11 @@ def train(device, model, optimizer, datasets, min_val_loss, state_dict_path, epo
             # Getting vars
             inputs, targets, dataset_name = itr
 
-
-            # Setting the input and the target
+            # Setting the input and the target (seding to GPU if needed)
+            inputs = [[word.to(device) for word in sample] for sample in inputs]
             targets = torch.nn.utils.rnn.pad_sequence(targets, batch_first=True).to(device)
 
-            # Running through the model
+            # Feeding the model
             output, max_len = model(inputs, dataset_name)
 
             # Reseting the gradients
@@ -28,11 +28,11 @@ def train(device, model, optimizer, datasets, min_val_loss, state_dict_path, epo
             loss = criterion(output, targets.view(batch_size*max_len))
             loss.backward()
 
-            # Adjusting the weights
-            optimizer.step()
-
             # `clip_grad_norm` helps prevent the exploding gradient problem in RNNs / LSTMs.
             nn.utils.clip_grad_norm_(model.parameters(), clip)
+
+            # Adjusting the weights
+            optimizer.step()
 
             # Updating the train loss
             name2dataset[dataset_name].train_loss += loss.item() * batch_size
@@ -40,25 +40,18 @@ def train(device, model, optimizer, datasets, min_val_loss, state_dict_path, epo
 
         model.eval()
         for itr in get_batches(datasets, "val", batch_size):
-
             # Getting vars
-            inputs, targets, dataset_name, batch_length = itr
+            inputs, targets, dataset_name = itr
 
-            # Setting the input and the target
-            targets = torch.LongTensor(targets).to(device)
+            # Setting the input and the target (seding to GPU if needed)
+            inputs = [[word.to(device) for word in sample] for sample in inputs]
+            targets = torch.nn.utils.rnn.pad_sequence(targets, batch_first=True).to(device)
 
-            # Creating new variables for the hidden state, otherwise
-            # we'd backprop through the entire training history
-            h = tuple([each.data for each in model.init_hidden(batch_size)])
+            # Feeding the model
+            output, max_len = model(inputs, dataset_name)
 
-            # Calculating the output
-            output, h = model(inputs, h, dataset_name)
-
-            # Reseting the gradients
-            optimizer.zero_grad()
-
-            # Calculating the loss
-            loss = criterion(output, targets.view(batch_size*batch_length))
+            # Calculating the loss and the gradients
+            loss = criterion(output, targets.view(batch_size*max_len))
 
             # Updating the loss accu
             name2dataset[dataset_name].val_loss += loss.item() * batch_size
