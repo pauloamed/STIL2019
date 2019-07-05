@@ -39,7 +39,7 @@ class CharBILSTM(nn.Module):
             packed_embedded_sample = rnn.pack_sequence(embedded_sample, enforce_sorted=False)
 
             # Passes the words on the sentence altogether through the char_bilstm
-            output, _ = self.bilstm(packed_seq)
+            output, _ = self.bilstm(packed_embedded_sample)
 
             # Sequence unpacking
             padded_output, output_lens = rnn.pad_packed_sequence(output, batch_first=True)

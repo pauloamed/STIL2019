@@ -1,7 +1,7 @@
 import torch
 
 def build_char_dict(datasets):
-    print("Building char dict...")
+    print("\n>> Building char dict...")
 
     extracted_chars = set()
     for dataset in datasets:
@@ -12,27 +12,27 @@ def build_char_dict(datasets):
     char2id = {char: index for index, char in enumerate(chars)}
     id2char = [char for char, _ in char2id.items()]
 
-    print("Finished building dicts!")
+    print("<< Finished building dicts!\n")
     return char2id, id2char
 
 class Dataset():
     def __init__(self, path_to_files, dataset_name, use_delimiters=True, use_train=True, use_val=True):
         self.name = dataset_name
 
-
+        print("\n>> Initializing {} dataset".format(self.name))
         # Loading to each dataset subset
-        print("Started loading {} dataset".format(self.name))
+        print(">>> Started loading dataset")
         self.train_data = self.__load_data(path_to_files[0])
         self.val_data = self.__load_data(path_to_files[1])
         self.test_data = self.__load_data(path_to_files[2])
-        print("Finished loading {} dataset".format(self.name))
+        print("<<< Finished loading dataset")
 
         # Parsing
-        print("Started parsing data from {} dataset".format(self.name))
+        print(">>> Started parsing data from dataset")
         self.train_data, self.word_train_size = self.__parse_data(self.train_data, use_delimiters)
         self.val_data, self.word_val_size = self.__parse_data(self.val_data, use_delimiters)
         self.test_data, self.word_test_size = self.__parse_data(self.test_data, use_delimiters)
-        print("Finished parsing data from {} dataset".format(self.name))
+        print("<<< Finished parsing data from dataset")
 
         # Setting bool flags
         self.use_train = use_train
@@ -54,14 +54,16 @@ class Dataset():
         self.class_correct = [0 for _ in range(len(self.tag2id))]
         self.class_total = [0 for _ in range(len(self.tag2id))]
 
+        print("<< Finished initializing {} dataset\n".format(self.name))
+
     def extract_chars(self):
-        print("Started extracting chars from {} dataset".format(self.name))
+        print(">>> Started extracting chars from {} dataset".format(self.name))
         ret = {c for sample in self.train_data for token in sample for c in token[0]}
-        print("Finished extracting chars from {} dataset".format(self.name))
+        print("<<< Finished extracting chars from {} dataset".format(self.name))
         return ret
 
     def extract_tag_dict(self):
-        print("Started building tag dict for {} dataset".format(self.name))
+        print(">>> Started building tag dict for dataset")
         extracted_tags = {token[1] for sample in self.train_data for token in sample}
         tags = list(sorted(extracted_tags))
 
@@ -73,14 +75,14 @@ class Dataset():
         # Criando dicionario para as tags
         self.id2tag = [tag for tag, _ in self.tag2id.items()]
 
-        print("Finished building tag dict for {} dataset".format(self.name))
+        print("<<< Finished building tag dict for dataset")
 
     def prepare(self, char2id):
-        print("Started preparing {} dataset".format(self.name))
+        print("\n>> Started preparing {} dataset".format(self.name))
         self.train_input, self.train_target = self.__prepare_data(self.train_data, char2id)
         self.val_input, self.val_target = self.__prepare_data(self.val_data, char2id)
         self.test_input, self.test_target = self.__prepare_data(self.test_data, char2id)
-        print("Finished preparing {} dataset".format(self.name))
+        print("<< Finished preparing {} dataset\n".format(self.name))
         del self.train_data, self.val_data, self.test_data
 
     def __prepare_data(self, dataset, char2id):
