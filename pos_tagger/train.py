@@ -19,8 +19,8 @@ def train(device, model, optimizer, datasets, min_val_loss, state_dict_path, epo
             inputs, targets, dataset_name = itr
 
             # Setting the input and the target (seding to GPU if needed)
-            # inputs = [[word.to(device) for word in sample] for sample in inputs]
-            targets = torch.nn.utils.rnn.pad_sequence(targets, batch_first=True)
+            inputs = [[word.to(device) for word in sample] for sample in inputs]
+            targets = torch.nn.utils.rnn.pad_sequence(targets, batch_first=True).to(device)
 
             # Feeding the model
             output, max_len = model(inputs, dataset_name)
