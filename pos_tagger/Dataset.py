@@ -16,8 +16,10 @@ def build_char_dict(datasets):
     return char2id, id2char
 
 class Dataset():
-    def __init__(self, path_to_files, dataset_name, use_delimiters=True, use_train=True, use_val=True):
+    def __init__(self, path_to_files, dataset_name, device, use_delimiters=True, use_train=True, use_val=True):
         self.name = dataset_name
+
+        self.device = device
 
         print("\n>> Initializing {} dataset".format(self.name))
         # Loading to each dataset subset
@@ -86,8 +88,8 @@ class Dataset():
         del self.train_data, self.val_data, self.test_data
 
     def __prepare_data(self, dataset, char2id):
-        inputs = [[torch.LongTensor([char2id.get(c, 1) for c in token[0]]) for token in sample] for sample in dataset]
-        targets = [torch.LongTensor([self.tag2id.get(token[1], 0) for token in sample]) for sample in dataset]
+        inputs = [[torch.LongTensor([char2id.get(c, 1) for c in token[0]]).to(self.device) for token in sample] for sample in dataset]
+        targets = [torch.LongTensor([self.tag2id.get(token[1], 0) for token in sample]).to(self.device) for sample in dataset]
         return (inputs, targets)
 
     def __load_data(self, path_to_file):
