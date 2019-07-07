@@ -43,7 +43,7 @@ def train(device, model, optimizer, datasets, min_val_loss, state_dict_path, epo
 
 
         model.eval()
-        for itr in get_batches(datasets, "val", batch_size):
+        for itr in get_batches(datasets, "val"):
             # Getting vars
             inputs, targets, dataset_name = itr
 
