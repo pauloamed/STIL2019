@@ -66,5 +66,5 @@ def get_batches(datasets, tvt, batch_size=1, policy="emilia"):
         random.Random(seed).shuffle(list_batches)
 
         for i, b in enumerate(list_batches):
-            print("{}/{}".format(i, len(list_batches)))
+            print("{}/{}".format(i, len(list_batches)), end="\r")
             yield b
