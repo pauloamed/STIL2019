@@ -55,7 +55,7 @@ def train(device, model, optimizer, datasets, min_val_loss, state_dict_path, epo
             output, max_len = model(inputs, dataset_name)
 
             # Calculating the loss and the gradients
-            loss = criterion(output, targets.view(batch_size*max_len))
+            loss = criterion(output, targets.view(max_len))
 
             # Updating the loss accu
             name2dataset[dataset_name].val_loss += loss.item() * batch_size
