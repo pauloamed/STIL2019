@@ -49,7 +49,7 @@ class POSTagger(nn.Module):
         embeddings3, lens, _ = self.wordBILSTM2((embeddings2, lens))
 
         # Sequence packing
-        embeddings3 = rnn.pack_sequence(embeddings3, enforce_sorted=False)
+        embeddings3 = rnn.pack_sequence(embeddings3, enforce_sorted=True)
 
 
         # Passing the embeddings through the bilstm layer(s)

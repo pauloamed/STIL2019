@@ -55,9 +55,13 @@ def get_batches(datasets, tvt, batch_size=1, policy="emilia"):
                    continue
 
                 batch_input = list_inputs[i][start:end]
+                batch_input.sort(reverse=True, key=len)
                 batch_target = list_targets[i][start:end]
+                batch_target.sort(reverse=True, key=len)
 
                 list_batches.append((batch_input, batch_target, datasets[i].name))
+
+
 
         random.Random(seed).shuffle(list_batches)
 

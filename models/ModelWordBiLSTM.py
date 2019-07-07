@@ -28,7 +28,7 @@ class WordBILSTM(nn.Module):
         input_embeddings, lens = inputs
 
         # Sequence packing
-        packed_input = rnn.pack_padded_sequence(input_embeddings, lens, batch_first=True, enforce_sorted=False)
+        packed_input = rnn.pack_padded_sequence(input_embeddings, lens, batch_first=True, enforce_sorted=True)
 
         # Using the second BILSTM with the recently calculated word embeddings in order
         # to retrieve the sintax embeddings (or semantic)
