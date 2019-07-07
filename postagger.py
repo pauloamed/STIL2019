@@ -40,7 +40,7 @@ bosque = ds.Dataset(BOSQUE_FILE_PATHS, "Bosque", use_val=False)
 gsd = ds.Dataset(GSD_FILE_PATHS, "GSD", use_val=False)
 linguateca = ds.Dataset(LINGUATECA_FILE_PATHS, "Linguateca", use_val=False)
 
-datasets = [macmorpho, bosque, gsd, linguateca]
+datasets = [gsd]
 
 char2id, id2char = ds.build_char_dict(datasets)
 
