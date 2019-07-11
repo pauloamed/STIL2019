@@ -106,7 +106,8 @@ torch.save(checkpoint, CHECKPOINT_PATH)
 
 """ Testing
 """
-accuracy(device, pos_model, datasets)
+# accuracy(device, pos_model, datasets)
 # confusion_matrix(device, pos_model, datasets)
 # wrong_samples(device, pos_model, datasets)
-# tsne_plot(device, pos_model, char2id, "Fui ao banco comprar um banco .", linguateca)
+tsnes = set_tsne(device, pos_model, datasets)
+tsne_plot(device, pos_model, char2id, "Fui ao banco comprar um banco .", tsnes)

@@ -149,7 +149,7 @@ def wrong_samples(device, model, datasets):
                 continue
     file.close()
 
-def set_tsne(device, model, dataset):
+def set_tsne(device, model, datasets):
     model.eval()
 
     tsnes = {
@@ -175,7 +175,7 @@ def set_tsne(device, model, dataset):
 
     return tsnes
 
-def tsne_plot(device, model, char2id, sent, dataset, tsnes):
+def tsne_plot(device, model, char2id, sent, tsnes):
     model.eval()
 
     sent = sent.split(" ")
