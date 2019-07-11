@@ -98,7 +98,7 @@ def train(device, model, optimizer, datasets, min_val_loss, state_dict_path, epo
             min_val_loss = total_val_loss
             print('Validation loss decreased ({:.6f} --> {:.6f}).  Saving model ...'.format(
                                                                                 min_val_loss,
-                                                                                compare_val_loss))
+                                                                                total_val_loss))
         print("=======================================================================================")
 
 
