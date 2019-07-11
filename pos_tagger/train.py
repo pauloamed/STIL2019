@@ -72,10 +72,13 @@ def train(device, model, optimizer, datasets, min_val_loss, state_dict_path, epo
                 datasets[i].val_loss /= datasets[i].sent_val_size
 
         # Verbose
-        print(time.time()-inicio)
-        print('Epoch: {} \t Learning Rate: {:.3f}\tTotal Training Loss: {:.6f} \tTotal Validation Loss: {:.6f}'.format(
-            epoch, optimizer.param_groups[0]['lr'], sum([d.train_loss for d in datasets if d.use_train]),
-            sum([d.val_loss for d in datasets if d.use_val])))
+        print("=======================================================================================")
+        current_lr = optimizer.param_groups[0]['lr']
+        total_train_loss = sum([d.train_loss for d in datasets if d.use_train])
+        total_val_loss = sum([d.val_loss for d in datasets if d.use_val]))
+        duration = time.time()-inicio
+        print('Epoch: {} \t Learning Rate: {:.3f}\tTotal Training Loss: {:.6f} \tTotal Validation Loss: {:.6f} \t Duration: {:.3f}'.format(
+            epoch, current_lr, total_train_loss, total_val_loss, duration)
 
         for d in datasets:
             if d.use_train and d.use_val:
@@ -85,19 +88,18 @@ def train(device, model, optimizer, datasets, min_val_loss, state_dict_path, epo
             elif not d.use_train and d.use_val:
                 print('>> Dataset {}:\tValidation Loss: {:.6f}'.format(d.name, d.val_loss))
 
+        print("=======================================================================================")
 
         # Saving the best model
-        compare_val_loss = sum([d.val_loss for d in datasets if d.use_val])
         print('Comparing loss on {} dataset(s)'.format([d.name for d in datasets if d.use_val]))
 
-        if compare_val_loss <= min_val_loss:
+        if total_val_loss <= min_val_loss:
+            torch.save(model.state_dict(), state_dict_path)
+            min_val_loss = total_val_loss
             print('Validation loss decreased ({:.6f} --> {:.6f}).  Saving model ...'.format(
                                                                                 min_val_loss,
                                                                                 compare_val_loss))
-            torch.save(model.state_dict(), state_dict_path)
-            min_val_loss = compare_val_loss
 
 
-        print("=======================================================================================")
 
     return model, min_val_loss
