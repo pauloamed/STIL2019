@@ -75,10 +75,10 @@ def train(device, model, optimizer, datasets, min_val_loss, state_dict_path, epo
         print("\n=======================================================================================")
         current_lr = optimizer.param_groups[0]['lr']
         total_train_loss = sum([d.train_loss for d in datasets if d.use_train])
-        total_val_loss = sum([d.val_loss for d in datasets if d.use_val]))
+        total_val_loss = sum([d.val_loss for d in datasets if d.use_val])
         duration = time.time()-inicio
         print('Epoch: {} \t Learning Rate: {:.3f}\tTotal Training Loss: {:.6f} \tTotal Validation Loss: {:.6f} \t Duration: {:.3f}'.format(
-            epoch, current_lr, total_train_loss, total_val_loss, duration)
+            epoch, current_lr, total_train_loss, total_val_loss, duration))
 
         for d in datasets:
             if d.use_train and d.use_val:
