@@ -21,13 +21,12 @@ def load_pretrain_checkpoint(filepath):
     return c['char2id'], c['id2char'], c['word2id'], c['wrod2freq'], c['id2word'], c['min_val_loss'], c['optimizer_sd']
 
 def get_batches(datasets, tvt, batch_size=1, policy="emilia"):
-    out = display(progress(0, tvt, 100), display_id=True)
+    out = display(progress(0, tvt, 100).data, display_id=True)
     seed = random.randrange(sys.maxsize)
     list_inputs, list_targets, list_n_batches, list_batches = [], [], [], []
 
     for d in datasets:
         if tvt == "train":
-
             total_len = sum([dataset.sent_train_size for dataset in datasets])
             datasets = [d for d in datasets if d.use_train]
             list_inputs.append(d.train_input)
@@ -82,5 +81,5 @@ def get_batches(datasets, tvt, batch_size=1, policy="emilia"):
         random.Random(seed).shuffle(list_batches)
 
         for i, b in enumerate(list_batches):
-            out.update(progress(i+1, tvt, len(list_batches)))
+            out.update(progress(i+1, tvt, len(list_batches)).data)
             yield b
