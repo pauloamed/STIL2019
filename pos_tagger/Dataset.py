@@ -15,6 +15,7 @@ def build_char_dict(datasets):
     print("<< Finished building dicts!\n")
     return char2id, id2char
 
+
 class Dataset():
     def __init__(self, path_to_files, dataset_name, use_delimiters=True, use_train=True, use_val=True):
         self.name = dataset_name

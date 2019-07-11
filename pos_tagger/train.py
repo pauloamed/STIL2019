@@ -1,14 +1,16 @@
 import torch
 from torch import nn
+import time
 from pos_tagger.utils import get_batches
 
-def train(device, model, optimizer, datasets, min_val_loss, state_dict_path, epochs, training_policy, batch_size, clip=5):
+def train(device, model, optimizer, datasets, min_val_loss, state_dict_path, epochs, training_policy, batch_size, clip=20):
 
     name2dataset = {d.name:d for d in datasets}
 
     criterion = nn.CrossEntropyLoss()
 
     for epoch in range(epochs):
+        inicio = time.time()
 
         for d in datasets:
             d.train_loss = d.val_loss = 0.0
@@ -23,13 +25,14 @@ def train(device, model, optimizer, datasets, min_val_loss, state_dict_path, epo
             targets = torch.nn.utils.rnn.pad_sequence(targets, batch_first=True).to(device)
 
             # Feeding the model
-            output, max_len = model(inputs, dataset_name)
+            output = model(inputs)
 
             # Reseting the gradients
             optimizer.zero_grad()
 
             # Calculating the loss and the gradients
-            loss = criterion(output, targets.view(batch_size*max_len))
+            loss = criterion(output[dataset_name].view(batch_size*output["length"], -1),
+                             targets.view(batch_size*output["length"]))
             loss.backward()
 
             # `clip_grad_norm` helps prevent the exploding gradient problem in RNNs / LSTMs.
@@ -52,10 +55,11 @@ def train(device, model, optimizer, datasets, min_val_loss, state_dict_path, epo
             targets = torch.nn.utils.rnn.pad_sequence(targets, batch_first=True).to(device)
 
             # Feeding the model
-            output, max_len = model(inputs, dataset_name)
+            output = model(inputs)
 
             # Calculating the loss and the gradients
-            loss = criterion(output, targets.view(max_len))
+            loss = criterion(output[dataset_name].view(batch_size*output["length"], -1),
+                             targets.view(batch_size*output["length"]))
 
             # Updating the loss accu
             name2dataset[dataset_name].val_loss += loss.item() * batch_size
@@ -68,6 +72,7 @@ def train(device, model, optimizer, datasets, min_val_loss, state_dict_path, epo
                 datasets[i].val_loss /= datasets[i].sent_val_size
 
         # Verbose
+        print(time.time()-inicio)
         print('Epoch: {} \t Learning Rate: {:.3f}\tTotal Training Loss: {:.6f} \tTotal Validation Loss: {:.6f}'.format(
             epoch, optimizer.param_groups[0]['lr'], sum([d.train_loss for d in datasets if d.use_train]),
             sum([d.val_loss for d in datasets if d.use_val])))
