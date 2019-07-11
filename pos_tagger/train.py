@@ -72,7 +72,7 @@ def train(device, model, optimizer, datasets, min_val_loss, state_dict_path, epo
                 datasets[i].val_loss /= datasets[i].sent_val_size
 
         # Verbose
-        print("=======================================================================================")
+        print("\n=======================================================================================")
         current_lr = optimizer.param_groups[0]['lr']
         total_train_loss = sum([d.train_loss for d in datasets if d.use_train])
         total_val_loss = sum([d.val_loss for d in datasets if d.use_val]))
@@ -88,7 +88,7 @@ def train(device, model, optimizer, datasets, min_val_loss, state_dict_path, epo
             elif not d.use_train and d.use_val:
                 print('>> Dataset {}:\tValidation Loss: {:.6f}'.format(d.name, d.val_loss))
 
-        print("=======================================================================================")
+        print("----------------------------------------------------------------------------------------")
 
         # Saving the best model
         print('Comparing loss on {} dataset(s)'.format([d.name for d in datasets if d.use_val]))
@@ -99,6 +99,7 @@ def train(device, model, optimizer, datasets, min_val_loss, state_dict_path, epo
             print('Validation loss decreased ({:.6f} --> {:.6f}).  Saving model ...'.format(
                                                                                 min_val_loss,
                                                                                 compare_val_loss))
+        print("=======================================================================================")
 
 
 
