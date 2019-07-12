@@ -2,6 +2,8 @@ import torch
 from torch import nn
 import numpy as np
 from pos_tagger.utils import get_batches
+import matplotlib.pyplot as plt
+from sklearn.manifold import TSNE
 
 def accuracy(device, model, datasets):
     name2dataset = {d.name:d for d in datasets}

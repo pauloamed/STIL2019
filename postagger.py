@@ -6,8 +6,6 @@ import sys
 
 import numpy as np
 
-import matplotlib.pyplot as plt
-from sklearn.manifold import TSNE
 # %matplotlib inline
 # %config InlineBackend.figure_format = 'retina'
 
