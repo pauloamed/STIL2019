@@ -16,7 +16,7 @@ from torch import nn
 import torch.optim as optim
 import torch.nn.functional as F
 
-from pos_tagger.test import accuracy, confusion_matrix, wrong_samples
+from pos_tagger.test import *
 from pos_tagger.train import train
 from pos_tagger.Dataset import Dataset, build_char_dict
 from pos_tagger.utils import load_postag_checkpoint, load_pretrain_checkpoint
@@ -106,7 +106,7 @@ torch.save(checkpoint, CHECKPOINT_PATH)
 
 """ Testing
 """
-# accuracy(device, pos_model, datasets)
+accuracy(device, pos_model, datasets)
 # confusion_matrix(device, pos_model, datasets)
 # wrong_samples(device, pos_model, datasets)
 tsnes = set_tsne(device, pos_model, datasets)
