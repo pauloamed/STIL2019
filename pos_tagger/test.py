@@ -155,10 +155,10 @@ def set_tsne(device, model, datasets):
     model.eval()
 
     tsnes = {
-        "context_indep" : TSNE(),
-        "context_dep1" : TSNE(),
-        "context_dep2" : TSNE(),
-        "tag_dep" : TSNE()
+        "embeddings1" : TSNE(),
+        "embeddings2" : TSNE(),
+        "embeddings3" : TSNE(),
+        "embeddings4" : TSNE()
     }
 
     for itr in get_batches(datasets, "train"):
