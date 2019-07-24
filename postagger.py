@@ -6,9 +6,6 @@ import sys
 
 import numpy as np
 
-# %matplotlib inline
-# %config InlineBackend.figure_format = 'retina'
-
 import torch
 from torch import nn
 import torch.optim as optim

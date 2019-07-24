@@ -151,44 +151,44 @@ def wrong_samples(device, model, datasets):
                 continue
     file.close()
 
-def set_tsne(device, model, datasets):
-    model.eval()
+# def set_tsne(device, model, datasets):
+#     model.eval()
+#
+#     tsnes = {
+#         "embeddings1" : TSNE(),
+#         "embeddings2" : TSNE(),
+#         "embeddings3" : TSNE(),
+#         "embeddings4" : TSNE()
+#     }
+#
+#     for itr in get_batches(datasets, "train"):
+#         # Getting vars
+#         inputs, targets, dataset_name = itr
+#
+#         # Setting the input and the target (seding to GPU if needed)
+#         inputs = [[word.to(device) for word in sample] for sample in inputs]
+#
+#         output = model(inputs)
+#
+#         tsnes["embeddings1"].fit(output["embeddings1"].squeeze().to('cpu').data.numpy()) # char bilstm
+#         tsnes["embeddings2"].fit(output["embeddings2"].squeeze().to('cpu').data.numpy()) # 1 word bilstm
+#         tsnes["embeddings3"].fit(output["embeddings3"].squeeze().to('cpu').data.numpy()) # 2 word bilstm
+#         tsnes["embeddings4"].fit(output["embeddings4"].squeeze().to('cpu').data.numpy()) # tag bilstm
+#
+#     return tsnes
 
-    tsnes = {
-        "embeddings1" : TSNE(),
-        "embeddings2" : TSNE(),
-        "embeddings3" : TSNE(),
-        "embeddings4" : TSNE()
-    }
-
-    for itr in get_batches(datasets, "train"):
-        # Getting vars
-        inputs, targets, dataset_name = itr
-
-        # Setting the input and the target (seding to GPU if needed)
-        inputs = [[word.to(device) for word in sample] for sample in inputs]
-
-        output = model(inputs)
-
-        tsnes["embeddings1"].fit(output["embeddings1"].squeeze().to('cpu').data.numpy()) # char bilstm
-        tsnes["embeddings2"].fit(output["embeddings2"].squeeze().to('cpu').data.numpy()) # 1 word bilstm
-        tsnes["embeddings3"].fit(output["embeddings3"].squeeze().to('cpu').data.numpy()) # 2 word bilstm
-        tsnes["embeddings4"].fit(output["embeddings4"].squeeze().to('cpu').data.numpy()) # tag bilstm
-
-    return tsnes
-
-def tsne_plot(device, model, char2id, sent, tsnes):
-    model.eval()
-
-    sent = sent.split(" ")
-    isent = [[torch.LongTensor([char2id.get(c,1) for c in word]).to(device) for word in sent]]
-
-    output = model(sent)
-
-    for i in range(1, 5):
-        embd = output["embeddings"+i].squeeze().to('cpu').data.numpy()
-        embd_tsne = tsnes["embeddings"+i].fit_transform(embd)
-
-        for idx in range(len(embd)):
-            plt.scatter(*embed_tsne[idx], color='steelblue')
-            plt.annotate(sent[idx], (embed_tsne[idx, 0], embed_tsne[idx, 1]), alpha=0.7)
+# def tsne_plot(device, model, char2id, sent, tsnes):
+#     model.eval()
+#
+#     sent = sent.split(" ")
+#     isent = [[torch.LongTensor([char2id.get(c,1) for c in word]).to(device) for word in sent]]
+#
+#     output = model(sent)
+#
+#     for i in range(1, 5):
+#         embd = output["embeddings"+i].squeeze().to('cpu').data.numpy()
+#         embd_tsne = tsnes["embeddings"+i].fit_transform(embd)
+#
+#         for idx in range(len(embd)):
+#             plt.scatter(*embed_tsne[idx], color='steelblue')
+#             plt.annotate(sent[idx], (embed_tsne[idx, 0], embed_tsne[idx, 1]), alpha=0.7)
