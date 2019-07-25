@@ -13,30 +13,30 @@ NUM_BILSTM_LAYERS = 2
 BILSTM_SIZE = 150
 
 # Training parameters
-EPOCHS = 50
+EPOCHS = 60
 BATCH_SIZE = 32
-LEARNING_RATE = 0.4
-MOMENTUM_RATE = 0.9
 TRAINING_POLICY = "visconde"
-FIX_WEIGHTS = False
-CONTINUE_TRAINING = False
-USE_PRETRAINED = False
 
 # Backup locations
-CHECKPOINT_PATH = './postag_ckpoint_WED:{}_CED:{}_NBL:{}_BS:{}.tar'.format(WORD_EMBEDDING_DIM,
-                                                                    CHAR_EMBEDDING_DIM,
-                                                                    NUM_BILSTM_LAYERS,
-                                                                    BILSTM_SIZE)
 
 STATE_DICT_PATH = './postag_sdict_WED:{}_CED:{}_NBL:{}_BS:{}.pt'.format(WORD_EMBEDDING_DIM,
                                                                  CHAR_EMBEDDING_DIM,
                                                                  NUM_BILSTM_LAYERS,
                                                                  BILSTM_SIZE)
 
-
-CHAR_BILSTM_SD_PATH = './charbilstm_sdict_WED:{}_CED:{}.pt'.format(WORD_EMBEDDING_DIM,
-                                                                   CHAR_EMBEDDING_DIM)
-WORD_BILSTM1_SD_PATH ='./wordbilstm1_sdict_WED:{}_CED:{}.pt'.format(WORD_EMBEDDING_DIM,
-                                                                    CHAR_EMBEDDING_DIM)
-WORD_BILSTM2_SD_PATH ='./wordbilstm2_sdict_WED:{}_CED:{}.pt'.format(WORD_EMBEDDING_DIM,
-                                                                    CHAR_EMBEDDING_DIM)
+#
+# LEARNING_RATE = 0.4
+# MOMENTUM_RATE = 0.9
+# FIX_WEIGHTS = False
+# CONTINUE_TRAINING = False
+# USE_PRETRAINED = False
+# CHECKPOINT_PATH = './postag_ckpoint_WED:{}_CED:{}_NBL:{}_BS:{}.tar'.format(WORD_EMBEDDING_DIM,
+# CHAR_EMBEDDING_DIM,
+# NUM_BILSTM_LAYERS,
+# BILSTM_SIZE)
+# CHAR_BILSTM_SD_PATH = './charbilstm_sdict_WED:{}_CED:{}.pt'.format(WORD_EMBEDDING_DIM,
+#                                                                    CHAR_EMBEDDING_DIM)
+# WORD_BILSTM1_SD_PATH ='./wordbilstm1_sdict_WED:{}_CED:{}.pt'.format(WORD_EMBEDDING_DIM,
+#                                                                     CHAR_EMBEDDING_DIM)
+# WORD_BILSTM2_SD_PATH ='./wordbilstm2_sdict_WED:{}_CED:{}.pt'.format(WORD_EMBEDDING_DIM,
+#                                                                     CHAR_EMBEDDING_DIM)
