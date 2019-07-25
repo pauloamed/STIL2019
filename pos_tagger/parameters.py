@@ -7,13 +7,13 @@ EWT_FILE_PATHS = ['data/en_ewt-ud-train.mm','data/en_ewt-ud-dev.mm','data/en_ewt
 PTB_FILE_PATHS = ['data/ptb-train.mm','data/ptb-dev.mm','data/ptb-test.mm']
 
 # Model hiperparameters
-WORD_EMBEDDING_DIM = 350
-CHAR_EMBEDDING_DIM = 60
-NUM_BILSTM_LAYERS = 1
+WORD_EMBEDDING_DIM = 250
+CHAR_EMBEDDING_DIM = 70
+NUM_BILSTM_LAYERS = 2
 BILSTM_SIZE = 150
 
 # Training parameters
-EPOCHS = 30
+EPOCHS = 50
 BATCH_SIZE = 32
 LEARNING_RATE = 0.4
 MOMENTUM_RATE = 0.9
