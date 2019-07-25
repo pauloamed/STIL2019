@@ -19,23 +19,23 @@ def accuracy(device, model, datasets):
 
         # Setting the input and the target (seding to GPU if needed)
         inputs = [[word.to(device) for word in sample] for sample in inputs]
+
         targets = torch.nn.utils.rnn.pad_sequence(targets, batch_first=True).to(device)
 
         # Feeding the model
         output = model(inputs)
-
         # convert output probabilities to predicted class
-        _, pred = torch.max(output[dataset_name], 1)
+        _, pred = torch.max(output[dataset_name], 2)
 
         # Formatando vetor
         pred = pred.view(1, -1)
 
         # calculate test accuracy for each object class
         for ii in range(output["length"]):
+            if ii >= len(targets[0]):
+                break
             if targets.data[0][ii].item() <= 1:
                 continue
-            if ii >= len(inputs[0][ii]):
-                break
 
             label, predicted = targets.data[0][ii], pred.data[0][ii]
             name2dataset[dataset_name].class_correct += 1 if label == predicted else 0

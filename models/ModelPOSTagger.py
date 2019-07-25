@@ -98,7 +98,7 @@ class POSTagger(nn.Module):
 
         # Saving final outputs
         # Passing through the final layer for each dataset
-        output.update({name : self.classifiers[idx](refined_embeddings) 
+        output.update({name : self.classifiers[idx](refined_embeddings)
                             for idx, name in enumerate(self.dataset2id)})
 
         return output
