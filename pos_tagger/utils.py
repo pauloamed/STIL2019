@@ -11,7 +11,7 @@ def load_pretrain_checkpoint(filepath):
 
 def do_policy(policy, datasets, batch_size, list_samples):
     seed = random.randrange(sys.maxsize)
-    
+
     list_batches, list_n_batches = [], []
 
     for i in range(len(datasets)):

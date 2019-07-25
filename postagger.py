@@ -93,16 +93,16 @@ except:
 
 # # Creating a checkpoint with the layers from the classifier, its weights,
 # # the minimum validation loss achieved and the cat_to_name dict
-checkpoint = {'min_val_loss': min_val_loss,
-              'optimizer_sd': optimizer.state_dict()}
+# checkpoint = {'min_val_loss': min_val_loss,
+#               'optimizer_sd': optimizer.state_dict()}
 
 # # Saving the checkpoint
-torch.save(checkpoint, CHECKPOINT_PATH)
+# torch.save(checkpoint, CHECKPOINT_PATH)
 
 """ Testing
 """
 accuracy(device, pos_model, datasets)
 # confusion_matrix(device, pos_model, datasets)
 # wrong_samples(device, pos_model, datasets)
-tsnes = set_tsne(device, pos_model, datasets)
-tsne_plot(device, pos_model, char2id, "Fui ao banco comprar um banco .", tsnes)
+# tsnes = set_tsne(device, pos_model, datasets)
+# tsne_plot(device, pos_model, char2id, "Fui ao banco comprar um banco .", tsnes)
