@@ -14,7 +14,7 @@ import torch.nn.functional as F
 from pos_tagger.test import *
 from pos_tagger.train import train
 from pos_tagger.Dataset import Dataset, build_char_dict
-from pos_tagger.utils import load_postag_checkpoint, load_pretrain_checkpoint
+# from pos_tagger.utils import load_postag_checkpoint, load_pretrain_checkpoint
 from pos_tagger.parameters import *
 
 from models.ModelCharBiLSTM import CharBILSTM
