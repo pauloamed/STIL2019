@@ -25,7 +25,7 @@ class CharBILSTM(nn.Module):
         self.projection_layer = nn.Linear(2*word_embedding_size, word_embedding_size)
 
         # Dropout
-        self.dropout = nn.Dropout(0.2)
+        self.dropout = nn.Dropout(0.1)
 
     def forward(self, inputs):
         # For each sample (sentence) on the batch, get a list of 1st-level-word embeddings
@@ -33,7 +33,7 @@ class CharBILSTM(nn.Module):
         for sample in inputs:
 
             # Retrieving char embeddings for each word in sample
-            embedded_sample = [self.char_embeddings_table(word) for word in sample]
+            embedded_sample = [self.dropout(self.char_embeddings_table(word)) for word in sample]
 
             # Sequence packing
             packed_embedded_sample = rnn.pack_sequence(embedded_sample, enforce_sorted=False)
@@ -60,7 +60,7 @@ class CharBILSTM(nn.Module):
             word_embeddings = self.projection_layer(concat_embeddings)
 
             # Saves to output
-            outputs.append(word_embeddings)
+            outputs.append(self.dropout(word_embeddings))
             lens.append(len(word_embeddings))
 
         # Padding sequence as needed

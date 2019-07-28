@@ -1,13 +1,13 @@
 import random, sys
 import tqdm
 
-def load_postag_checkpoint(filepath):
-    c = torch.load(filepath)
-    return c['min_val_loss'], c['optimizer_sd'], c['scheduler_sd']
-
-def load_pretrain_checkpoint(filepath):
-    c = torch.load(filepath)
-    return c['char2id'], c['id2char'], c['word2id'], c['wrod2freq'], c['id2word'], c['min_val_loss'], c['optimizer_sd']
+# def load_postag_checkpoint(filepath):
+#     c = torch.load(filepath)
+#     return c['min_val_loss'], c['optimizer_sd'], c['scheduler_sd']
+#
+# def load_pretrain_checkpoint(filepath):
+#     c = torch.load(filepath)
+#     return c['char2id'], c['id2char'], c['word2id'], c['wrod2freq'], c['id2word'], c['min_val_loss'], c['optimizer_sd']
 
 def do_policy(policy, datasets, batch_size, list_samples):
     seed = random.randrange(sys.maxsize)

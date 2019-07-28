@@ -41,7 +41,7 @@ class WordBILSTM(nn.Module):
         splitted_output = torch.split(output, self.word_embedding_size, dim=2)
 
         # Linear transformation into smaller dimension
-        output = self.projection_layer(output)+input_embeddings
+        output = self.projection_layer(self.dropout(output))+input_embeddings
 
         # Dropout
         output = self.dropout(output)
