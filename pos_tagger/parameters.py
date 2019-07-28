@@ -9,7 +9,7 @@ PTB_FILE_PATHS = ['data/ptb-train.mm','data/ptb-dev.mm','data/ptb-test.mm']
 # Model hiperparameters
 WORD_EMBEDDING_DIM = 250
 CHAR_EMBEDDING_DIM = 70
-NUM_BILSTM_LAYERS = 2
+NUM_BILSTM_LAYERS = 1
 BILSTM_SIZE = 150
 
 # Training parameters
