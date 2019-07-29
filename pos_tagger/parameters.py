@@ -7,19 +7,19 @@ EWT_FILE_PATHS = ['data/en_ewt-ud-train.mm','data/en_ewt-ud-dev.mm','data/en_ewt
 PTB_FILE_PATHS = ['data/ptb-train.mm','data/ptb-dev.mm','data/ptb-test.mm']
 
 # Model hiperparameters
-WORD_EMBEDDING_DIM = 250
+WORD_EMBEDDING_DIM = 350
 CHAR_EMBEDDING_DIM = 70
 NUM_BILSTM_LAYERS = 1
 BILSTM_SIZE = 150
 
 # Training parameters
-EPOCHS = 60
+EPOCHS = 55
 BATCH_SIZE = 32
 TRAINING_POLICY = "visconde"
 
 # Backup locations
 
-STATE_DICT_PATH = './postag_sdict_WED:{}_CED:{}_NBL:{}_BS:{}.pt'.format(WORD_EMBEDDING_DIM,
+STATE_DICT_PATH = 'postag_sdict_WED_{}_CED_{}_NBL_{}_BS_{}.pt'.format(WORD_EMBEDDING_DIM,
                                                                  CHAR_EMBEDDING_DIM,
                                                                  NUM_BILSTM_LAYERS,
                                                                  BILSTM_SIZE)
