@@ -38,10 +38,10 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # macmorpho = Dataset(MACMORPHO_FILE_PATHS, "Macmorpho")
 # bosque = Dataset(BOSQUE_FILE_PATHS, "Bosque", use_val=False)
-# gsd = Dataset(GSD_FILE_PATHS, "GSD", use_val=True)
-linguateca = Dataset(LINGUATECA_FILE_PATHS, "Linguateca")
+gsd = Dataset(GSD_FILE_PATHS, "GSD", use_val=True)
+# linguateca = Dataset(LINGUATECA_FILE_PATHS, "Linguateca")
 
-datasets = [linguateca]
+datasets = [gsd]
 
 char2id, id2char = build_char_dict(datasets)
 
