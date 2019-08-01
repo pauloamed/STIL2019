@@ -1,0 +1,585 @@
+
+>> Initializing Macmorpho dataset
+>>> Started loading dataset
+<<< Finished loading dataset
+>>> Started parsing data from dataset
+<<< Finished parsing data from dataset
+>>> Started building tag dict for dataset
+<<< Finished building tag dict for dataset
+<< Finished initializing Macmorpho dataset
+
+
+>> Building char dict...
+>>> Started extracting chars from Macmorpho dataset
+<<< Finished extracting chars from Macmorpho dataset
+<< Finished building dicts!
+
+
+>> Started preparing Macmorpho dataset
+<< Finished preparing Macmorpho dataset
+
+=================================================================
+Macmorpho Dataset
+Train dataset #sents: 37948 #words: 728497
+Val dataset #sents: 1997 #words: 38881
+Test dataset #sents: 9987 #words: 178373
+Tag set: [BOS, EOS, ADJ, ADV, ADV-KS, ART, CUR, IN, KC, KS, N, NPROP, NUM, PCP, PDEN, PREP, PREP+ADV, PREP+ART, PREP+PRO-KS, PREP+PROADJ, PREP+PROPESS, PREP+PROSUB, PRO-KS, PROADJ, PROPESS, PROSUB, PU, V]
+=================================================================
+
+POSTagger(
+  (charBILSTM): CharBILSTM(
+    (char_embeddings_table): Embedding(123, 70, padding_idx=0)
+    (bilstm): LSTM(70, 350, batch_first=True, bidirectional=True)
+    (projection_layer): Linear(in_features=700, out_features=350, bias=True)
+    (dropout): Dropout(p=0.1)
+  )
+  (wordBILSTM1): WordBILSTM(
+    (bilstm): LSTM(350, 350, batch_first=True, bidirectional=True)
+    (projection_layer): Linear(in_features=700, out_features=350, bias=True)
+    (dropout): Dropout(p=0.2)
+  )
+  (wordBILSTM2): WordBILSTM(
+    (bilstm): LSTM(350, 350, batch_first=True, bidirectional=True)
+    (projection_layer): Linear(in_features=700, out_features=350, bias=True)
+    (dropout): Dropout(p=0.2)
+  )
+  (tag_bilstm): LSTM(350, 150, batch_first=True, bidirectional=True)
+  (classifiers): ModuleList(
+    (0): Linear(in_features=300, out_features=28, bias=True)
+  )
+  (dropout): Dropout(p=0.4)
+)
+train: batch_size=32, policy=visconde: 100% 1185/1185 [07:21<00:00,  2.60it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:15<00:00, 125.43it/s]
+
+=======================================================================================
+Epoch: 0 	 Learning Rate: 1.000	Total Training Loss: 1080.425084 	Total Validation Loss: 1020.910029 	 Duration: 457.640
+>> Dataset Macmorpho:	Training Loss: 1080.425084	Validation Loss:1020.910029
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+Validation loss decreased (inf --> 1020.910029).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [07:04<00:00,  2.86it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:15<00:00, 128.09it/s]
+
+=======================================================================================
+Epoch: 1 	 Learning Rate: 1.000	Total Training Loss: 392.815857 	Total Validation Loss: 616.131045 	 Duration: 439.630
+>> Dataset Macmorpho:	Training Loss: 392.815857	Validation Loss:616.131045
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+Validation loss decreased (1020.910029 --> 616.131045).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [07:01<00:00,  2.93it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:15<00:00, 127.42it/s]
+
+=======================================================================================
+Epoch: 2 	 Learning Rate: 1.000	Total Training Loss: 270.908450 	Total Validation Loss: 469.910817 	 Duration: 436.858
+>> Dataset Macmorpho:	Training Loss: 270.908450	Validation Loss:469.910817
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+Validation loss decreased (616.131045 --> 469.910817).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [07:01<00:00,  2.85it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:15<00:00, 128.39it/s]
+
+=======================================================================================
+Epoch: 3 	 Learning Rate: 1.000	Total Training Loss: 213.725787 	Total Validation Loss: 389.282895 	 Duration: 436.793
+>> Dataset Macmorpho:	Training Loss: 213.725787	Validation Loss:389.282895
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+Validation loss decreased (469.910817 --> 389.282895).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [07:00<00:00,  2.57it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:15<00:00, 128.51it/s]
+
+=======================================================================================
+Epoch: 4 	 Learning Rate: 1.000	Total Training Loss: 183.343294 	Total Validation Loss: 347.637580 	 Duration: 436.377
+>> Dataset Macmorpho:	Training Loss: 183.343294	Validation Loss:347.637580
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+Validation loss decreased (389.282895 --> 347.637580).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [06:59<00:00,  2.31it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:15<00:00, 127.69it/s]
+
+=======================================================================================
+Epoch: 5 	 Learning Rate: 1.000	Total Training Loss: 163.060142 	Total Validation Loss: 313.552299 	 Duration: 435.618
+>> Dataset Macmorpho:	Training Loss: 163.060142	Validation Loss:313.552299
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+Validation loss decreased (347.637580 --> 313.552299).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [06:58<00:00,  2.85it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:15<00:00, 128.59it/s]
+
+=======================================================================================
+Epoch: 6 	 Learning Rate: 1.000	Total Training Loss: 147.907557 	Total Validation Loss: 293.827891 	 Duration: 434.359
+>> Dataset Macmorpho:	Training Loss: 147.907557	Validation Loss:293.827891
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+Validation loss decreased (313.552299 --> 293.827891).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [06:58<00:00,  2.84it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:15<00:00, 127.29it/s]
+
+=======================================================================================
+Epoch: 7 	 Learning Rate: 1.000	Total Training Loss: 137.957831 	Total Validation Loss: 275.231339 	 Duration: 433.872
+>> Dataset Macmorpho:	Training Loss: 137.957831	Validation Loss:275.231339
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+Validation loss decreased (293.827891 --> 275.231339).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [06:58<00:00,  2.87it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:15<00:00, 128.25it/s]
+
+=======================================================================================
+Epoch: 8 	 Learning Rate: 1.000	Total Training Loss: 128.646678 	Total Validation Loss: 265.514913 	 Duration: 434.274
+>> Dataset Macmorpho:	Training Loss: 128.646678	Validation Loss:265.514913
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+Validation loss decreased (275.231339 --> 265.514913).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [07:10<00:00,  3.11it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:15<00:00, 127.24it/s]
+
+=======================================================================================
+Epoch: 9 	 Learning Rate: 1.000	Total Training Loss: 122.135922 	Total Validation Loss: 261.646114 	 Duration: 446.024
+>> Dataset Macmorpho:	Training Loss: 122.135922	Validation Loss:261.646114
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+Validation loss decreased (265.514913 --> 261.646114).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [07:11<00:00,  2.82it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:15<00:00, 127.35it/s]
+
+=======================================================================================
+Epoch: 10 	 Learning Rate: 1.000	Total Training Loss: 116.275008 	Total Validation Loss: 249.059456 	 Duration: 447.527
+>> Dataset Macmorpho:	Training Loss: 116.275008	Validation Loss:249.059456
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+Validation loss decreased (261.646114 --> 249.059456).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [07:08<00:00,  3.13it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:15<00:00, 126.31it/s]
+
+=======================================================================================
+Epoch: 11 	 Learning Rate: 1.000	Total Training Loss: 111.160367 	Total Validation Loss: 244.502270 	 Duration: 444.074
+>> Dataset Macmorpho:	Training Loss: 111.160367	Validation Loss:244.502270
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+Validation loss decreased (249.059456 --> 244.502270).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [07:09<00:00,  3.24it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:15<00:00, 128.27it/s]
+
+=======================================================================================
+Epoch: 12 	 Learning Rate: 1.000	Total Training Loss: 107.123132 	Total Validation Loss: 246.672747 	 Duration: 445.376
+>> Dataset Macmorpho:	Training Loss: 107.123132	Validation Loss:246.672747
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [07:03<00:00,  2.87it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:15<00:00, 126.06it/s]
+
+=======================================================================================
+Epoch: 13 	 Learning Rate: 1.000	Total Training Loss: 102.501471 	Total Validation Loss: 233.095425 	 Duration: 439.386
+>> Dataset Macmorpho:	Training Loss: 102.501471	Validation Loss:233.095425
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+Validation loss decreased (244.502270 --> 233.095425).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [07:11<00:00,  2.99it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:15<00:00, 125.73it/s]
+
+=======================================================================================
+Epoch: 14 	 Learning Rate: 1.000	Total Training Loss: 99.598670 	Total Validation Loss: 225.108685 	 Duration: 447.849
+>> Dataset Macmorpho:	Training Loss: 99.598670	Validation Loss:225.108685
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+Validation loss decreased (233.095425 --> 225.108685).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [07:02<00:00,  2.64it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:15<00:00, 128.00it/s]
+
+=======================================================================================
+Epoch: 15 	 Learning Rate: 1.000	Total Training Loss: 96.310057 	Total Validation Loss: 219.257194 	 Duration: 438.459
+>> Dataset Macmorpho:	Training Loss: 96.310057	Validation Loss:219.257194
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+Validation loss decreased (225.108685 --> 219.257194).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [07:01<00:00,  2.80it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:15<00:00, 128.19it/s]
+
+=======================================================================================
+Epoch: 16 	 Learning Rate: 1.000	Total Training Loss: 92.694400 	Total Validation Loss: 216.525919 	 Duration: 437.152
+>> Dataset Macmorpho:	Training Loss: 92.694400	Validation Loss:216.525919
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+Validation loss decreased (219.257194 --> 216.525919).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [06:57<00:00,  2.77it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:15<00:00, 128.72it/s]
+
+=======================================================================================
+Epoch: 17 	 Learning Rate: 1.000	Total Training Loss: 90.651770 	Total Validation Loss: 205.931210 	 Duration: 432.709
+>> Dataset Macmorpho:	Training Loss: 90.651770	Validation Loss:205.931210
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+Validation loss decreased (216.525919 --> 205.931210).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [06:56<00:00,  2.65it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:15<00:00, 129.58it/s]
+
+=======================================================================================
+Epoch: 18 	 Learning Rate: 1.000	Total Training Loss: 88.008037 	Total Validation Loss: 207.998947 	 Duration: 432.417
+>> Dataset Macmorpho:	Training Loss: 88.008037	Validation Loss:207.998947
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [06:57<00:00,  2.77it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:15<00:00, 128.87it/s]
+
+=======================================================================================
+Epoch: 19 	 Learning Rate: 1.000	Total Training Loss: 85.594535 	Total Validation Loss: 208.265259 	 Duration: 433.240
+>> Dataset Macmorpho:	Training Loss: 85.594535	Validation Loss:208.265259
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [06:57<00:00,  2.84it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:15<00:00, 128.23it/s]
+
+=======================================================================================
+Epoch: 20 	 Learning Rate: 1.000	Total Training Loss: 83.516210 	Total Validation Loss: 201.744842 	 Duration: 432.884
+>> Dataset Macmorpho:	Training Loss: 83.516210	Validation Loss:201.744842
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+Validation loss decreased (205.931210 --> 201.744842).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [07:01<00:00,  2.76it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:15<00:00, 126.85it/s]
+
+=======================================================================================
+Epoch: 21 	 Learning Rate: 1.000	Total Training Loss: 81.666903 	Total Validation Loss: 199.063173 	 Duration: 437.602
+>> Dataset Macmorpho:	Training Loss: 81.666903	Validation Loss:199.063173
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+Validation loss decreased (201.744842 --> 199.063173).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [07:04<00:00,  2.87it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:15<00:00, 126.51it/s]
+
+=======================================================================================
+Epoch: 22 	 Learning Rate: 1.000	Total Training Loss: 79.812549 	Total Validation Loss: 197.487479 	 Duration: 440.462
+>> Dataset Macmorpho:	Training Loss: 79.812549	Validation Loss:197.487479
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+Validation loss decreased (199.063173 --> 197.487479).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [07:03<00:00,  2.64it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:15<00:00, 127.77it/s]
+
+=======================================================================================
+Epoch: 23 	 Learning Rate: 1.000	Total Training Loss: 78.243025 	Total Validation Loss: 195.865045 	 Duration: 438.983
+>> Dataset Macmorpho:	Training Loss: 78.243025	Validation Loss:195.865045
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+Validation loss decreased (197.487479 --> 195.865045).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [07:06<00:00,  2.97it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:15<00:00, 126.42it/s]
+
+=======================================================================================
+Epoch: 24 	 Learning Rate: 1.000	Total Training Loss: 76.436701 	Total Validation Loss: 194.192830 	 Duration: 442.469
+>> Dataset Macmorpho:	Training Loss: 76.436701	Validation Loss:194.192830
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+Validation loss decreased (195.865045 --> 194.192830).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [07:06<00:00,  2.52it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:15<00:00, 126.72it/s]
+
+=======================================================================================
+Epoch: 25 	 Learning Rate: 1.000	Total Training Loss: 74.838167 	Total Validation Loss: 190.621532 	 Duration: 442.005
+>> Dataset Macmorpho:	Training Loss: 74.838167	Validation Loss:190.621532
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+Validation loss decreased (194.192830 --> 190.621532).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [07:11<00:00,  2.41it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:16<00:00, 124.34it/s]
+
+=======================================================================================
+Epoch: 26 	 Learning Rate: 1.000	Total Training Loss: 73.116539 	Total Validation Loss: 188.897657 	 Duration: 447.709
+>> Dataset Macmorpho:	Training Loss: 73.116539	Validation Loss:188.897657
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+Validation loss decreased (190.621532 --> 188.897657).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [07:11<00:00,  2.94it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:15<00:00, 126.19it/s]
+
+=======================================================================================
+Epoch: 27 	 Learning Rate: 1.000	Total Training Loss: 71.647989 	Total Validation Loss: 188.019127 	 Duration: 447.774
+>> Dataset Macmorpho:	Training Loss: 71.647989	Validation Loss:188.019127
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+Validation loss decreased (188.897657 --> 188.019127).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [07:13<00:00,  2.76it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:15<00:00, 124.95it/s]
+
+=======================================================================================
+Epoch: 28 	 Learning Rate: 1.000	Total Training Loss: 70.663465 	Total Validation Loss: 185.480445 	 Duration: 449.788
+>> Dataset Macmorpho:	Training Loss: 70.663465	Validation Loss:185.480445
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+Validation loss decreased (188.019127 --> 185.480445).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [07:15<00:00,  2.79it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:16<00:00, 124.12it/s]
+
+=======================================================================================
+Epoch: 29 	 Learning Rate: 1.000	Total Training Loss: 69.034076 	Total Validation Loss: 189.270367 	 Duration: 451.863
+>> Dataset Macmorpho:	Training Loss: 69.034076	Validation Loss:189.270367
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [07:18<00:00,  2.53it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:16<00:00, 124.10it/s]
+
+=======================================================================================
+Epoch: 30 	 Learning Rate: 1.000	Total Training Loss: 67.754266 	Total Validation Loss: 185.612806 	 Duration: 454.237
+>> Dataset Macmorpho:	Training Loss: 67.754266	Validation Loss:185.612806
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [07:23<00:00,  2.49it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:16<00:00, 123.10it/s]
+
+=======================================================================================
+Epoch: 31 	 Learning Rate: 1.000	Total Training Loss: 66.447787 	Total Validation Loss: 184.178020 	 Duration: 459.468
+>> Dataset Macmorpho:	Training Loss: 66.447787	Validation Loss:184.178020
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+Validation loss decreased (185.480445 --> 184.178020).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [07:23<00:00,  2.77it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:16<00:00, 122.03it/s]
+
+=======================================================================================
+Epoch: 32 	 Learning Rate: 1.000	Total Training Loss: 65.376765 	Total Validation Loss: 183.091909 	 Duration: 459.368
+>> Dataset Macmorpho:	Training Loss: 65.376765	Validation Loss:183.091909
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+Validation loss decreased (184.178020 --> 183.091909).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [07:30<00:00,  2.66it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:16<00:00, 122.10it/s]
+
+=======================================================================================
+Epoch: 33 	 Learning Rate: 1.000	Total Training Loss: 64.284365 	Total Validation Loss: 182.707515 	 Duration: 466.687
+>> Dataset Macmorpho:	Training Loss: 64.284365	Validation Loss:182.707515
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+Validation loss decreased (183.091909 --> 182.707515).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [07:28<00:00,  2.52it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:16<00:00, 121.27it/s]
+
+=======================================================================================
+Epoch: 34 	 Learning Rate: 1.000	Total Training Loss: 62.653468 	Total Validation Loss: 183.244774 	 Duration: 464.734
+>> Dataset Macmorpho:	Training Loss: 62.653468	Validation Loss:183.244774
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [07:25<00:00,  2.57it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:16<00:00, 121.22it/s]
+
+=======================================================================================
+Epoch: 35 	 Learning Rate: 1.000	Total Training Loss: 61.937398 	Total Validation Loss: 183.461234 	 Duration: 462.116
+>> Dataset Macmorpho:	Training Loss: 61.937398	Validation Loss:183.461234
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [07:26<00:00,  2.60it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:16<00:00, 121.12it/s]
+
+=======================================================================================
+Epoch: 36 	 Learning Rate: 1.000	Total Training Loss: 60.765826 	Total Validation Loss: 177.881544 	 Duration: 462.997
+>> Dataset Macmorpho:	Training Loss: 60.765826	Validation Loss:177.881544
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+Validation loss decreased (182.707515 --> 177.881544).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [07:23<00:00,  2.64it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:16<00:00, 121.91it/s]
+
+=======================================================================================
+Epoch: 37 	 Learning Rate: 1.000	Total Training Loss: 59.845870 	Total Validation Loss: 180.847399 	 Duration: 459.729
+>> Dataset Macmorpho:	Training Loss: 59.845870	Validation Loss:180.847399
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [07:25<00:00,  2.66it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:16<00:00, 122.36it/s]
+
+=======================================================================================
+Epoch: 38 	 Learning Rate: 1.000	Total Training Loss: 59.269497 	Total Validation Loss: 179.976852 	 Duration: 462.181
+>> Dataset Macmorpho:	Training Loss: 59.269497	Validation Loss:179.976852
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [07:26<00:00,  2.93it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:16<00:00, 121.89it/s]
+
+=======================================================================================
+Epoch: 39 	 Learning Rate: 1.000	Total Training Loss: 58.197911 	Total Validation Loss: 176.758024 	 Duration: 463.382
+>> Dataset Macmorpho:	Training Loss: 58.197911	Validation Loss:176.758024
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+Validation loss decreased (177.881544 --> 176.758024).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [07:36<00:00,  2.64it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:16<00:00, 120.35it/s]
+
+=======================================================================================
+Epoch: 40 	 Learning Rate: 1.000	Total Training Loss: 56.752220 	Total Validation Loss: 177.792990 	 Duration: 473.137
+>> Dataset Macmorpho:	Training Loss: 56.752220	Validation Loss:177.792990
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [07:27<00:00,  2.90it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:16<00:00, 121.37it/s]
+
+=======================================================================================
+Epoch: 41 	 Learning Rate: 1.000	Total Training Loss: 56.057331 	Total Validation Loss: 176.410922 	 Duration: 464.456
+>> Dataset Macmorpho:	Training Loss: 56.057331	Validation Loss:176.410922
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+Validation loss decreased (176.758024 --> 176.410922).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [07:25<00:00,  2.76it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:15<00:00, 125.03it/s]
+
+=======================================================================================
+Epoch: 42 	 Learning Rate: 1.000	Total Training Loss: 54.873628 	Total Validation Loss: 172.886658 	 Duration: 461.296
+>> Dataset Macmorpho:	Training Loss: 54.873628	Validation Loss:172.886658
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+Validation loss decreased (176.410922 --> 172.886658).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [07:08<00:00,  2.74it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:15<00:00, 126.50it/s]
+
+=======================================================================================
+Epoch: 43 	 Learning Rate: 1.000	Total Training Loss: 54.788795 	Total Validation Loss: 172.543302 	 Duration: 444.000
+>> Dataset Macmorpho:	Training Loss: 54.788795	Validation Loss:172.543302
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+Validation loss decreased (172.886658 --> 172.543302).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [07:05<00:00,  2.55it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:15<00:00, 127.53it/s]
+
+=======================================================================================
+Epoch: 44 	 Learning Rate: 1.000	Total Training Loss: 53.530360 	Total Validation Loss: 180.678286 	 Duration: 441.127
+>> Dataset Macmorpho:	Training Loss: 53.530360	Validation Loss:180.678286
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [07:14<00:00,  2.75it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:15<00:00, 124.89it/s]
+
+=======================================================================================
+Epoch: 45 	 Learning Rate: 1.000	Total Training Loss: 52.672056 	Total Validation Loss: 179.930655 	 Duration: 450.165
+>> Dataset Macmorpho:	Training Loss: 52.672056	Validation Loss:179.930655
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [07:19<00:00,  2.70it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:16<00:00, 121.44it/s]
+
+=======================================================================================
+Epoch: 46 	 Learning Rate: 1.000	Total Training Loss: 52.112810 	Total Validation Loss: 174.827939 	 Duration: 456.215
+>> Dataset Macmorpho:	Training Loss: 52.112810	Validation Loss:174.827939
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [07:19<00:00,  2.76it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:16<00:00, 120.88it/s]
+
+=======================================================================================
+Epoch: 47 	 Learning Rate: 1.000	Total Training Loss: 50.842178 	Total Validation Loss: 180.301138 	 Duration: 456.478
+>> Dataset Macmorpho:	Training Loss: 50.842178	Validation Loss:180.301138
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [07:23<00:00,  2.29it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:16<00:00, 122.89it/s]
+
+=======================================================================================
+Epoch: 48 	 Learning Rate: 1.000	Total Training Loss: 49.941955 	Total Validation Loss: 178.534829 	 Duration: 459.421
+>> Dataset Macmorpho:	Training Loss: 49.941955	Validation Loss:178.534829
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [07:28<00:00,  2.61it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:16<00:00, 123.21it/s]
+
+=======================================================================================
+Epoch: 49 	 Learning Rate: 1.000	Total Training Loss: 49.522569 	Total Validation Loss: 177.097066 	 Duration: 464.407
+>> Dataset Macmorpho:	Training Loss: 49.522569	Validation Loss:177.097066
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [07:16<00:00,  2.64it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:16<00:00, 122.66it/s]
+
+=======================================================================================
+Epoch: 50 	 Learning Rate: 1.000	Total Training Loss: 49.024586 	Total Validation Loss: 177.385416 	 Duration: 453.222
+>> Dataset Macmorpho:	Training Loss: 49.024586	Validation Loss:177.385416
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [07:24<00:00,  2.53it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:16<00:00, 123.20it/s]
+
+=======================================================================================
+Epoch: 51 	 Learning Rate: 1.000	Total Training Loss: 48.017057 	Total Validation Loss: 177.772960 	 Duration: 460.552
+>> Dataset Macmorpho:	Training Loss: 48.017057	Validation Loss:177.772960
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [07:20<00:00,  2.80it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:16<00:00, 122.71it/s]
+
+=======================================================================================
+Epoch: 52 	 Learning Rate: 1.000	Total Training Loss: 46.841382 	Total Validation Loss: 181.975717 	 Duration: 456.593
+>> Dataset Macmorpho:	Training Loss: 46.841382	Validation Loss:181.975717
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [07:22<00:00,  2.85it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:16<00:00, 123.23it/s]
+
+=======================================================================================
+Epoch: 53 	 Learning Rate: 1.000	Total Training Loss: 46.883905 	Total Validation Loss: 181.203557 	 Duration: 458.295
+>> Dataset Macmorpho:	Training Loss: 46.883905	Validation Loss:181.203557
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 1185/1185 [07:22<00:00,  2.86it/s]
+val: batch_size=1, policy=emilia: 100% 1997/1997 [00:16<00:00, 123.78it/s]
+
+=======================================================================================
+Epoch: 54 	 Learning Rate: 1.000	Total Training Loss: 45.796827 	Total Validation Loss: 177.910698 	 Duration: 458.549
+>> Dataset Macmorpho:	Training Loss: 45.796827	Validation Loss:177.910698
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho'] dataset(s)
+=======================================================================================
+test: batch_size=1, policy=emilia: 100% 9987/9987 [01:29<00:00, 111.24it/s]
+
+Test Accuracy (Overall): 97% (173477/178373)
+
+Test Accuracy (on Macmorpho Dataset): 97.26% (173477/178373)

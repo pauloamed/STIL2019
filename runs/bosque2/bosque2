@@ -1,0 +1,588 @@
+
+>> Initializing Bosque dataset
+>>> Started loading dataset
+<<< Finished loading dataset
+>>> Started parsing data from dataset
+<<< Finished parsing data from dataset
+>>> Started building tag dict for dataset
+<<< Finished building tag dict for dataset
+<< Finished initializing Bosque dataset
+
+
+>> Building char dict...
+>>> Started extracting chars from Bosque dataset
+<<< Finished extracting chars from Bosque dataset
+<< Finished building dicts!
+
+
+>> Started preparing Bosque dataset
+<< Finished preparing Bosque dataset
+
+=================================================================
+Bosque Dataset
+Train dataset #sents: 8328 #words: 206744
+Val dataset #sents: 560 #words: 10851
+Test dataset #sents: 477 #words: 10199
+Tag set: [BOS, EOS, ADJ, ADP, ADV, AUX, CCONJ, DET, INTJ, NOUN, NUM, PART, PRON, PROPN, PUNCT, SCONJ, SYM, VERB, X]
+=================================================================
+
+POSTagger(
+  (charBILSTM): CharBILSTM(
+    (char_embeddings_table): Embedding(120, 70, padding_idx=0)
+    (bilstm): LSTM(70, 350, batch_first=True, bidirectional=True)
+    (projection_layer): Linear(in_features=700, out_features=350, bias=True)
+    (dropout): Dropout(p=0.1)
+  )
+  (wordBILSTM1): WordBILSTM(
+    (bilstm): LSTM(350, 350, batch_first=True, bidirectional=True)
+    (projection_layer): Linear(in_features=700, out_features=350, bias=True)
+    (dropout): Dropout(p=0.2)
+  )
+  (wordBILSTM2): WordBILSTM(
+    (bilstm): LSTM(350, 350, batch_first=True, bidirectional=True)
+    (projection_layer): Linear(in_features=700, out_features=350, bias=True)
+    (dropout): Dropout(p=0.2)
+  )
+  (tag_bilstm): LSTM(350, 150, batch_first=True, bidirectional=True)
+  (classifiers): ModuleList(
+    (0): Linear(in_features=300, out_features=19, bias=True)
+  )
+  (dropout): Dropout(p=0.4)
+)
+train: batch_size=32, policy=visconde: 100% 260/260 [01:48<00:00,  2.50it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 128.60it/s]
+
+=======================================================================================
+Epoch: 0 	 Learning Rate: 1.000	Total Training Loss: 1247.973949 	Total Validation Loss: 919.685754 	 Duration: 112.866
+>> Dataset Bosque:	Training Loss: 1247.973949	Validation Loss:919.685754
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+Validation loss decreased (inf --> 919.685754).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:47<00:00,  2.84it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 127.89it/s]
+
+=======================================================================================
+Epoch: 1 	 Learning Rate: 1.000	Total Training Loss: 611.712053 	Total Validation Loss: 600.940752 	 Duration: 112.293
+>> Dataset Bosque:	Training Loss: 611.712053	Validation Loss:600.940752
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+Validation loss decreased (919.685754 --> 600.940752).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:47<00:00,  2.38it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 127.71it/s]
+
+=======================================================================================
+Epoch: 2 	 Learning Rate: 1.000	Total Training Loss: 424.920671 	Total Validation Loss: 455.375840 	 Duration: 111.861
+>> Dataset Bosque:	Training Loss: 424.920671	Validation Loss:455.375840
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+Validation loss decreased (600.940752 --> 455.375840).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:47<00:00,  2.42it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 125.95it/s]
+
+=======================================================================================
+Epoch: 3 	 Learning Rate: 1.000	Total Training Loss: 342.254900 	Total Validation Loss: 359.031356 	 Duration: 111.986
+>> Dataset Bosque:	Training Loss: 342.254900	Validation Loss:359.031356
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+Validation loss decreased (455.375840 --> 359.031356).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:47<00:00,  2.41it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 126.54it/s]
+
+=======================================================================================
+Epoch: 4 	 Learning Rate: 1.000	Total Training Loss: 295.895852 	Total Validation Loss: 310.592417 	 Duration: 111.980
+>> Dataset Bosque:	Training Loss: 295.895852	Validation Loss:310.592417
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+Validation loss decreased (359.031356 --> 310.592417).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:47<00:00,  2.56it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 129.94it/s]
+
+=======================================================================================
+Epoch: 5 	 Learning Rate: 1.000	Total Training Loss: 261.160527 	Total Validation Loss: 278.683133 	 Duration: 111.832
+>> Dataset Bosque:	Training Loss: 261.160527	Validation Loss:278.683133
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+Validation loss decreased (310.592417 --> 278.683133).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:47<00:00,  2.51it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 128.12it/s]
+
+=======================================================================================
+Epoch: 6 	 Learning Rate: 1.000	Total Training Loss: 235.311737 	Total Validation Loss: 248.942899 	 Duration: 112.187
+>> Dataset Bosque:	Training Loss: 235.311737	Validation Loss:248.942899
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+Validation loss decreased (278.683133 --> 248.942899).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:47<00:00,  2.47it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 128.17it/s]
+
+=======================================================================================
+Epoch: 7 	 Learning Rate: 1.000	Total Training Loss: 214.615624 	Total Validation Loss: 235.917878 	 Duration: 111.769
+>> Dataset Bosque:	Training Loss: 214.615624	Validation Loss:235.917878
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+Validation loss decreased (248.942899 --> 235.917878).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:47<00:00,  2.57it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 128.11it/s]
+
+=======================================================================================
+Epoch: 8 	 Learning Rate: 1.000	Total Training Loss: 198.504326 	Total Validation Loss: 210.114486 	 Duration: 111.880
+>> Dataset Bosque:	Training Loss: 198.504326	Validation Loss:210.114486
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+Validation loss decreased (235.917878 --> 210.114486).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:47<00:00,  2.35it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 127.52it/s]
+
+=======================================================================================
+Epoch: 9 	 Learning Rate: 1.000	Total Training Loss: 184.171469 	Total Validation Loss: 193.449383 	 Duration: 111.923
+>> Dataset Bosque:	Training Loss: 184.171469	Validation Loss:193.449383
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+Validation loss decreased (210.114486 --> 193.449383).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:47<00:00,  2.20it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 126.95it/s]
+
+=======================================================================================
+Epoch: 10 	 Learning Rate: 1.000	Total Training Loss: 172.494328 	Total Validation Loss: 180.629930 	 Duration: 112.105
+>> Dataset Bosque:	Training Loss: 172.494328	Validation Loss:180.629930
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+Validation loss decreased (193.449383 --> 180.629930).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:47<00:00,  2.49it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 128.24it/s]
+
+=======================================================================================
+Epoch: 11 	 Learning Rate: 1.000	Total Training Loss: 161.389774 	Total Validation Loss: 170.890102 	 Duration: 112.040
+>> Dataset Bosque:	Training Loss: 161.389774	Validation Loss:170.890102
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+Validation loss decreased (180.629930 --> 170.890102).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:47<00:00,  2.41it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 128.08it/s]
+
+=======================================================================================
+Epoch: 12 	 Learning Rate: 1.000	Total Training Loss: 153.754856 	Total Validation Loss: 165.591732 	 Duration: 112.070
+>> Dataset Bosque:	Training Loss: 153.754856	Validation Loss:165.591732
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+Validation loss decreased (170.890102 --> 165.591732).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:47<00:00,  2.43it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 128.43it/s]
+
+=======================================================================================
+Epoch: 13 	 Learning Rate: 1.000	Total Training Loss: 145.381309 	Total Validation Loss: 162.681956 	 Duration: 111.956
+>> Dataset Bosque:	Training Loss: 145.381309	Validation Loss:162.681956
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+Validation loss decreased (165.591732 --> 162.681956).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:47<00:00,  2.35it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 126.53it/s]
+
+=======================================================================================
+Epoch: 14 	 Learning Rate: 1.000	Total Training Loss: 139.244771 	Total Validation Loss: 151.936869 	 Duration: 111.691
+>> Dataset Bosque:	Training Loss: 139.244771	Validation Loss:151.936869
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+Validation loss decreased (162.681956 --> 151.936869).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:48<00:00,  2.36it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 126.32it/s]
+
+=======================================================================================
+Epoch: 15 	 Learning Rate: 1.000	Total Training Loss: 134.086573 	Total Validation Loss: 148.219212 	 Duration: 112.996
+>> Dataset Bosque:	Training Loss: 134.086573	Validation Loss:148.219212
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+Validation loss decreased (151.936869 --> 148.219212).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:48<00:00,  2.58it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 126.82it/s]
+
+=======================================================================================
+Epoch: 16 	 Learning Rate: 1.000	Total Training Loss: 128.459621 	Total Validation Loss: 141.382557 	 Duration: 112.923
+>> Dataset Bosque:	Training Loss: 128.459621	Validation Loss:141.382557
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+Validation loss decreased (148.219212 --> 141.382557).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:49<00:00,  2.46it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 126.59it/s]
+
+=======================================================================================
+Epoch: 17 	 Learning Rate: 1.000	Total Training Loss: 123.789180 	Total Validation Loss: 138.069155 	 Duration: 114.022
+>> Dataset Bosque:	Training Loss: 123.789180	Validation Loss:138.069155
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+Validation loss decreased (141.382557 --> 138.069155).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:49<00:00,  2.50it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 126.80it/s]
+
+=======================================================================================
+Epoch: 18 	 Learning Rate: 1.000	Total Training Loss: 120.020481 	Total Validation Loss: 131.187665 	 Duration: 114.286
+>> Dataset Bosque:	Training Loss: 120.020481	Validation Loss:131.187665
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+Validation loss decreased (138.069155 --> 131.187665).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:50<00:00,  2.32it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 125.49it/s]
+
+=======================================================================================
+Epoch: 19 	 Learning Rate: 1.000	Total Training Loss: 115.765300 	Total Validation Loss: 133.604866 	 Duration: 114.684
+>> Dataset Bosque:	Training Loss: 115.765300	Validation Loss:133.604866
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:51<00:00,  2.29it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 126.07it/s]
+
+=======================================================================================
+Epoch: 20 	 Learning Rate: 1.000	Total Training Loss: 112.770328 	Total Validation Loss: 127.849782 	 Duration: 115.794
+>> Dataset Bosque:	Training Loss: 112.770328	Validation Loss:127.849782
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+Validation loss decreased (131.187665 --> 127.849782).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:51<00:00,  2.57it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 125.41it/s]
+
+=======================================================================================
+Epoch: 21 	 Learning Rate: 1.000	Total Training Loss: 109.029127 	Total Validation Loss: 124.316432 	 Duration: 115.632
+>> Dataset Bosque:	Training Loss: 109.029127	Validation Loss:124.316432
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+Validation loss decreased (127.849782 --> 124.316432).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:52<00:00,  2.24it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 122.60it/s]
+
+=======================================================================================
+Epoch: 22 	 Learning Rate: 1.000	Total Training Loss: 106.096077 	Total Validation Loss: 122.850702 	 Duration: 116.907
+>> Dataset Bosque:	Training Loss: 106.096077	Validation Loss:122.850702
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+Validation loss decreased (124.316432 --> 122.850702).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:51<00:00,  2.35it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 125.44it/s]
+
+=======================================================================================
+Epoch: 23 	 Learning Rate: 1.000	Total Training Loss: 103.276416 	Total Validation Loss: 118.876601 	 Duration: 116.190
+>> Dataset Bosque:	Training Loss: 103.276416	Validation Loss:118.876601
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+Validation loss decreased (122.850702 --> 118.876601).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:50<00:00,  2.39it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 126.25it/s]
+
+=======================================================================================
+Epoch: 24 	 Learning Rate: 1.000	Total Training Loss: 100.647429 	Total Validation Loss: 118.951320 	 Duration: 115.305
+>> Dataset Bosque:	Training Loss: 100.647429	Validation Loss:118.951320
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:50<00:00,  2.31it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 125.61it/s]
+
+=======================================================================================
+Epoch: 25 	 Learning Rate: 1.000	Total Training Loss: 98.434751 	Total Validation Loss: 117.592697 	 Duration: 115.399
+>> Dataset Bosque:	Training Loss: 98.434751	Validation Loss:117.592697
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+Validation loss decreased (118.876601 --> 117.592697).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:50<00:00,  2.32it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 125.92it/s]
+
+=======================================================================================
+Epoch: 26 	 Learning Rate: 1.000	Total Training Loss: 96.946781 	Total Validation Loss: 116.818620 	 Duration: 115.046
+>> Dataset Bosque:	Training Loss: 96.946781	Validation Loss:116.818620
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+Validation loss decreased (117.592697 --> 116.818620).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:51<00:00,  2.04it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 125.46it/s]
+
+=======================================================================================
+Epoch: 27 	 Learning Rate: 1.000	Total Training Loss: 93.662141 	Total Validation Loss: 114.677598 	 Duration: 115.560
+>> Dataset Bosque:	Training Loss: 93.662141	Validation Loss:114.677598
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+Validation loss decreased (116.818620 --> 114.677598).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:51<00:00,  2.30it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 123.54it/s]
+
+=======================================================================================
+Epoch: 28 	 Learning Rate: 1.000	Total Training Loss: 91.753325 	Total Validation Loss: 111.801897 	 Duration: 116.482
+>> Dataset Bosque:	Training Loss: 91.753325	Validation Loss:111.801897
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+Validation loss decreased (114.677598 --> 111.801897).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:51<00:00,  2.39it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 125.10it/s]
+
+=======================================================================================
+Epoch: 29 	 Learning Rate: 1.000	Total Training Loss: 89.162481 	Total Validation Loss: 113.710653 	 Duration: 116.427
+>> Dataset Bosque:	Training Loss: 89.162481	Validation Loss:113.710653
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:51<00:00,  2.22it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 125.02it/s]
+
+=======================================================================================
+Epoch: 30 	 Learning Rate: 1.000	Total Training Loss: 88.042483 	Total Validation Loss: 109.911995 	 Duration: 116.351
+>> Dataset Bosque:	Training Loss: 88.042483	Validation Loss:109.911995
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+Validation loss decreased (111.801897 --> 109.911995).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:51<00:00,  2.22it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 125.29it/s]
+
+=======================================================================================
+Epoch: 31 	 Learning Rate: 1.000	Total Training Loss: 86.760546 	Total Validation Loss: 116.347972 	 Duration: 115.784
+>> Dataset Bosque:	Training Loss: 86.760546	Validation Loss:116.347972
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:52<00:00,  2.22it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 125.59it/s]
+
+=======================================================================================
+Epoch: 32 	 Learning Rate: 1.000	Total Training Loss: 84.263223 	Total Validation Loss: 105.648799 	 Duration: 117.202
+>> Dataset Bosque:	Training Loss: 84.263223	Validation Loss:105.648799
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+Validation loss decreased (109.911995 --> 105.648799).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:50<00:00,  2.37it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 122.85it/s]
+
+=======================================================================================
+Epoch: 33 	 Learning Rate: 1.000	Total Training Loss: 82.250845 	Total Validation Loss: 108.303944 	 Duration: 115.547
+>> Dataset Bosque:	Training Loss: 82.250845	Validation Loss:108.303944
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:51<00:00,  2.44it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 124.79it/s]
+
+=======================================================================================
+Epoch: 34 	 Learning Rate: 1.000	Total Training Loss: 81.344315 	Total Validation Loss: 105.721648 	 Duration: 116.418
+>> Dataset Bosque:	Training Loss: 81.344315	Validation Loss:105.721648
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:51<00:00,  2.23it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 124.69it/s]
+
+=======================================================================================
+Epoch: 35 	 Learning Rate: 1.000	Total Training Loss: 80.063147 	Total Validation Loss: 105.693892 	 Duration: 116.223
+>> Dataset Bosque:	Training Loss: 80.063147	Validation Loss:105.693892
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:51<00:00,  2.01it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 123.57it/s]
+
+=======================================================================================
+Epoch: 36 	 Learning Rate: 1.000	Total Training Loss: 78.286951 	Total Validation Loss: 102.451174 	 Duration: 116.207
+>> Dataset Bosque:	Training Loss: 78.286951	Validation Loss:102.451174
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+Validation loss decreased (105.648799 --> 102.451174).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:51<00:00,  2.48it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 123.11it/s]
+
+=======================================================================================
+Epoch: 37 	 Learning Rate: 1.000	Total Training Loss: 77.230193 	Total Validation Loss: 103.207859 	 Duration: 116.414
+>> Dataset Bosque:	Training Loss: 77.230193	Validation Loss:103.207859
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:51<00:00,  2.40it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 126.71it/s]
+
+=======================================================================================
+Epoch: 38 	 Learning Rate: 1.000	Total Training Loss: 75.538568 	Total Validation Loss: 102.319534 	 Duration: 116.367
+>> Dataset Bosque:	Training Loss: 75.538568	Validation Loss:102.319534
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+Validation loss decreased (102.451174 --> 102.319534).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:52<00:00,  2.55it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 125.20it/s]
+
+=======================================================================================
+Epoch: 39 	 Learning Rate: 1.000	Total Training Loss: 73.941346 	Total Validation Loss: 104.573048 	 Duration: 116.638
+>> Dataset Bosque:	Training Loss: 73.941346	Validation Loss:104.573048
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:51<00:00,  2.55it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 125.96it/s]
+
+=======================================================================================
+Epoch: 40 	 Learning Rate: 1.000	Total Training Loss: 73.737387 	Total Validation Loss: 104.551852 	 Duration: 116.157
+>> Dataset Bosque:	Training Loss: 73.737387	Validation Loss:104.551852
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:51<00:00,  2.25it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 120.90it/s]
+
+=======================================================================================
+Epoch: 41 	 Learning Rate: 1.000	Total Training Loss: 72.180065 	Total Validation Loss: 98.975342 	 Duration: 115.999
+>> Dataset Bosque:	Training Loss: 72.180065	Validation Loss:98.975342
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+Validation loss decreased (102.319534 --> 98.975342).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:51<00:00,  2.24it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 123.11it/s]
+
+=======================================================================================
+Epoch: 42 	 Learning Rate: 1.000	Total Training Loss: 71.464988 	Total Validation Loss: 99.512549 	 Duration: 116.470
+>> Dataset Bosque:	Training Loss: 71.464988	Validation Loss:99.512549
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:52<00:00,  2.37it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 123.16it/s]
+
+=======================================================================================
+Epoch: 43 	 Learning Rate: 1.000	Total Training Loss: 69.721375 	Total Validation Loss: 103.988537 	 Duration: 117.415
+>> Dataset Bosque:	Training Loss: 69.721375	Validation Loss:103.988537
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:52<00:00,  2.47it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 123.80it/s]
+
+=======================================================================================
+Epoch: 44 	 Learning Rate: 1.000	Total Training Loss: 68.298324 	Total Validation Loss: 98.268197 	 Duration: 117.496
+>> Dataset Bosque:	Training Loss: 68.298324	Validation Loss:98.268197
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+Validation loss decreased (98.975342 --> 98.268197).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:52<00:00,  2.38it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 122.99it/s]
+
+=======================================================================================
+Epoch: 45 	 Learning Rate: 1.000	Total Training Loss: 68.025482 	Total Validation Loss: 96.012433 	 Duration: 116.616
+>> Dataset Bosque:	Training Loss: 68.025482	Validation Loss:96.012433
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+Validation loss decreased (98.268197 --> 96.012433).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:51<00:00,  2.57it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 124.56it/s]
+
+=======================================================================================
+Epoch: 46 	 Learning Rate: 1.000	Total Training Loss: 66.729928 	Total Validation Loss: 95.308395 	 Duration: 115.831
+>> Dataset Bosque:	Training Loss: 66.729928	Validation Loss:95.308395
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+Validation loss decreased (96.012433 --> 95.308395).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:52<00:00,  2.17it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 125.02it/s]
+
+=======================================================================================
+Epoch: 47 	 Learning Rate: 1.000	Total Training Loss: 65.658547 	Total Validation Loss: 99.668831 	 Duration: 116.994
+>> Dataset Bosque:	Training Loss: 65.658547	Validation Loss:99.668831
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:51<00:00,  2.45it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 124.74it/s]
+
+=======================================================================================
+Epoch: 48 	 Learning Rate: 1.000	Total Training Loss: 65.344454 	Total Validation Loss: 100.390109 	 Duration: 115.720
+>> Dataset Bosque:	Training Loss: 65.344454	Validation Loss:100.390109
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:51<00:00,  2.12it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 120.25it/s]
+
+=======================================================================================
+Epoch: 49 	 Learning Rate: 1.000	Total Training Loss: 62.938788 	Total Validation Loss: 96.858794 	 Duration: 116.172
+>> Dataset Bosque:	Training Loss: 62.938788	Validation Loss:96.858794
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:51<00:00,  2.30it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 124.43it/s]
+
+=======================================================================================
+Epoch: 50 	 Learning Rate: 1.000	Total Training Loss: 62.802139 	Total Validation Loss: 95.658008 	 Duration: 116.496
+>> Dataset Bosque:	Training Loss: 62.802139	Validation Loss:95.658008
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:51<00:00,  2.40it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 123.78it/s]
+
+=======================================================================================
+Epoch: 51 	 Learning Rate: 1.000	Total Training Loss: 62.392073 	Total Validation Loss: 94.094452 	 Duration: 116.032
+>> Dataset Bosque:	Training Loss: 62.392073	Validation Loss:94.094452
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+Validation loss decreased (95.308395 --> 94.094452).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:52<00:00,  2.41it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 126.43it/s]
+
+=======================================================================================
+Epoch: 52 	 Learning Rate: 1.000	Total Training Loss: 60.617799 	Total Validation Loss: 95.807827 	 Duration: 116.462
+>> Dataset Bosque:	Training Loss: 60.617799	Validation Loss:95.807827
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:51<00:00,  2.44it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 124.57it/s]
+
+=======================================================================================
+Epoch: 53 	 Learning Rate: 1.000	Total Training Loss: 59.825932 	Total Validation Loss: 94.973069 	 Duration: 115.761
+>> Dataset Bosque:	Training Loss: 59.825932	Validation Loss:94.973069
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 260/260 [01:51<00:00,  2.45it/s]
+val: batch_size=1, policy=emilia: 100% 560/560 [00:04<00:00, 126.10it/s]
+
+=======================================================================================
+Epoch: 54 	 Learning Rate: 1.000	Total Training Loss: 59.916843 	Total Validation Loss: 92.016295 	 Duration: 116.184
+>> Dataset Bosque:	Training Loss: 59.916843	Validation Loss:92.016295
+----------------------------------------------------------------------------------------
+Comparing loss on ['Bosque'] dataset(s)
+Validation loss decreased (94.094452 --> 92.016295).  Saving model ...
+=======================================================================================
+test: batch_size=1, policy=emilia: 100% 477/477 [00:04<00:00, 104.97it/s]
+
+Test Accuracy (Overall): 96% (9818/10199)
+
+Test Accuracy (on Bosque Dataset): 96.26% (9818/10199)

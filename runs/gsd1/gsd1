@@ -1,0 +1,590 @@
+
+>> Initializing GSD dataset
+>>> Started loading dataset
+<<< Finished loading dataset
+>>> Started parsing data from dataset
+<<< Finished parsing data from dataset
+>>> Started building tag dict for dataset
+<<< Finished building tag dict for dataset
+<< Finished initializing GSD dataset
+
+
+>> Building char dict...
+>>> Started extracting chars from GSD dataset
+<<< Finished extracting chars from GSD dataset
+<< Finished building dicts!
+
+
+>> Started preparing GSD dataset
+<< Finished preparing GSD dataset
+
+=================================================================
+GSD Dataset
+Train dataset #sents: 9664 #words: 255755
+Val dataset #sents: 1210 #words: 32129
+Test dataset #sents: 1204 #words: 31496
+Tag set: [BOS, EOS, ADJ, ADP, ADV, AUX, CCONJ, DET, NOUN, NUM, PART, PRON, PROPN, PUNCT, SYM, VERB, X]
+=================================================================
+
+POSTagger(
+  (charBILSTM): CharBILSTM(
+    (char_embeddings_table): Embedding(192, 70, padding_idx=0)
+    (bilstm): LSTM(70, 350, batch_first=True, bidirectional=True)
+    (projection_layer): Linear(in_features=700, out_features=350, bias=True)
+    (dropout): Dropout(p=0.1)
+  )
+  (wordBILSTM1): WordBILSTM(
+    (bilstm): LSTM(350, 350, batch_first=True, bidirectional=True)
+    (projection_layer): Linear(in_features=700, out_features=350, bias=True)
+    (dropout): Dropout(p=0.2)
+  )
+  (wordBILSTM2): WordBILSTM(
+    (bilstm): LSTM(350, 350, batch_first=True, bidirectional=True)
+    (projection_layer): Linear(in_features=700, out_features=350, bias=True)
+    (dropout): Dropout(p=0.2)
+  )
+  (tag_bilstm): LSTM(350, 150, batch_first=True, bidirectional=True)
+  (classifiers): ModuleList(
+    (0): Linear(in_features=300, out_features=17, bias=True)
+  )
+  (dropout): Dropout(p=0.4)
+)
+train: batch_size=32, policy=visconde: 100% 302/302 [02:22<00:00,  2.14it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:11<00:00, 102.36it/s]
+
+=======================================================================================
+Epoch: 0 	 Learning Rate: 1.000	Total Training Loss: 244.937540 	Total Validation Loss: 809.370013 	 Duration: 154.269
+>> Dataset GSD:	Training Loss: 244.937540	Validation Loss:809.370013
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+Validation loss decreased (inf --> 809.370013).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:21<00:00,  2.17it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:11<00:00, 103.63it/s]
+
+=======================================================================================
+Epoch: 1 	 Learning Rate: 1.000	Total Training Loss: 113.330463 	Total Validation Loss: 470.955731 	 Duration: 153.046
+>> Dataset GSD:	Training Loss: 113.330463	Validation Loss:470.955731
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+Validation loss decreased (809.370013 --> 470.955731).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:20<00:00,  2.23it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:11<00:00, 104.35it/s]
+
+=======================================================================================
+Epoch: 2 	 Learning Rate: 1.000	Total Training Loss: 77.476793 	Total Validation Loss: 356.756202 	 Duration: 152.379
+>> Dataset GSD:	Training Loss: 77.476793	Validation Loss:356.756202
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+Validation loss decreased (470.955731 --> 356.756202).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:20<00:00,  2.27it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:11<00:00, 104.07it/s]
+
+=======================================================================================
+Epoch: 3 	 Learning Rate: 1.000	Total Training Loss: 62.086294 	Total Validation Loss: 289.720930 	 Duration: 151.730
+>> Dataset GSD:	Training Loss: 62.086294	Validation Loss:289.720930
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+Validation loss decreased (356.756202 --> 289.720930).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:16<00:00,  2.16it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:11<00:00, 109.03it/s]
+
+=======================================================================================
+Epoch: 4 	 Learning Rate: 1.000	Total Training Loss: 52.757291 	Total Validation Loss: 252.831700 	 Duration: 147.548
+>> Dataset GSD:	Training Loss: 52.757291	Validation Loss:252.831700
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+Validation loss decreased (289.720930 --> 252.831700).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:13<00:00,  2.18it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:11<00:00, 107.47it/s]
+
+=======================================================================================
+Epoch: 5 	 Learning Rate: 1.000	Total Training Loss: 46.356738 	Total Validation Loss: 225.454068 	 Duration: 144.910
+>> Dataset GSD:	Training Loss: 46.356738	Validation Loss:225.454068
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+Validation loss decreased (252.831700 --> 225.454068).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:14<00:00,  2.28it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:10<00:00, 110.25it/s]
+
+=======================================================================================
+Epoch: 6 	 Learning Rate: 1.000	Total Training Loss: 41.103468 	Total Validation Loss: 205.819743 	 Duration: 145.056
+>> Dataset GSD:	Training Loss: 41.103468	Validation Loss:205.819743
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+Validation loss decreased (225.454068 --> 205.819743).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:12<00:00,  2.13it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:11<00:00, 105.23it/s]
+
+=======================================================================================
+Epoch: 7 	 Learning Rate: 1.000	Total Training Loss: 37.434958 	Total Validation Loss: 187.123934 	 Duration: 144.171
+>> Dataset GSD:	Training Loss: 37.434958	Validation Loss:187.123934
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+Validation loss decreased (205.819743 --> 187.123934).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:12<00:00,  2.35it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:10<00:00, 110.15it/s]
+
+=======================================================================================
+Epoch: 8 	 Learning Rate: 1.000	Total Training Loss: 34.166973 	Total Validation Loss: 169.065468 	 Duration: 143.385
+>> Dataset GSD:	Training Loss: 34.166973	Validation Loss:169.065468
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+Validation loss decreased (187.123934 --> 169.065468).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:14<00:00,  2.16it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:11<00:00, 109.28it/s]
+
+=======================================================================================
+Epoch: 9 	 Learning Rate: 1.000	Total Training Loss: 31.229917 	Total Validation Loss: 155.091612 	 Duration: 146.046
+>> Dataset GSD:	Training Loss: 31.229917	Validation Loss:155.091612
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+Validation loss decreased (169.065468 --> 155.091612).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:14<00:00,  2.22it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:11<00:00, 108.24it/s]
+
+=======================================================================================
+Epoch: 10 	 Learning Rate: 1.000	Total Training Loss: 28.893407 	Total Validation Loss: 143.988630 	 Duration: 145.981
+>> Dataset GSD:	Training Loss: 28.893407	Validation Loss:143.988630
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+Validation loss decreased (155.091612 --> 143.988630).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:15<00:00,  2.18it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:11<00:00, 109.27it/s]
+
+=======================================================================================
+Epoch: 11 	 Learning Rate: 1.000	Total Training Loss: 27.081687 	Total Validation Loss: 137.548845 	 Duration: 146.493
+>> Dataset GSD:	Training Loss: 27.081687	Validation Loss:137.548845
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+Validation loss decreased (143.988630 --> 137.548845).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:15<00:00,  2.21it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:11<00:00, 112.65it/s]
+
+=======================================================================================
+Epoch: 12 	 Learning Rate: 1.000	Total Training Loss: 25.575926 	Total Validation Loss: 129.730664 	 Duration: 146.743
+>> Dataset GSD:	Training Loss: 25.575926	Validation Loss:129.730664
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+Validation loss decreased (137.548845 --> 129.730664).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:15<00:00,  2.24it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:11<00:00, 107.98it/s]
+
+=======================================================================================
+Epoch: 13 	 Learning Rate: 1.000	Total Training Loss: 24.356581 	Total Validation Loss: 123.465984 	 Duration: 146.340
+>> Dataset GSD:	Training Loss: 24.356581	Validation Loss:123.465984
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+Validation loss decreased (129.730664 --> 123.465984).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:15<00:00,  2.21it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:11<00:00, 108.55it/s]
+
+=======================================================================================
+Epoch: 14 	 Learning Rate: 1.000	Total Training Loss: 23.213556 	Total Validation Loss: 120.342679 	 Duration: 146.763
+>> Dataset GSD:	Training Loss: 23.213556	Validation Loss:120.342679
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+Validation loss decreased (123.465984 --> 120.342679).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:15<00:00,  2.18it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:11<00:00, 106.74it/s]
+
+=======================================================================================
+Epoch: 15 	 Learning Rate: 1.000	Total Training Loss: 22.134699 	Total Validation Loss: 115.275848 	 Duration: 147.191
+>> Dataset GSD:	Training Loss: 22.134699	Validation Loss:115.275848
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+Validation loss decreased (120.342679 --> 115.275848).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:16<00:00,  2.26it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:11<00:00, 107.87it/s]
+
+=======================================================================================
+Epoch: 16 	 Learning Rate: 1.000	Total Training Loss: 21.161625 	Total Validation Loss: 110.845329 	 Duration: 147.810
+>> Dataset GSD:	Training Loss: 21.161625	Validation Loss:110.845329
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+Validation loss decreased (115.275848 --> 110.845329).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:16<00:00,  2.23it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:11<00:00, 107.96it/s]
+
+=======================================================================================
+Epoch: 17 	 Learning Rate: 1.000	Total Training Loss: 20.423375 	Total Validation Loss: 107.331956 	 Duration: 147.430
+>> Dataset GSD:	Training Loss: 20.423375	Validation Loss:107.331956
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+Validation loss decreased (110.845329 --> 107.331956).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:16<00:00,  2.27it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:11<00:00, 107.52it/s]
+
+=======================================================================================
+Epoch: 18 	 Learning Rate: 1.000	Total Training Loss: 19.675299 	Total Validation Loss: 106.721224 	 Duration: 147.399
+>> Dataset GSD:	Training Loss: 19.675299	Validation Loss:106.721224
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+Validation loss decreased (107.331956 --> 106.721224).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:15<00:00,  2.21it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:11<00:00, 107.87it/s]
+
+=======================================================================================
+Epoch: 19 	 Learning Rate: 1.000	Total Training Loss: 18.994966 	Total Validation Loss: 102.422729 	 Duration: 147.157
+>> Dataset GSD:	Training Loss: 18.994966	Validation Loss:102.422729
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+Validation loss decreased (106.721224 --> 102.422729).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:16<00:00,  2.36it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:11<00:00, 107.54it/s]
+
+=======================================================================================
+Epoch: 20 	 Learning Rate: 1.000	Total Training Loss: 18.594588 	Total Validation Loss: 101.239824 	 Duration: 147.688
+>> Dataset GSD:	Training Loss: 18.594588	Validation Loss:101.239824
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+Validation loss decreased (102.422729 --> 101.239824).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:15<00:00,  2.27it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:11<00:00, 111.94it/s]
+
+=======================================================================================
+Epoch: 21 	 Learning Rate: 1.000	Total Training Loss: 17.943063 	Total Validation Loss: 99.349980 	 Duration: 146.396
+>> Dataset GSD:	Training Loss: 17.943063	Validation Loss:99.349980
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+Validation loss decreased (101.239824 --> 99.349980).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:15<00:00,  2.33it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:11<00:00, 108.56it/s]
+
+=======================================================================================
+Epoch: 22 	 Learning Rate: 1.000	Total Training Loss: 17.539936 	Total Validation Loss: 98.698702 	 Duration: 147.075
+>> Dataset GSD:	Training Loss: 17.539936	Validation Loss:98.698702
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+Validation loss decreased (99.349980 --> 98.698702).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:15<00:00,  2.21it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:11<00:00, 106.87it/s]
+
+=======================================================================================
+Epoch: 23 	 Learning Rate: 1.000	Total Training Loss: 17.043249 	Total Validation Loss: 93.285496 	 Duration: 147.172
+>> Dataset GSD:	Training Loss: 17.043249	Validation Loss:93.285496
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+Validation loss decreased (98.698702 --> 93.285496).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:14<00:00,  2.07it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:11<00:00, 106.19it/s]
+
+=======================================================================================
+Epoch: 24 	 Learning Rate: 1.000	Total Training Loss: 16.532480 	Total Validation Loss: 93.286653 	 Duration: 146.292
+>> Dataset GSD:	Training Loss: 16.532480	Validation Loss:93.286653
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:14<00:00,  2.31it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:11<00:00, 109.71it/s]
+
+=======================================================================================
+Epoch: 25 	 Learning Rate: 1.000	Total Training Loss: 16.185581 	Total Validation Loss: 90.683927 	 Duration: 145.645
+>> Dataset GSD:	Training Loss: 16.185581	Validation Loss:90.683927
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+Validation loss decreased (93.285496 --> 90.683927).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:14<00:00,  2.27it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:11<00:00, 109.52it/s]
+
+=======================================================================================
+Epoch: 26 	 Learning Rate: 1.000	Total Training Loss: 15.706218 	Total Validation Loss: 88.651011 	 Duration: 145.792
+>> Dataset GSD:	Training Loss: 15.706218	Validation Loss:88.651011
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+Validation loss decreased (90.683927 --> 88.651011).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:16<00:00,  2.27it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:11<00:00, 107.19it/s]
+
+=======================================================================================
+Epoch: 27 	 Learning Rate: 1.000	Total Training Loss: 15.456529 	Total Validation Loss: 89.807927 	 Duration: 147.937
+>> Dataset GSD:	Training Loss: 15.456529	Validation Loss:89.807927
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:16<00:00,  2.32it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:11<00:00, 106.99it/s]
+
+=======================================================================================
+Epoch: 28 	 Learning Rate: 1.000	Total Training Loss: 14.985917 	Total Validation Loss: 87.348266 	 Duration: 147.694
+>> Dataset GSD:	Training Loss: 14.985917	Validation Loss:87.348266
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+Validation loss decreased (88.651011 --> 87.348266).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:17<00:00,  2.22it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:11<00:00, 107.00it/s]
+
+=======================================================================================
+Epoch: 29 	 Learning Rate: 1.000	Total Training Loss: 14.812087 	Total Validation Loss: 87.893686 	 Duration: 148.774
+>> Dataset GSD:	Training Loss: 14.812087	Validation Loss:87.893686
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:17<00:00,  2.12it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:11<00:00, 104.77it/s]
+
+=======================================================================================
+Epoch: 30 	 Learning Rate: 1.000	Total Training Loss: 14.376552 	Total Validation Loss: 83.674108 	 Duration: 148.716
+>> Dataset GSD:	Training Loss: 14.376552	Validation Loss:83.674108
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+Validation loss decreased (87.348266 --> 83.674108).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:18<00:00,  2.21it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:11<00:00, 105.92it/s]
+
+=======================================================================================
+Epoch: 31 	 Learning Rate: 1.000	Total Training Loss: 14.212957 	Total Validation Loss: 85.984875 	 Duration: 149.596
+>> Dataset GSD:	Training Loss: 14.212957	Validation Loss:85.984875
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:17<00:00,  2.18it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:11<00:00, 106.61it/s]
+
+=======================================================================================
+Epoch: 32 	 Learning Rate: 1.000	Total Training Loss: 13.993811 	Total Validation Loss: 82.025430 	 Duration: 148.602
+>> Dataset GSD:	Training Loss: 13.993811	Validation Loss:82.025430
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+Validation loss decreased (83.674108 --> 82.025430).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:17<00:00,  2.24it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:11<00:00, 106.68it/s]
+
+=======================================================================================
+Epoch: 33 	 Learning Rate: 1.000	Total Training Loss: 13.733059 	Total Validation Loss: 82.359326 	 Duration: 149.313
+>> Dataset GSD:	Training Loss: 13.733059	Validation Loss:82.359326
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:15<00:00,  2.27it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:11<00:00, 109.85it/s]
+
+=======================================================================================
+Epoch: 34 	 Learning Rate: 1.000	Total Training Loss: 13.480333 	Total Validation Loss: 79.569414 	 Duration: 146.098
+>> Dataset GSD:	Training Loss: 13.480333	Validation Loss:79.569414
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+Validation loss decreased (82.025430 --> 79.569414).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:12<00:00,  2.26it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:10<00:00, 110.62it/s]
+
+=======================================================================================
+Epoch: 35 	 Learning Rate: 1.000	Total Training Loss: 13.167975 	Total Validation Loss: 80.224866 	 Duration: 143.218
+>> Dataset GSD:	Training Loss: 13.167975	Validation Loss:80.224866
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:11<00:00,  2.34it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:10<00:00, 110.54it/s]
+
+=======================================================================================
+Epoch: 36 	 Learning Rate: 1.000	Total Training Loss: 12.916346 	Total Validation Loss: 81.261221 	 Duration: 142.084
+>> Dataset GSD:	Training Loss: 12.916346	Validation Loss:81.261221
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:10<00:00,  2.26it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:10<00:00, 110.80it/s]
+
+=======================================================================================
+Epoch: 37 	 Learning Rate: 1.000	Total Training Loss: 12.660227 	Total Validation Loss: 78.099632 	 Duration: 141.922
+>> Dataset GSD:	Training Loss: 12.660227	Validation Loss:78.099632
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+Validation loss decreased (79.569414 --> 78.099632).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:10<00:00,  2.42it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:10<00:00, 110.83it/s]
+
+=======================================================================================
+Epoch: 38 	 Learning Rate: 1.000	Total Training Loss: 12.475280 	Total Validation Loss: 76.387164 	 Duration: 141.661
+>> Dataset GSD:	Training Loss: 12.475280	Validation Loss:76.387164
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+Validation loss decreased (78.099632 --> 76.387164).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:11<00:00,  2.34it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:10<00:00, 113.44it/s]
+
+=======================================================================================
+Epoch: 39 	 Learning Rate: 1.000	Total Training Loss: 12.295763 	Total Validation Loss: 75.934998 	 Duration: 142.010
+>> Dataset GSD:	Training Loss: 12.295763	Validation Loss:75.934998
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+Validation loss decreased (76.387164 --> 75.934998).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:10<00:00,  2.25it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:10<00:00, 110.05it/s]
+
+=======================================================================================
+Epoch: 40 	 Learning Rate: 1.000	Total Training Loss: 12.128183 	Total Validation Loss: 76.195262 	 Duration: 141.562
+>> Dataset GSD:	Training Loss: 12.128183	Validation Loss:76.195262
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:10<00:00,  2.32it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:10<00:00, 110.76it/s]
+
+=======================================================================================
+Epoch: 41 	 Learning Rate: 1.000	Total Training Loss: 11.943316 	Total Validation Loss: 77.755121 	 Duration: 141.445
+>> Dataset GSD:	Training Loss: 11.943316	Validation Loss:77.755121
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:10<00:00,  2.43it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:10<00:00, 110.90it/s]
+
+=======================================================================================
+Epoch: 42 	 Learning Rate: 1.000	Total Training Loss: 11.713728 	Total Validation Loss: 76.023453 	 Duration: 141.652
+>> Dataset GSD:	Training Loss: 11.713728	Validation Loss:76.023453
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:10<00:00,  2.28it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:10<00:00, 111.02it/s]
+
+=======================================================================================
+Epoch: 43 	 Learning Rate: 1.000	Total Training Loss: 11.630176 	Total Validation Loss: 74.639413 	 Duration: 141.481
+>> Dataset GSD:	Training Loss: 11.630176	Validation Loss:74.639413
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+Validation loss decreased (75.934998 --> 74.639413).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:10<00:00,  2.29it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:11<00:00, 109.87it/s]
+
+=======================================================================================
+Epoch: 44 	 Learning Rate: 1.000	Total Training Loss: 11.385777 	Total Validation Loss: 74.057595 	 Duration: 141.846
+>> Dataset GSD:	Training Loss: 11.385777	Validation Loss:74.057595
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+Validation loss decreased (74.639413 --> 74.057595).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:10<00:00,  2.30it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:10<00:00, 114.07it/s]
+
+=======================================================================================
+Epoch: 45 	 Learning Rate: 1.000	Total Training Loss: 11.300210 	Total Validation Loss: 74.527784 	 Duration: 141.190
+>> Dataset GSD:	Training Loss: 11.300210	Validation Loss:74.527784
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:10<00:00,  2.39it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:10<00:00, 111.01it/s]
+
+=======================================================================================
+Epoch: 46 	 Learning Rate: 1.000	Total Training Loss: 11.100427 	Total Validation Loss: 73.065254 	 Duration: 141.734
+>> Dataset GSD:	Training Loss: 11.100427	Validation Loss:73.065254
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+Validation loss decreased (74.057595 --> 73.065254).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:10<00:00,  2.36it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:10<00:00, 111.16it/s]
+
+=======================================================================================
+Epoch: 47 	 Learning Rate: 1.000	Total Training Loss: 10.911963 	Total Validation Loss: 72.441914 	 Duration: 141.291
+>> Dataset GSD:	Training Loss: 10.911963	Validation Loss:72.441914
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+Validation loss decreased (73.065254 --> 72.441914).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:10<00:00,  2.32it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:10<00:00, 110.57it/s]
+
+=======================================================================================
+Epoch: 48 	 Learning Rate: 1.000	Total Training Loss: 10.777344 	Total Validation Loss: 72.364561 	 Duration: 141.595
+>> Dataset GSD:	Training Loss: 10.777344	Validation Loss:72.364561
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+Validation loss decreased (72.441914 --> 72.364561).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:10<00:00,  2.22it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:10<00:00, 110.98it/s]
+
+=======================================================================================
+Epoch: 49 	 Learning Rate: 1.000	Total Training Loss: 10.616681 	Total Validation Loss: 73.172881 	 Duration: 141.098
+>> Dataset GSD:	Training Loss: 10.616681	Validation Loss:73.172881
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:10<00:00,  2.39it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:10<00:00, 111.09it/s]
+
+=======================================================================================
+Epoch: 50 	 Learning Rate: 1.000	Total Training Loss: 10.440818 	Total Validation Loss: 73.948497 	 Duration: 141.385
+>> Dataset GSD:	Training Loss: 10.440818	Validation Loss:73.948497
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:10<00:00,  2.30it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:10<00:00, 110.94it/s]
+
+=======================================================================================
+Epoch: 51 	 Learning Rate: 1.000	Total Training Loss: 10.314048 	Total Validation Loss: 72.907004 	 Duration: 141.491
+>> Dataset GSD:	Training Loss: 10.314048	Validation Loss:72.907004
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:10<00:00,  2.39it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:11<00:00, 111.84it/s]
+
+=======================================================================================
+Epoch: 52 	 Learning Rate: 1.000	Total Training Loss: 10.253605 	Total Validation Loss: 71.453789 	 Duration: 141.426
+>> Dataset GSD:	Training Loss: 10.253605	Validation Loss:71.453789
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+Validation loss decreased (72.364561 --> 71.453789).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:10<00:00,  2.43it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:10<00:00, 110.64it/s]
+
+=======================================================================================
+Epoch: 53 	 Learning Rate: 1.000	Total Training Loss: 10.071983 	Total Validation Loss: 72.237236 	 Duration: 141.246
+>> Dataset GSD:	Training Loss: 10.071983	Validation Loss:72.237236
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 302/302 [02:10<00:00,  2.31it/s]
+val: batch_size=1, policy=emilia: 100% 1210/1210 [00:10<00:00, 111.13it/s]
+
+=======================================================================================
+Epoch: 54 	 Learning Rate: 1.000	Total Training Loss: 10.062110 	Total Validation Loss: 73.865672 	 Duration: 141.431
+>> Dataset GSD:	Training Loss: 10.062110	Validation Loss:73.865672
+----------------------------------------------------------------------------------------
+Comparing loss on ['GSD'] dataset(s)
+=======================================================================================
+test: batch_size=1, policy=emilia: 100% 1204/1204 [00:12<00:00, 94.68it/s] 
+
+Test Accuracy (Overall): 97% (30646/31496)
+
+Test Accuracy (on GSD Dataset): 97.30% (30646/31496)
