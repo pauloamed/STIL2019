@@ -1,4 +1,4 @@
-# Converts corpus on conllu format to the macmorpho format
+# Converts corpus on ad format to the macmorpho format
 from re import compile
 import sys
 import string
