@@ -1,4 +1,34 @@
 
+>> Initializing Macmorpho dataset
+>>> Started loading dataset
+<<< Finished loading dataset
+>>> Started parsing data from dataset
+<<< Finished parsing data from dataset
+>>> Started building tag dict for dataset
+<<< Finished building tag dict for dataset
+<< Finished initializing Macmorpho dataset
+
+
+>> Initializing Bosque dataset
+>>> Started loading dataset
+<<< Finished loading dataset
+>>> Started parsing data from dataset
+<<< Finished parsing data from dataset
+>>> Started building tag dict for dataset
+<<< Finished building tag dict for dataset
+<< Finished initializing Bosque dataset
+
+
+>> Initializing GSD dataset
+>>> Started loading dataset
+<<< Finished loading dataset
+>>> Started parsing data from dataset
+<<< Finished parsing data from dataset
+>>> Started building tag dict for dataset
+<<< Finished building tag dict for dataset
+<< Finished initializing GSD dataset
+
+
 >> Initializing Linguateca dataset
 >>> Started loading dataset
 <<< Finished loading dataset
@@ -20,15 +50,15 @@
 
 =================================================================
 Linguateca Dataset
-Train dataset #sents: 3332 #words: 64241
-Val dataset #sents: 456 #words: 8064
-Test dataset #sents: 424 #words: 8073
-Tag set: [BOS, EOS, adj, adv, art, conj-c, conj-s, ec, intj, n, n-adj, n:, np, num, pp, pron-det, pron-indp, pron-pers, prop, prp, punct, v-fin, v-ger, v-inf, v-pcp]
+Train dataset #sents: 3355 #words: 65086
+Val dataset #sents: 419 #words: 7229
+Test dataset #sents: 420 #words: 7995
+Tag set: [BOS, EOS, adj, adv, art, conj-c, conj-s, ec, intj, n, n-adj, n:, num, pron-det, pron-indp, pron-pers, prop, prp, punct, v-fin, v-ger, v-inf, v-pcp, vp]
 =================================================================
 
 POSTagger(
   (charBILSTM): CharBILSTM(
-    (char_embeddings_table): Embedding(114, 70, padding_idx=0)
+    (char_embeddings_table): Embedding(115, 70, padding_idx=0)
     (bilstm): LSTM(70, 350, batch_first=True, bidirectional=True)
     (projection_layer): Linear(in_features=700, out_features=350, bias=True)
     (dropout): Dropout(p=0.1)
@@ -45,545 +75,547 @@ POSTagger(
   )
   (tag_bilstm): LSTM(350, 150, batch_first=True, bidirectional=True)
   (classifiers): ModuleList(
-    (0): Linear(in_features=300, out_features=25, bias=True)
+    (0): Linear(in_features=300, out_features=24, bias=True)
   )
   (dropout): Dropout(p=0.4)
 )
-train: batch_size=32, policy=visconde: 100% 104/104 [01:45<00:00,  1.07s/it]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:06<00:00, 74.26it/s]
+train: batch_size=32, policy=visconde: 100% 104/104 [00:39<00:00,  2.70it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 129.71it/s]
 
 =======================================================================================
-Epoch: 0 	 Learning Rate: 1.000	Total Training Loss: 612.633446 	Total Validation Loss: 1344.577325 	 Duration: 111.954
->> Dataset Linguateca:	Training Loss: 612.633446	Validation Loss:1344.577325
+Epoch: 0 	 Learning Rate: 1.000	Total Training Loss: 179.133841 	Total Validation Loss: 1512.167716 	 Duration: 42.490
+>> Dataset Linguateca:	Training Loss: 179.133841	Validation Loss:1512.167716
 ----------------------------------------------------------------------------------------
 Comparing loss on ['Linguateca'] dataset(s)
-Validation loss decreased (inf --> 1344.577325).  Saving model ...
+Validation loss decreased (inf --> 1512.167716).  Saving model ...
 =======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:44<00:00,  1.08it/s]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:05<00:00, 76.09it/s]
+train: batch_size=32, policy=visconde: 100% 104/104 [00:39<00:00,  2.63it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 130.42it/s]
 
 =======================================================================================
-Epoch: 1 	 Learning Rate: 1.000	Total Training Loss: 391.069130 	Total Validation Loss: 753.024921 	 Duration: 110.331
->> Dataset Linguateca:	Training Loss: 391.069130	Validation Loss:753.024921
+Epoch: 1 	 Learning Rate: 1.000	Total Training Loss: 110.438694 	Total Validation Loss: 892.194587 	 Duration: 42.488
+>> Dataset Linguateca:	Training Loss: 110.438694	Validation Loss:892.194587
 ----------------------------------------------------------------------------------------
 Comparing loss on ['Linguateca'] dataset(s)
-Validation loss decreased (1344.577325 --> 753.024921).  Saving model ...
+Validation loss decreased (1512.167716 --> 892.194587).  Saving model ...
 =======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:43<00:00,  1.02it/s]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:06<00:00, 74.70it/s]
+train: batch_size=32, policy=visconde: 100% 104/104 [00:38<00:00,  2.47it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 130.04it/s]
 
 =======================================================================================
-Epoch: 2 	 Learning Rate: 1.000	Total Training Loss: 279.629444 	Total Validation Loss: 599.849950 	 Duration: 110.066
->> Dataset Linguateca:	Training Loss: 279.629444	Validation Loss:599.849950
+Epoch: 2 	 Learning Rate: 1.000	Total Training Loss: 78.633690 	Total Validation Loss: 716.050644 	 Duration: 41.998
+>> Dataset Linguateca:	Training Loss: 78.633690	Validation Loss:716.050644
 ----------------------------------------------------------------------------------------
 Comparing loss on ['Linguateca'] dataset(s)
-Validation loss decreased (753.024921 --> 599.849950).  Saving model ...
+Validation loss decreased (892.194587 --> 716.050644).  Saving model ...
 =======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:41<00:00,  1.11it/s]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:05<00:00, 77.27it/s]
+train: batch_size=32, policy=visconde: 100% 104/104 [00:39<00:00,  2.56it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 130.71it/s]
 
 =======================================================================================
-Epoch: 3 	 Learning Rate: 1.000	Total Training Loss: 232.400639 	Total Validation Loss: 510.601959 	 Duration: 107.865
->> Dataset Linguateca:	Training Loss: 232.400639	Validation Loss:510.601959
+Epoch: 3 	 Learning Rate: 1.000	Total Training Loss: 63.558896 	Total Validation Loss: 572.815968 	 Duration: 42.436
+>> Dataset Linguateca:	Training Loss: 63.558896	Validation Loss:572.815968
 ----------------------------------------------------------------------------------------
 Comparing loss on ['Linguateca'] dataset(s)
-Validation loss decreased (599.849950 --> 510.601959).  Saving model ...
+Validation loss decreased (716.050644 --> 572.815968).  Saving model ...
 =======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:42<00:00,  1.00s/it]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:05<00:00, 77.78it/s]
+train: batch_size=32, policy=visconde: 100% 104/104 [00:38<00:00,  2.88it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 132.45it/s]
 
 =======================================================================================
-Epoch: 4 	 Learning Rate: 1.000	Total Training Loss: 196.684963 	Total Validation Loss: 432.567049 	 Duration: 108.511
->> Dataset Linguateca:	Training Loss: 196.684963	Validation Loss:432.567049
+Epoch: 4 	 Learning Rate: 1.000	Total Training Loss: 53.947046 	Total Validation Loss: 502.620101 	 Duration: 41.764
+>> Dataset Linguateca:	Training Loss: 53.947046	Validation Loss:502.620101
 ----------------------------------------------------------------------------------------
 Comparing loss on ['Linguateca'] dataset(s)
-Validation loss decreased (510.601959 --> 432.567049).  Saving model ...
+Validation loss decreased (572.815968 --> 502.620101).  Saving model ...
 =======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:37<00:00,  1.03it/s]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:05<00:00, 80.40it/s]
+train: batch_size=32, policy=visconde: 100% 104/104 [00:38<00:00,  2.40it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 130.80it/s]
 
 =======================================================================================
-Epoch: 5 	 Learning Rate: 1.000	Total Training Loss: 171.950398 	Total Validation Loss: 379.178952 	 Duration: 103.135
->> Dataset Linguateca:	Training Loss: 171.950398	Validation Loss:379.178952
+Epoch: 5 	 Learning Rate: 1.000	Total Training Loss: 47.767132 	Total Validation Loss: 460.612881 	 Duration: 41.690
+>> Dataset Linguateca:	Training Loss: 47.767132	Validation Loss:460.612881
 ----------------------------------------------------------------------------------------
 Comparing loss on ['Linguateca'] dataset(s)
-Validation loss decreased (432.567049 --> 379.178952).  Saving model ...
+Validation loss decreased (502.620101 --> 460.612881).  Saving model ...
 =======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:40<00:00,  1.05it/s]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:05<00:00, 79.12it/s]
+train: batch_size=32, policy=visconde: 100% 104/104 [00:38<00:00,  2.84it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 131.98it/s]
 
 =======================================================================================
-Epoch: 6 	 Learning Rate: 1.000	Total Training Loss: 153.258980 	Total Validation Loss: 335.131429 	 Duration: 106.401
->> Dataset Linguateca:	Training Loss: 153.258980	Validation Loss:335.131429
+Epoch: 6 	 Learning Rate: 1.000	Total Training Loss: 42.364089 	Total Validation Loss: 407.320183 	 Duration: 41.824
+>> Dataset Linguateca:	Training Loss: 42.364089	Validation Loss:407.320183
 ----------------------------------------------------------------------------------------
 Comparing loss on ['Linguateca'] dataset(s)
-Validation loss decreased (379.178952 --> 335.131429).  Saving model ...
+Validation loss decreased (460.612881 --> 407.320183).  Saving model ...
 =======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:44<00:00,  1.17it/s]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:05<00:00, 76.23it/s]
+train: batch_size=32, policy=visconde: 100% 104/104 [00:38<00:00,  3.09it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 132.71it/s]
 
 =======================================================================================
-Epoch: 7 	 Learning Rate: 1.000	Total Training Loss: 136.210316 	Total Validation Loss: 292.369655 	 Duration: 110.443
->> Dataset Linguateca:	Training Loss: 136.210316	Validation Loss:292.369655
+Epoch: 7 	 Learning Rate: 1.000	Total Training Loss: 37.579858 	Total Validation Loss: 356.679793 	 Duration: 41.727
+>> Dataset Linguateca:	Training Loss: 37.579858	Validation Loss:356.679793
 ----------------------------------------------------------------------------------------
 Comparing loss on ['Linguateca'] dataset(s)
-Validation loss decreased (335.131429 --> 292.369655).  Saving model ...
+Validation loss decreased (407.320183 --> 356.679793).  Saving model ...
 =======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:39<00:00,  1.05it/s]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:06<00:00, 65.56it/s]
+train: batch_size=32, policy=visconde: 100% 104/104 [00:38<00:00,  2.80it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 130.66it/s]
 
 =======================================================================================
-Epoch: 8 	 Learning Rate: 1.000	Total Training Loss: 124.006609 	Total Validation Loss: 267.092493 	 Duration: 105.653
->> Dataset Linguateca:	Training Loss: 124.006609	Validation Loss:267.092493
+Epoch: 8 	 Learning Rate: 1.000	Total Training Loss: 34.472189 	Total Validation Loss: 309.095296 	 Duration: 41.395
+>> Dataset Linguateca:	Training Loss: 34.472189	Validation Loss:309.095296
 ----------------------------------------------------------------------------------------
 Comparing loss on ['Linguateca'] dataset(s)
-Validation loss decreased (292.369655 --> 267.092493).  Saving model ...
+Validation loss decreased (356.679793 --> 309.095296).  Saving model ...
 =======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:44<00:00,  1.03s/it]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:06<00:00, 70.98it/s]
+train: batch_size=32, policy=visconde: 100% 104/104 [00:38<00:00,  2.63it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 132.40it/s]
 
 =======================================================================================
-Epoch: 9 	 Learning Rate: 1.000	Total Training Loss: 112.572808 	Total Validation Loss: 241.834290 	 Duration: 110.708
->> Dataset Linguateca:	Training Loss: 112.572808	Validation Loss:241.834290
+Epoch: 9 	 Learning Rate: 1.000	Total Training Loss: 31.207003 	Total Validation Loss: 281.256340 	 Duration: 41.576
+>> Dataset Linguateca:	Training Loss: 31.207003	Validation Loss:281.256340
 ----------------------------------------------------------------------------------------
 Comparing loss on ['Linguateca'] dataset(s)
-Validation loss decreased (267.092493 --> 241.834290).  Saving model ...
+Validation loss decreased (309.095296 --> 281.256340).  Saving model ...
 =======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:46<00:00,  1.08it/s]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:05<00:00, 77.01it/s]
+train: batch_size=32, policy=visconde: 100% 104/104 [00:38<00:00,  2.56it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 107.36it/s]
 
 =======================================================================================
-Epoch: 10 	 Learning Rate: 1.000	Total Training Loss: 103.628051 	Total Validation Loss: 219.378912 	 Duration: 112.169
->> Dataset Linguateca:	Training Loss: 103.628051	Validation Loss:219.378912
+Epoch: 10 	 Learning Rate: 1.000	Total Training Loss: 28.727354 	Total Validation Loss: 260.849142 	 Duration: 41.587
+>> Dataset Linguateca:	Training Loss: 28.727354	Validation Loss:260.849142
 ----------------------------------------------------------------------------------------
 Comparing loss on ['Linguateca'] dataset(s)
-Validation loss decreased (241.834290 --> 219.378912).  Saving model ...
+Validation loss decreased (281.256340 --> 260.849142).  Saving model ...
 =======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:39<00:00,  1.03it/s]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:06<00:00, 72.26it/s]
+train: batch_size=32, policy=visconde: 100% 104/104 [00:38<00:00,  2.58it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 117.27it/s]
 
 =======================================================================================
-Epoch: 11 	 Learning Rate: 1.000	Total Training Loss: 95.767001 	Total Validation Loss: 207.215525 	 Duration: 105.835
->> Dataset Linguateca:	Training Loss: 95.767001	Validation Loss:207.215525
+Epoch: 11 	 Learning Rate: 1.000	Total Training Loss: 26.892709 	Total Validation Loss: 251.814175 	 Duration: 41.423
+>> Dataset Linguateca:	Training Loss: 26.892709	Validation Loss:251.814175
 ----------------------------------------------------------------------------------------
 Comparing loss on ['Linguateca'] dataset(s)
-Validation loss decreased (219.378912 --> 207.215525).  Saving model ...
+Validation loss decreased (260.849142 --> 251.814175).  Saving model ...
 =======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:41<00:00,  1.05it/s]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:06<00:00, 75.45it/s]
+train: batch_size=32, policy=visconde: 100% 104/104 [00:37<00:00,  3.15it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 131.35it/s]
 
 =======================================================================================
-Epoch: 12 	 Learning Rate: 1.000	Total Training Loss: 88.882265 	Total Validation Loss: 196.952931 	 Duration: 107.173
->> Dataset Linguateca:	Training Loss: 88.882265	Validation Loss:196.952931
+Epoch: 12 	 Learning Rate: 1.000	Total Training Loss: 25.198681 	Total Validation Loss: 227.035328 	 Duration: 41.169
+>> Dataset Linguateca:	Training Loss: 25.198681	Validation Loss:227.035328
 ----------------------------------------------------------------------------------------
 Comparing loss on ['Linguateca'] dataset(s)
-Validation loss decreased (207.215525 --> 196.952931).  Saving model ...
+Validation loss decreased (251.814175 --> 227.035328).  Saving model ...
 =======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:43<00:00,  1.01s/it]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:06<00:00, 68.87it/s]
+train: batch_size=32, policy=visconde: 100% 104/104 [00:37<00:00,  2.79it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 132.37it/s]
 
 =======================================================================================
-Epoch: 13 	 Learning Rate: 1.000	Total Training Loss: 83.182439 	Total Validation Loss: 178.617140 	 Duration: 109.140
->> Dataset Linguateca:	Training Loss: 83.182439	Validation Loss:178.617140
+Epoch: 13 	 Learning Rate: 1.000	Total Training Loss: 23.612888 	Total Validation Loss: 208.997192 	 Duration: 41.063
+>> Dataset Linguateca:	Training Loss: 23.612888	Validation Loss:208.997192
 ----------------------------------------------------------------------------------------
 Comparing loss on ['Linguateca'] dataset(s)
-Validation loss decreased (196.952931 --> 178.617140).  Saving model ...
+Validation loss decreased (227.035328 --> 208.997192).  Saving model ...
 =======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:40<00:00,  1.14it/s]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:05<00:00, 76.09it/s]
+train: batch_size=32, policy=visconde: 100% 104/104 [00:37<00:00,  2.52it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 131.44it/s]
 
 =======================================================================================
-Epoch: 14 	 Learning Rate: 1.000	Total Training Loss: 78.152662 	Total Validation Loss: 167.606784 	 Duration: 106.304
->> Dataset Linguateca:	Training Loss: 78.152662	Validation Loss:167.606784
-----------------------------------------------------------------------------------------
-Comparing loss on ['Linguateca'] dataset(s)
-Validation loss decreased (178.617140 --> 167.606784).  Saving model ...
-=======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:36<00:00,  1.02it/s]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:06<00:00, 69.06it/s]
-
-=======================================================================================
-Epoch: 15 	 Learning Rate: 1.000	Total Training Loss: 73.439238 	Total Validation Loss: 175.795541 	 Duration: 102.693
->> Dataset Linguateca:	Training Loss: 73.439238	Validation Loss:175.795541
+Epoch: 14 	 Learning Rate: 1.000	Total Training Loss: 22.376461 	Total Validation Loss: 209.068137 	 Duration: 41.178
+>> Dataset Linguateca:	Training Loss: 22.376461	Validation Loss:209.068137
 ----------------------------------------------------------------------------------------
 Comparing loss on ['Linguateca'] dataset(s)
 =======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:38<00:00,  1.07it/s]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:06<00:00, 67.87it/s]
+train: batch_size=32, policy=visconde: 100% 104/104 [00:37<00:00,  2.60it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 133.69it/s]
 
 =======================================================================================
-Epoch: 16 	 Learning Rate: 1.000	Total Training Loss: 69.976821 	Total Validation Loss: 167.814203 	 Duration: 104.960
->> Dataset Linguateca:	Training Loss: 69.976821	Validation Loss:167.814203
+Epoch: 15 	 Learning Rate: 1.000	Total Training Loss: 21.134740 	Total Validation Loss: 188.512927 	 Duration: 40.968
+>> Dataset Linguateca:	Training Loss: 21.134740	Validation Loss:188.512927
+----------------------------------------------------------------------------------------
+Comparing loss on ['Linguateca'] dataset(s)
+Validation loss decreased (208.997192 --> 188.512927).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 104/104 [00:37<00:00,  2.66it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 132.09it/s]
+
+=======================================================================================
+Epoch: 16 	 Learning Rate: 1.000	Total Training Loss: 19.902998 	Total Validation Loss: 173.332333 	 Duration: 41.109
+>> Dataset Linguateca:	Training Loss: 19.902998	Validation Loss:173.332333
+----------------------------------------------------------------------------------------
+Comparing loss on ['Linguateca'] dataset(s)
+Validation loss decreased (188.512927 --> 173.332333).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 104/104 [00:37<00:00,  2.51it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 133.93it/s]
+
+=======================================================================================
+Epoch: 17 	 Learning Rate: 1.000	Total Training Loss: 19.025399 	Total Validation Loss: 168.257102 	 Duration: 40.840
+>> Dataset Linguateca:	Training Loss: 19.025399	Validation Loss:168.257102
+----------------------------------------------------------------------------------------
+Comparing loss on ['Linguateca'] dataset(s)
+Validation loss decreased (173.332333 --> 168.257102).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 104/104 [00:38<00:00,  2.88it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 133.85it/s]
+
+=======================================================================================
+Epoch: 18 	 Learning Rate: 1.000	Total Training Loss: 18.042516 	Total Validation Loss: 156.835668 	 Duration: 41.338
+>> Dataset Linguateca:	Training Loss: 18.042516	Validation Loss:156.835668
+----------------------------------------------------------------------------------------
+Comparing loss on ['Linguateca'] dataset(s)
+Validation loss decreased (168.257102 --> 156.835668).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 104/104 [00:37<00:00,  2.52it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 134.07it/s]
+
+=======================================================================================
+Epoch: 19 	 Learning Rate: 1.000	Total Training Loss: 17.227052 	Total Validation Loss: 151.589673 	 Duration: 40.879
+>> Dataset Linguateca:	Training Loss: 17.227052	Validation Loss:151.589673
+----------------------------------------------------------------------------------------
+Comparing loss on ['Linguateca'] dataset(s)
+Validation loss decreased (156.835668 --> 151.589673).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 104/104 [00:37<00:00,  2.73it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 133.99it/s]
+
+=======================================================================================
+Epoch: 20 	 Learning Rate: 1.000	Total Training Loss: 16.348542 	Total Validation Loss: 144.281577 	 Duration: 41.020
+>> Dataset Linguateca:	Training Loss: 16.348542	Validation Loss:144.281577
+----------------------------------------------------------------------------------------
+Comparing loss on ['Linguateca'] dataset(s)
+Validation loss decreased (151.589673 --> 144.281577).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 104/104 [00:37<00:00,  2.61it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 118.40it/s]
+
+=======================================================================================
+Epoch: 21 	 Learning Rate: 1.000	Total Training Loss: 15.533427 	Total Validation Loss: 140.362638 	 Duration: 41.114
+>> Dataset Linguateca:	Training Loss: 15.533427	Validation Loss:140.362638
+----------------------------------------------------------------------------------------
+Comparing loss on ['Linguateca'] dataset(s)
+Validation loss decreased (144.281577 --> 140.362638).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 104/104 [00:37<00:00,  2.98it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 119.40it/s]
+
+=======================================================================================
+Epoch: 22 	 Learning Rate: 1.000	Total Training Loss: 14.808968 	Total Validation Loss: 155.607931 	 Duration: 41.013
+>> Dataset Linguateca:	Training Loss: 14.808968	Validation Loss:155.607931
 ----------------------------------------------------------------------------------------
 Comparing loss on ['Linguateca'] dataset(s)
 =======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:40<00:00,  1.03s/it]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:06<00:00, 74.92it/s]
+train: batch_size=32, policy=visconde: 100% 104/104 [00:37<00:00,  3.14it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 133.97it/s]
 
 =======================================================================================
-Epoch: 17 	 Learning Rate: 1.000	Total Training Loss: 66.426936 	Total Validation Loss: 144.823712 	 Duration: 106.610
->> Dataset Linguateca:	Training Loss: 66.426936	Validation Loss:144.823712
+Epoch: 23 	 Learning Rate: 1.000	Total Training Loss: 14.265051 	Total Validation Loss: 131.142752 	 Duration: 40.883
+>> Dataset Linguateca:	Training Loss: 14.265051	Validation Loss:131.142752
 ----------------------------------------------------------------------------------------
 Comparing loss on ['Linguateca'] dataset(s)
-Validation loss decreased (167.606784 --> 144.823712).  Saving model ...
+Validation loss decreased (140.362638 --> 131.142752).  Saving model ...
 =======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:44<00:00,  1.00it/s]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:05<00:00, 76.72it/s]
+train: batch_size=32, policy=visconde: 100% 104/104 [00:37<00:00,  2.92it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 134.35it/s]
 
 =======================================================================================
-Epoch: 18 	 Learning Rate: 1.000	Total Training Loss: 63.264366 	Total Validation Loss: 140.153430 	 Duration: 110.941
->> Dataset Linguateca:	Training Loss: 63.264366	Validation Loss:140.153430
+Epoch: 24 	 Learning Rate: 1.000	Total Training Loss: 13.697965 	Total Validation Loss: 130.549218 	 Duration: 40.977
+>> Dataset Linguateca:	Training Loss: 13.697965	Validation Loss:130.549218
 ----------------------------------------------------------------------------------------
 Comparing loss on ['Linguateca'] dataset(s)
-Validation loss decreased (144.823712 --> 140.153430).  Saving model ...
+Validation loss decreased (131.142752 --> 130.549218).  Saving model ...
 =======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:39<00:00,  1.12it/s]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:05<00:00, 79.25it/s]
+train: batch_size=32, policy=visconde: 100% 104/104 [00:37<00:00,  2.85it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 134.14it/s]
 
 =======================================================================================
-Epoch: 19 	 Learning Rate: 1.000	Total Training Loss: 60.215305 	Total Validation Loss: 136.563770 	 Duration: 105.445
->> Dataset Linguateca:	Training Loss: 60.215305	Validation Loss:136.563770
+Epoch: 25 	 Learning Rate: 1.000	Total Training Loss: 13.142836 	Total Validation Loss: 123.171897 	 Duration: 40.720
+>> Dataset Linguateca:	Training Loss: 13.142836	Validation Loss:123.171897
 ----------------------------------------------------------------------------------------
 Comparing loss on ['Linguateca'] dataset(s)
-Validation loss decreased (140.153430 --> 136.563770).  Saving model ...
+Validation loss decreased (130.549218 --> 123.171897).  Saving model ...
 =======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:39<00:00,  1.08it/s]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:05<00:00, 80.29it/s]
+train: batch_size=32, policy=visconde: 100% 104/104 [00:38<00:00,  2.88it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 134.34it/s]
 
 =======================================================================================
-Epoch: 20 	 Learning Rate: 1.000	Total Training Loss: 58.726919 	Total Validation Loss: 127.348037 	 Duration: 105.645
->> Dataset Linguateca:	Training Loss: 58.726919	Validation Loss:127.348037
+Epoch: 26 	 Learning Rate: 1.000	Total Training Loss: 12.609551 	Total Validation Loss: 118.847481 	 Duration: 41.164
+>> Dataset Linguateca:	Training Loss: 12.609551	Validation Loss:118.847481
 ----------------------------------------------------------------------------------------
 Comparing loss on ['Linguateca'] dataset(s)
-Validation loss decreased (136.563770 --> 127.348037).  Saving model ...
+Validation loss decreased (123.171897 --> 118.847481).  Saving model ...
 =======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:39<00:00,  1.01it/s]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:05<00:00, 77.67it/s]
+train: batch_size=32, policy=visconde: 100% 104/104 [00:37<00:00,  2.60it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 133.94it/s]
 
 =======================================================================================
-Epoch: 21 	 Learning Rate: 1.000	Total Training Loss: 55.419427 	Total Validation Loss: 121.589942 	 Duration: 104.947
->> Dataset Linguateca:	Training Loss: 55.419427	Validation Loss:121.589942
-----------------------------------------------------------------------------------------
-Comparing loss on ['Linguateca'] dataset(s)
-Validation loss decreased (127.348037 --> 121.589942).  Saving model ...
-=======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:38<00:00,  1.12it/s]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:05<00:00, 77.80it/s]
-
-=======================================================================================
-Epoch: 22 	 Learning Rate: 1.000	Total Training Loss: 53.108915 	Total Validation Loss: 121.457904 	 Duration: 104.518
->> Dataset Linguateca:	Training Loss: 53.108915	Validation Loss:121.457904
-----------------------------------------------------------------------------------------
-Comparing loss on ['Linguateca'] dataset(s)
-Validation loss decreased (121.589942 --> 121.457904).  Saving model ...
-=======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:37<00:00,  1.11it/s]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:05<00:00, 78.45it/s]
-
-=======================================================================================
-Epoch: 23 	 Learning Rate: 1.000	Total Training Loss: 51.735482 	Total Validation Loss: 113.125361 	 Duration: 103.559
->> Dataset Linguateca:	Training Loss: 51.735482	Validation Loss:113.125361
-----------------------------------------------------------------------------------------
-Comparing loss on ['Linguateca'] dataset(s)
-Validation loss decreased (121.457904 --> 113.125361).  Saving model ...
-=======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:43<00:00,  1.01it/s]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:06<00:00, 75.87it/s]
-
-=======================================================================================
-Epoch: 24 	 Learning Rate: 1.000	Total Training Loss: 49.253623 	Total Validation Loss: 112.730067 	 Duration: 109.211
->> Dataset Linguateca:	Training Loss: 49.253623	Validation Loss:112.730067
-----------------------------------------------------------------------------------------
-Comparing loss on ['Linguateca'] dataset(s)
-Validation loss decreased (113.125361 --> 112.730067).  Saving model ...
-=======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:39<00:00,  1.13it/s]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:05<00:00, 79.29it/s]
-
-=======================================================================================
-Epoch: 25 	 Learning Rate: 1.000	Total Training Loss: 47.814508 	Total Validation Loss: 111.825082 	 Duration: 104.778
->> Dataset Linguateca:	Training Loss: 47.814508	Validation Loss:111.825082
-----------------------------------------------------------------------------------------
-Comparing loss on ['Linguateca'] dataset(s)
-Validation loss decreased (112.730067 --> 111.825082).  Saving model ...
-=======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:39<00:00,  1.12it/s]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:05<00:00, 77.51it/s]
-
-=======================================================================================
-Epoch: 26 	 Learning Rate: 1.000	Total Training Loss: 45.900677 	Total Validation Loss: 109.309414 	 Duration: 105.588
->> Dataset Linguateca:	Training Loss: 45.900677	Validation Loss:109.309414
-----------------------------------------------------------------------------------------
-Comparing loss on ['Linguateca'] dataset(s)
-Validation loss decreased (111.825082 --> 109.309414).  Saving model ...
-=======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:42<00:00,  1.14it/s]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:05<00:00, 77.91it/s]
-
-=======================================================================================
-Epoch: 27 	 Learning Rate: 1.000	Total Training Loss: 44.197240 	Total Validation Loss: 102.929159 	 Duration: 108.454
->> Dataset Linguateca:	Training Loss: 44.197240	Validation Loss:102.929159
-----------------------------------------------------------------------------------------
-Comparing loss on ['Linguateca'] dataset(s)
-Validation loss decreased (109.309414 --> 102.929159).  Saving model ...
-=======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:37<00:00,  1.09it/s]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:05<00:00, 79.64it/s]
-
-=======================================================================================
-Epoch: 28 	 Learning Rate: 1.000	Total Training Loss: 42.942234 	Total Validation Loss: 108.776357 	 Duration: 103.087
->> Dataset Linguateca:	Training Loss: 42.942234	Validation Loss:108.776357
+Epoch: 27 	 Learning Rate: 1.000	Total Training Loss: 12.273646 	Total Validation Loss: 120.685942 	 Duration: 40.842
+>> Dataset Linguateca:	Training Loss: 12.273646	Validation Loss:120.685942
 ----------------------------------------------------------------------------------------
 Comparing loss on ['Linguateca'] dataset(s)
 =======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:39<00:00,  1.19it/s]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:05<00:00, 78.17it/s]
+train: batch_size=32, policy=visconde: 100% 104/104 [00:37<00:00,  2.65it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 132.08it/s]
 
 =======================================================================================
-Epoch: 29 	 Learning Rate: 1.000	Total Training Loss: 41.706419 	Total Validation Loss: 99.873268 	 Duration: 104.910
->> Dataset Linguateca:	Training Loss: 41.706419	Validation Loss:99.873268
+Epoch: 28 	 Learning Rate: 1.000	Total Training Loss: 11.968161 	Total Validation Loss: 117.589155 	 Duration: 40.925
+>> Dataset Linguateca:	Training Loss: 11.968161	Validation Loss:117.589155
 ----------------------------------------------------------------------------------------
 Comparing loss on ['Linguateca'] dataset(s)
-Validation loss decreased (102.929159 --> 99.873268).  Saving model ...
+Validation loss decreased (118.847481 --> 117.589155).  Saving model ...
 =======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:41<00:00,  1.03s/it]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:05<00:00, 80.04it/s]
+train: batch_size=32, policy=visconde: 100% 104/104 [00:37<00:00,  2.78it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 134.31it/s]
 
 =======================================================================================
-Epoch: 30 	 Learning Rate: 1.000	Total Training Loss: 39.912322 	Total Validation Loss: 99.051314 	 Duration: 107.556
->> Dataset Linguateca:	Training Loss: 39.912322	Validation Loss:99.051314
-----------------------------------------------------------------------------------------
-Comparing loss on ['Linguateca'] dataset(s)
-Validation loss decreased (99.873268 --> 99.051314).  Saving model ...
-=======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:37<00:00,  1.14it/s]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:05<00:00, 80.74it/s]
-
-=======================================================================================
-Epoch: 31 	 Learning Rate: 1.000	Total Training Loss: 39.088372 	Total Validation Loss: 92.392323 	 Duration: 102.969
->> Dataset Linguateca:	Training Loss: 39.088372	Validation Loss:92.392323
-----------------------------------------------------------------------------------------
-Comparing loss on ['Linguateca'] dataset(s)
-Validation loss decreased (99.051314 --> 92.392323).  Saving model ...
-=======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:36<00:00,  1.18it/s]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:05<00:00, 80.34it/s]
-
-=======================================================================================
-Epoch: 32 	 Learning Rate: 1.000	Total Training Loss: 38.252520 	Total Validation Loss: 90.794806 	 Duration: 101.963
->> Dataset Linguateca:	Training Loss: 38.252520	Validation Loss:90.794806
-----------------------------------------------------------------------------------------
-Comparing loss on ['Linguateca'] dataset(s)
-Validation loss decreased (92.392323 --> 90.794806).  Saving model ...
-=======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:41<00:00,  1.06it/s]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:05<00:00, 81.17it/s]
-
-=======================================================================================
-Epoch: 33 	 Learning Rate: 1.000	Total Training Loss: 36.690432 	Total Validation Loss: 88.760572 	 Duration: 106.974
->> Dataset Linguateca:	Training Loss: 36.690432	Validation Loss:88.760572
-----------------------------------------------------------------------------------------
-Comparing loss on ['Linguateca'] dataset(s)
-Validation loss decreased (90.794806 --> 88.760572).  Saving model ...
-=======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:37<00:00,  1.05it/s]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:05<00:00, 78.73it/s]
-
-=======================================================================================
-Epoch: 34 	 Learning Rate: 1.000	Total Training Loss: 36.324402 	Total Validation Loss: 87.077524 	 Duration: 102.966
->> Dataset Linguateca:	Training Loss: 36.324402	Validation Loss:87.077524
-----------------------------------------------------------------------------------------
-Comparing loss on ['Linguateca'] dataset(s)
-Validation loss decreased (88.760572 --> 87.077524).  Saving model ...
-=======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:40<00:00,  1.20it/s]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:05<00:00, 79.60it/s]
-
-=======================================================================================
-Epoch: 35 	 Learning Rate: 1.000	Total Training Loss: 34.767839 	Total Validation Loss: 92.017333 	 Duration: 105.920
->> Dataset Linguateca:	Training Loss: 34.767839	Validation Loss:92.017333
+Epoch: 29 	 Learning Rate: 1.000	Total Training Loss: 11.516924 	Total Validation Loss: 122.479094 	 Duration: 40.684
+>> Dataset Linguateca:	Training Loss: 11.516924	Validation Loss:122.479094
 ----------------------------------------------------------------------------------------
 Comparing loss on ['Linguateca'] dataset(s)
 =======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:37<00:00,  1.19it/s]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:05<00:00, 80.76it/s]
+train: batch_size=32, policy=visconde: 100% 104/104 [00:37<00:00,  3.08it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 134.24it/s]
 
 =======================================================================================
-Epoch: 36 	 Learning Rate: 1.000	Total Training Loss: 34.111500 	Total Validation Loss: 88.137892 	 Duration: 102.759
->> Dataset Linguateca:	Training Loss: 34.111500	Validation Loss:88.137892
+Epoch: 30 	 Learning Rate: 1.000	Total Training Loss: 10.998120 	Total Validation Loss: 123.774591 	 Duration: 40.897
+>> Dataset Linguateca:	Training Loss: 10.998120	Validation Loss:123.774591
 ----------------------------------------------------------------------------------------
 Comparing loss on ['Linguateca'] dataset(s)
 =======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:39<00:00,  1.04it/s]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:05<00:00, 76.61it/s]
+train: batch_size=32, policy=visconde: 100% 104/104 [00:37<00:00,  2.63it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 134.08it/s]
 
 =======================================================================================
-Epoch: 37 	 Learning Rate: 1.000	Total Training Loss: 33.414372 	Total Validation Loss: 86.279357 	 Duration: 105.062
->> Dataset Linguateca:	Training Loss: 33.414372	Validation Loss:86.279357
+Epoch: 31 	 Learning Rate: 1.000	Total Training Loss: 10.649548 	Total Validation Loss: 111.873786 	 Duration: 41.046
+>> Dataset Linguateca:	Training Loss: 10.649548	Validation Loss:111.873786
 ----------------------------------------------------------------------------------------
 Comparing loss on ['Linguateca'] dataset(s)
-Validation loss decreased (87.077524 --> 86.279357).  Saving model ...
+Validation loss decreased (117.589155 --> 111.873786).  Saving model ...
 =======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:35<00:00,  1.08it/s]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:05<00:00, 76.75it/s]
+train: batch_size=32, policy=visconde: 100% 104/104 [00:37<00:00,  3.09it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 134.18it/s]
 
 =======================================================================================
-Epoch: 38 	 Learning Rate: 1.000	Total Training Loss: 32.322499 	Total Validation Loss: 80.595829 	 Duration: 101.014
->> Dataset Linguateca:	Training Loss: 32.322499	Validation Loss:80.595829
-----------------------------------------------------------------------------------------
-Comparing loss on ['Linguateca'] dataset(s)
-Validation loss decreased (86.279357 --> 80.595829).  Saving model ...
-=======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:41<00:00,  1.10it/s]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:05<00:00, 69.21it/s]
-
-=======================================================================================
-Epoch: 39 	 Learning Rate: 1.000	Total Training Loss: 31.525076 	Total Validation Loss: 78.386411 	 Duration: 107.312
->> Dataset Linguateca:	Training Loss: 31.525076	Validation Loss:78.386411
-----------------------------------------------------------------------------------------
-Comparing loss on ['Linguateca'] dataset(s)
-Validation loss decreased (80.595829 --> 78.386411).  Saving model ...
-=======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:41<00:00,  1.01it/s]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:05<00:00, 79.06it/s]
-
-=======================================================================================
-Epoch: 40 	 Learning Rate: 1.000	Total Training Loss: 30.580891 	Total Validation Loss: 80.058712 	 Duration: 107.718
->> Dataset Linguateca:	Training Loss: 30.580891	Validation Loss:80.058712
+Epoch: 32 	 Learning Rate: 1.000	Total Training Loss: 10.368917 	Total Validation Loss: 122.121948 	 Duration: 40.826
+>> Dataset Linguateca:	Training Loss: 10.368917	Validation Loss:122.121948
 ----------------------------------------------------------------------------------------
 Comparing loss on ['Linguateca'] dataset(s)
 =======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:38<00:00,  1.04it/s]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:05<00:00, 79.31it/s]
+train: batch_size=32, policy=visconde: 100% 104/104 [00:37<00:00,  2.47it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 132.50it/s]
 
 =======================================================================================
-Epoch: 41 	 Learning Rate: 1.000	Total Training Loss: 30.111628 	Total Validation Loss: 75.962769 	 Duration: 103.816
->> Dataset Linguateca:	Training Loss: 30.111628	Validation Loss:75.962769
+Epoch: 33 	 Learning Rate: 1.000	Total Training Loss: 10.059186 	Total Validation Loss: 107.307159 	 Duration: 40.970
+>> Dataset Linguateca:	Training Loss: 10.059186	Validation Loss:107.307159
 ----------------------------------------------------------------------------------------
 Comparing loss on ['Linguateca'] dataset(s)
-Validation loss decreased (78.386411 --> 75.962769).  Saving model ...
+Validation loss decreased (111.873786 --> 107.307159).  Saving model ...
 =======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:43<00:00,  1.00s/it]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:06<00:00, 75.24it/s]
+train: batch_size=32, policy=visconde: 100% 104/104 [00:37<00:00,  2.66it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 118.69it/s]
 
 =======================================================================================
-Epoch: 42 	 Learning Rate: 1.000	Total Training Loss: 29.229925 	Total Validation Loss: 78.752288 	 Duration: 109.602
->> Dataset Linguateca:	Training Loss: 29.229925	Validation Loss:78.752288
+Epoch: 34 	 Learning Rate: 1.000	Total Training Loss: 9.714499 	Total Validation Loss: 102.797161 	 Duration: 40.786
+>> Dataset Linguateca:	Training Loss: 9.714499	Validation Loss:102.797161
 ----------------------------------------------------------------------------------------
 Comparing loss on ['Linguateca'] dataset(s)
+Validation loss decreased (107.307159 --> 102.797161).  Saving model ...
 =======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:41<00:00,  1.05it/s]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:05<00:00, 76.79it/s]
+train: batch_size=32, policy=visconde: 100% 104/104 [00:37<00:00,  2.70it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 134.34it/s]
 
 =======================================================================================
-Epoch: 43 	 Learning Rate: 1.000	Total Training Loss: 28.373448 	Total Validation Loss: 76.443342 	 Duration: 107.083
->> Dataset Linguateca:	Training Loss: 28.373448	Validation Loss:76.443342
-----------------------------------------------------------------------------------------
-Comparing loss on ['Linguateca'] dataset(s)
-=======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:34<00:00,  1.15it/s]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:05<00:00, 78.86it/s]
-
-=======================================================================================
-Epoch: 44 	 Learning Rate: 1.000	Total Training Loss: 27.730054 	Total Validation Loss: 77.326107 	 Duration: 100.742
->> Dataset Linguateca:	Training Loss: 27.730054	Validation Loss:77.326107
+Epoch: 35 	 Learning Rate: 1.000	Total Training Loss: 9.413519 	Total Validation Loss: 104.827478 	 Duration: 40.693
+>> Dataset Linguateca:	Training Loss: 9.413519	Validation Loss:104.827478
 ----------------------------------------------------------------------------------------
 Comparing loss on ['Linguateca'] dataset(s)
 =======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:36<00:00,  1.10it/s]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:05<00:00, 77.83it/s]
+train: batch_size=32, policy=visconde: 100% 104/104 [00:37<00:00,  2.64it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 133.11it/s]
 
 =======================================================================================
-Epoch: 45 	 Learning Rate: 1.000	Total Training Loss: 26.498583 	Total Validation Loss: 76.130776 	 Duration: 102.827
->> Dataset Linguateca:	Training Loss: 26.498583	Validation Loss:76.130776
+Epoch: 36 	 Learning Rate: 1.000	Total Training Loss: 9.144958 	Total Validation Loss: 100.649543 	 Duration: 40.947
+>> Dataset Linguateca:	Training Loss: 9.144958	Validation Loss:100.649543
+----------------------------------------------------------------------------------------
+Comparing loss on ['Linguateca'] dataset(s)
+Validation loss decreased (102.797161 --> 100.649543).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 104/104 [00:37<00:00,  2.78it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 134.28it/s]
+
+=======================================================================================
+Epoch: 37 	 Learning Rate: 1.000	Total Training Loss: 9.159237 	Total Validation Loss: 99.379797 	 Duration: 40.760
+>> Dataset Linguateca:	Training Loss: 9.159237	Validation Loss:99.379797
+----------------------------------------------------------------------------------------
+Comparing loss on ['Linguateca'] dataset(s)
+Validation loss decreased (100.649543 --> 99.379797).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 104/104 [00:37<00:00,  2.76it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 134.33it/s]
+
+=======================================================================================
+Epoch: 38 	 Learning Rate: 1.000	Total Training Loss: 8.897655 	Total Validation Loss: 96.120987 	 Duration: 40.891
+>> Dataset Linguateca:	Training Loss: 8.897655	Validation Loss:96.120987
+----------------------------------------------------------------------------------------
+Comparing loss on ['Linguateca'] dataset(s)
+Validation loss decreased (99.379797 --> 96.120987).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 104/104 [00:37<00:00,  2.83it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 133.97it/s]
+
+=======================================================================================
+Epoch: 39 	 Learning Rate: 1.000	Total Training Loss: 8.546029 	Total Validation Loss: 97.933575 	 Duration: 40.745
+>> Dataset Linguateca:	Training Loss: 8.546029	Validation Loss:97.933575
 ----------------------------------------------------------------------------------------
 Comparing loss on ['Linguateca'] dataset(s)
 =======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:37<00:00,  1.05it/s]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:05<00:00, 78.49it/s]
+train: batch_size=32, policy=visconde: 100% 104/104 [00:37<00:00,  2.78it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 133.88it/s]
 
 =======================================================================================
-Epoch: 46 	 Learning Rate: 1.000	Total Training Loss: 26.483321 	Total Validation Loss: 76.446280 	 Duration: 103.289
->> Dataset Linguateca:	Training Loss: 26.483321	Validation Loss:76.446280
+Epoch: 40 	 Learning Rate: 1.000	Total Training Loss: 8.289495 	Total Validation Loss: 95.264697 	 Duration: 40.829
+>> Dataset Linguateca:	Training Loss: 8.289495	Validation Loss:95.264697
+----------------------------------------------------------------------------------------
+Comparing loss on ['Linguateca'] dataset(s)
+Validation loss decreased (96.120987 --> 95.264697).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 104/104 [00:37<00:00,  2.69it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 134.30it/s]
+
+=======================================================================================
+Epoch: 41 	 Learning Rate: 1.000	Total Training Loss: 8.054830 	Total Validation Loss: 93.922998 	 Duration: 41.087
+>> Dataset Linguateca:	Training Loss: 8.054830	Validation Loss:93.922998
+----------------------------------------------------------------------------------------
+Comparing loss on ['Linguateca'] dataset(s)
+Validation loss decreased (95.264697 --> 93.922998).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 104/104 [00:37<00:00,  2.77it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 134.01it/s]
+
+=======================================================================================
+Epoch: 42 	 Learning Rate: 1.000	Total Training Loss: 7.877191 	Total Validation Loss: 97.303036 	 Duration: 40.795
+>> Dataset Linguateca:	Training Loss: 7.877191	Validation Loss:97.303036
 ----------------------------------------------------------------------------------------
 Comparing loss on ['Linguateca'] dataset(s)
 =======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:42<00:00,  1.08s/it]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:06<00:00, 74.86it/s]
+train: batch_size=32, policy=visconde: 100% 104/104 [00:37<00:00,  2.56it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 132.08it/s]
 
 =======================================================================================
-Epoch: 47 	 Learning Rate: 1.000	Total Training Loss: 26.008573 	Total Validation Loss: 72.338200 	 Duration: 108.794
->> Dataset Linguateca:	Training Loss: 26.008573	Validation Loss:72.338200
+Epoch: 43 	 Learning Rate: 1.000	Total Training Loss: 7.773182 	Total Validation Loss: 91.354463 	 Duration: 40.784
+>> Dataset Linguateca:	Training Loss: 7.773182	Validation Loss:91.354463
 ----------------------------------------------------------------------------------------
 Comparing loss on ['Linguateca'] dataset(s)
-Validation loss decreased (75.962769 --> 72.338200).  Saving model ...
+Validation loss decreased (93.922998 --> 91.354463).  Saving model ...
 =======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:41<00:00,  1.06it/s]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:05<00:00, 80.06it/s]
+train: batch_size=32, policy=visconde: 100% 104/104 [00:37<00:00,  2.60it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 133.92it/s]
 
 =======================================================================================
-Epoch: 48 	 Learning Rate: 1.000	Total Training Loss: 24.714888 	Total Validation Loss: 72.377653 	 Duration: 107.310
->> Dataset Linguateca:	Training Loss: 24.714888	Validation Loss:72.377653
-----------------------------------------------------------------------------------------
-Comparing loss on ['Linguateca'] dataset(s)
-=======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:37<00:00,  1.05it/s]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:06<00:00, 74.81it/s]
-
-=======================================================================================
-Epoch: 49 	 Learning Rate: 1.000	Total Training Loss: 24.449253 	Total Validation Loss: 75.546511 	 Duration: 103.617
->> Dataset Linguateca:	Training Loss: 24.449253	Validation Loss:75.546511
+Epoch: 44 	 Learning Rate: 1.000	Total Training Loss: 7.546069 	Total Validation Loss: 95.718921 	 Duration: 40.883
+>> Dataset Linguateca:	Training Loss: 7.546069	Validation Loss:95.718921
 ----------------------------------------------------------------------------------------
 Comparing loss on ['Linguateca'] dataset(s)
 =======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:38<00:00,  1.09it/s]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:05<00:00, 79.08it/s]
+train: batch_size=32, policy=visconde: 100% 104/104 [00:37<00:00,  2.72it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 134.17it/s]
 
 =======================================================================================
-Epoch: 50 	 Learning Rate: 1.000	Total Training Loss: 23.937233 	Total Validation Loss: 75.108315 	 Duration: 103.777
->> Dataset Linguateca:	Training Loss: 23.937233	Validation Loss:75.108315
+Epoch: 45 	 Learning Rate: 1.000	Total Training Loss: 7.381346 	Total Validation Loss: 92.484949 	 Duration: 40.684
+>> Dataset Linguateca:	Training Loss: 7.381346	Validation Loss:92.484949
 ----------------------------------------------------------------------------------------
 Comparing loss on ['Linguateca'] dataset(s)
 =======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:38<00:00,  1.01it/s]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:05<00:00, 77.49it/s]
+train: batch_size=32, policy=visconde: 100% 104/104 [00:37<00:00,  2.83it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 134.47it/s]
 
 =======================================================================================
-Epoch: 51 	 Learning Rate: 1.000	Total Training Loss: 23.507176 	Total Validation Loss: 74.602262 	 Duration: 104.693
->> Dataset Linguateca:	Training Loss: 23.507176	Validation Loss:74.602262
+Epoch: 46 	 Learning Rate: 1.000	Total Training Loss: 7.270488 	Total Validation Loss: 90.215623 	 Duration: 40.786
+>> Dataset Linguateca:	Training Loss: 7.270488	Validation Loss:90.215623
+----------------------------------------------------------------------------------------
+Comparing loss on ['Linguateca'] dataset(s)
+Validation loss decreased (91.354463 --> 90.215623).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 104/104 [00:37<00:00,  2.75it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 134.26it/s]
+
+=======================================================================================
+Epoch: 47 	 Learning Rate: 1.000	Total Training Loss: 7.151504 	Total Validation Loss: 90.588169 	 Duration: 40.677
+>> Dataset Linguateca:	Training Loss: 7.151504	Validation Loss:90.588169
 ----------------------------------------------------------------------------------------
 Comparing loss on ['Linguateca'] dataset(s)
 =======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:48<00:00,  1.04it/s]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:06<00:00, 68.90it/s]
+train: batch_size=32, policy=visconde: 100% 104/104 [00:37<00:00,  2.80it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 131.56it/s]
 
 =======================================================================================
-Epoch: 52 	 Learning Rate: 1.000	Total Training Loss: 22.903766 	Total Validation Loss: 73.756772 	 Duration: 114.687
->> Dataset Linguateca:	Training Loss: 22.903766	Validation Loss:73.756772
+Epoch: 48 	 Learning Rate: 1.000	Total Training Loss: 6.969540 	Total Validation Loss: 94.396449 	 Duration: 40.848
+>> Dataset Linguateca:	Training Loss: 6.969540	Validation Loss:94.396449
 ----------------------------------------------------------------------------------------
 Comparing loss on ['Linguateca'] dataset(s)
 =======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:45<00:00,  1.04s/it]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:06<00:00, 63.32it/s]
+train: batch_size=32, policy=visconde: 100% 104/104 [00:37<00:00,  2.62it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 134.27it/s]
 
 =======================================================================================
-Epoch: 53 	 Learning Rate: 1.000	Total Training Loss: 23.111258 	Total Validation Loss: 71.535636 	 Duration: 111.911
->> Dataset Linguateca:	Training Loss: 23.111258	Validation Loss:71.535636
+Epoch: 49 	 Learning Rate: 1.000	Total Training Loss: 6.758916 	Total Validation Loss: 89.174307 	 Duration: 40.780
+>> Dataset Linguateca:	Training Loss: 6.758916	Validation Loss:89.174307
 ----------------------------------------------------------------------------------------
 Comparing loss on ['Linguateca'] dataset(s)
-Validation loss decreased (72.338200 --> 71.535636).  Saving model ...
+Validation loss decreased (90.215623 --> 89.174307).  Saving model ...
 =======================================================================================
-train: batch_size=32, policy=visconde: 100% 104/104 [01:44<00:00,  1.03s/it]
-val: batch_size=1, policy=emilia: 100% 456/456 [00:06<00:00, 70.06it/s]
+train: batch_size=32, policy=visconde: 100% 104/104 [00:37<00:00,  2.67it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 134.63it/s]
 
 =======================================================================================
-Epoch: 54 	 Learning Rate: 1.000	Total Training Loss: 22.327713 	Total Validation Loss: 72.458274 	 Duration: 111.038
->> Dataset Linguateca:	Training Loss: 22.327713	Validation Loss:72.458274
+Epoch: 50 	 Learning Rate: 1.000	Total Training Loss: 6.523092 	Total Validation Loss: 84.851318 	 Duration: 40.829
+>> Dataset Linguateca:	Training Loss: 6.523092	Validation Loss:84.851318
+----------------------------------------------------------------------------------------
+Comparing loss on ['Linguateca'] dataset(s)
+Validation loss decreased (89.174307 --> 84.851318).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 104/104 [00:37<00:00,  2.87it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 134.33it/s]
+
+=======================================================================================
+Epoch: 51 	 Learning Rate: 1.000	Total Training Loss: 6.494214 	Total Validation Loss: 82.960137 	 Duration: 40.815
+>> Dataset Linguateca:	Training Loss: 6.494214	Validation Loss:82.960137
+----------------------------------------------------------------------------------------
+Comparing loss on ['Linguateca'] dataset(s)
+Validation loss decreased (84.851318 --> 82.960137).  Saving model ...
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 104/104 [00:37<00:00,  2.86it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 134.52it/s]
+
+=======================================================================================
+Epoch: 52 	 Learning Rate: 1.000	Total Training Loss: 6.340250 	Total Validation Loss: 85.031163 	 Duration: 40.783
+>> Dataset Linguateca:	Training Loss: 6.340250	Validation Loss:85.031163
 ----------------------------------------------------------------------------------------
 Comparing loss on ['Linguateca'] dataset(s)
 =======================================================================================
-test: batch_size=1, policy=emilia: 100% 424/424 [00:07<00:00, 57.38it/s]
+train: batch_size=32, policy=visconde: 100% 104/104 [00:37<00:00,  2.78it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 134.41it/s]
 
-Test Accuracy (Overall): 96% (7775/8072)
+=======================================================================================
+Epoch: 53 	 Learning Rate: 1.000	Total Training Loss: 6.161212 	Total Validation Loss: 91.133667 	 Duration: 40.652
+>> Dataset Linguateca:	Training Loss: 6.161212	Validation Loss:91.133667
+----------------------------------------------------------------------------------------
+Comparing loss on ['Linguateca'] dataset(s)
+=======================================================================================
+train: batch_size=32, policy=visconde: 100% 104/104 [00:37<00:00,  2.59it/s]
+val: batch_size=1, policy=emilia: 100% 419/419 [00:03<00:00, 134.52it/s]
 
-Test Accuracy (on Linguateca Dataset): 96.32% (7775/8072)
+=======================================================================================
+Epoch: 54 	 Learning Rate: 1.000	Total Training Loss: 5.986541 	Total Validation Loss: 82.343767 	 Duration: 40.657
+>> Dataset Linguateca:	Training Loss: 5.986541	Validation Loss:82.343767
+----------------------------------------------------------------------------------------
+Comparing loss on ['Linguateca'] dataset(s)
+Validation loss decreased (82.960137 --> 82.343767).  Saving model ...
+=======================================================================================
+test: batch_size=1, policy=emilia: 100% 420/420 [00:03<00:00, 111.38it/s]
+
+Test Accuracy (Overall): 96% (7713/7993)
+
+Test Accuracy (on Linguateca Dataset): 96.50% (7713/7993)

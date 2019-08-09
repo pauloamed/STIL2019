@@ -41,7 +41,7 @@ bosque = Dataset(BOSQUE_FILE_PATHS, "Bosque")
 gsd = Dataset(GSD_FILE_PATHS, "GSD")
 linguateca = Dataset(LINGUATECA_FILE_PATHS, "Linguateca")
 
-datasets = [linguateca]
+datasets = [macmorpho, bosque, gsd, linguateca]
 
 char2id, id2char = build_char_dict(datasets)
 
