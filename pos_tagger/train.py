@@ -3,7 +3,7 @@ from torch import nn
 import time
 from pos_tagger.utils import get_batches
 
-def train(device, model, optimizer, datasets, min_val_loss, state_dict_path, epochs, training_policy, batch_size, clip=20):
+def train(device, model, optimizer, datasets, min_val_loss, state_dict_path, epochs, training_policy, batch_size, clip=25):
 
     name2dataset = {d.name:d for d in datasets}
 
