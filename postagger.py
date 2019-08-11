@@ -36,19 +36,21 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 #########                                                                    ############
 #########################################################################################
 
-macmorpho = Dataset(MACMORPHO_FILE_PATHS, "Macmorpho")
-bosque = Dataset(BOSQUE_FILE_PATHS, "Bosque")
-gsd = Dataset(GSD_FILE_PATHS, "GSD")
-linguateca = Dataset(LINGUATECA_FILE_PATHS, "Linguateca")
+macmorpho = Dataset(MACMORPHO_FILE_PATHS, "Macmorpho", LOG)
+bosque = Dataset(BOSQUE_FILE_PATHS, "Bosque", LOG)
+gsd = Dataset(GSD_FILE_PATHS, "GSD", LOG)
+linguateca = Dataset(LINGUATECA_FILE_PATHS, "Linguateca", LOG)
 
 datasets = [macmorpho, bosque, gsd, linguateca]
 
-char2id, id2char = build_char_dict(datasets)
+char2id, id2char = build_char_dict(datasets, LOG)
 
 for dataset in datasets:
     dataset.prepare(char2id)
-for dataset in datasets:
-    print(dataset)
+
+if LOG:
+    for dataset in datasets:
+        print(dataset)
 
 #########################################################################################
 #########                                                                    ############
@@ -71,8 +73,8 @@ optimizer = optim.Adadelta(pos_model.parameters())
 
 """ Training
 """
-
-print(pos_model)
+if LOG:
+    print(pos_model)
 min_val_loss = np.inf
 
 pos_model, min_val_loss = train(device, pos_model, optimizer,
