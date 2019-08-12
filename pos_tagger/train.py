@@ -72,35 +72,35 @@ def train(device, model, optimizer, datasets, min_val_loss, state_dict_path, epo
                 datasets[i].val_loss /= datasets[i].sent_val_size
 
         # Verbose
-        print("\n=======================================================================================")
+        out_str = "\n======================================================================================="
         current_lr = optimizer.param_groups[0]['lr']
         total_train_loss = sum([d.train_loss for d in datasets if d.use_train])
         total_val_loss = sum([d.val_loss for d in datasets if d.use_val])
         duration = time.time()-inicio
-        print('Epoch: {} \t Learning Rate: {:.3f}\tTotal Training Loss: {:.6f} \tTotal Validation Loss: {:.6f} \t Duration: {:.3f}'.format(
+        out_str += ("Epoch: {} \t Learning Rate: {:.3f}\tTotal Training Loss: {:.6f} \tTotal Validation Loss: {:.6f} \t Duration: {:.3f}\n".format(
             epoch, current_lr, total_train_loss, total_val_loss, duration))
 
         for d in datasets:
             if d.use_train and d.use_val:
-                print('>> Dataset {}:\tTraining Loss: {:.6f}\tValidation Loss:{:.6f}'.format(d.name, d.train_loss, d.val_loss))
+                out_str += ('>> Dataset {}:\tTraining Loss: {:.6f}\tValidation Loss:{:.6f}\n'.format(d.name, d.train_loss, d.val_loss))
             elif d.use_train and not d.use_val:
-                print('>> Dataset {}:\tTraining Loss: {:.6f}'.format(d.name, d.train_loss))
+                out_str += ('>> Dataset {}:\tTraining Loss: {:.6f}\n'.format(d.name, d.train_loss))
             elif not d.use_train and d.use_val:
-                print('>> Dataset {}:\tValidation Loss: {:.6f}'.format(d.name, d.val_loss))
+                out_str +=('>> Dataset {}:\tValidation Loss: {:.6f}\n'.format(d.name, d.val_loss))
 
-        print("----------------------------------------------------------------------------------------")
+        out_str += ("----------------------------------------------------------------------------------------\n")
 
         # Saving the best model
-        print('Comparing loss on {} dataset(s)'.format([d.name for d in datasets if d.use_val]))
+        out_str += ('Comparing loss on {} dataset(s)\n'.format([d.name for d in datasets if d.use_val]))
 
         if total_val_loss <= min_val_loss:
             torch.save(model.state_dict(), state_dict_path)
-            print('Validation loss decreased ({:.6f} --> {:.6f}).  Saving model ...'.format(
+            out_str += ('Validation loss decreased ({:.6f} --> {:.6f}).  Saving model ...\n'.format(
                                                                                 min_val_loss,
                                                                                 total_val_loss))
             min_val_loss = total_val_loss
-        print("=======================================================================================")
+        out_str += ("=======================================================================================\n")
 
-
+        send_output(out_str, 0)
 
     return model, min_val_loss

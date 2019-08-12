@@ -6,8 +6,11 @@ LINGUATECA_FILE_PATHS = ['data/lgtc-train.mm', 'data/lgtc-dev.mm', 'data/lgtc-te
 EWT_FILE_PATHS = ['data/en_ewt-ud-train.mm','data/en_ewt-ud-dev.mm','data/en_ewt-ud-test.mm']
 PTB_FILE_PATHS = ['data/ptb-train.mm','data/ptb-dev.mm','data/ptb-test.mm']
 
+# Output path
+OUTPUT_PATH = 'output.txt'
+
 # Settings
-LOG = False
+LOG_LVL = 1
 
 
 # Model hiperparameters

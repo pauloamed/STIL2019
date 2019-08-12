@@ -43,14 +43,17 @@ def accuracy(device, model, datasets):
 
     soma_correct = np.sum([d.class_correct for d in datasets])
     soma_total = np.sum([d.class_total for d in datasets])
+    accuracy_ = 100. * soma_correct / soma_total
+    out_str = '\nTest Accuracy (Overall): %2d%% (%2d/%2d)' % (accuracy_, soma_correct,
+                                                                soma_total)
 
-    print('\nTest Accuracy (Overall): %2d%% (%2d/%2d)' % (100. * soma_correct / soma_total,
-                                                          soma_correct, soma_total))
+    send_output(out_str, 0)
 
     for d in datasets:
-        print('\nTest Accuracy (on {} Dataset): {:.2f}% ({}/{})'.format(d.name,
-                                                                        100. * d.class_correct / d.class_total,
-                                                                        d.class_correct, d.class_total))
+        accuracy_d = 100. * d.class_correct / d.class_total
+        out_str = '\nTest Accuracy (on {} Dataset): {:.2f}% ({}/{})'.format(d.name, accuracy_d,
+                                                                        d.class_correct, d.class_total)
+        send_output(out_str, 0)
 
 
 def confusion_matrix(device, model, datasets):
