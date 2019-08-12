@@ -1,7 +1,7 @@
 import torch
 from torch import nn
 import time
-from pos_tagger.utils import get_batches
+from pos_tagger.utils import get_batches, send_output
 
 def train(device, model, optimizer, datasets, min_val_loss, state_dict_path, epochs, training_policy, batch_size, clip=25):
 
