@@ -81,7 +81,7 @@ pos_model, min_val_loss = train(device, pos_model, optimizer,
 
 try:
     # Loading the model with best loss on the validation
-    pos_model.load_state_dict(torch.load(STATE_DICT_PATH))
+    pos_model.load_state_dict(torch.load(STATE_DICT_PATH, map_location=device))
 except:
     send_output("Was not able to load trained model", 0)
 
@@ -91,18 +91,8 @@ except:
 #########                                                                    ############
 #########################################################################################
 
-# # Creating a checkpoint with the layers from the classifier, its weights,
-# # the minimum validation loss achieved and the cat_to_name dict
-# checkpoint = {'min_val_loss': min_val_loss,
-#               'optimizer_sd': optimizer.state_dict()}
-
-# # Saving the checkpoint
-# torch.save(checkpoint, CHECKPOINT_PATH)
 
 """ Testing
 """
-accuracy(device, pos_model, datasets)
-# confusion_matrix(device, pos_model, datasets)
-# wrong_samples(device, pos_model, datasets)
-# tsnes = set_tsne(device, pos_model, datasets)
-# tsne_plot(device, pos_model, char2id, "Fui ao banco comprar um banco .", tsnes)
+# accuracy(device, pos_model, datasets)
+tagged_samples(device, pos_model, datasets, id2char)
