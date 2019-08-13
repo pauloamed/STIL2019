@@ -1,6 +1,20 @@
 # Part-of-Speech Embeddings for Portuguese
-#### Authors
-Paulo L. Medeiros
-Carlos A. Prolo
-Antônio Thomé
-Bledson Bezerra
+
+Breve descrição
+
+## Usage
+### Requirements
+
+### `parameters.py` file
+
+### Executing
+```
+python postagger.py
+```
+
+#### References
+If you used our model, please cite our paper:
+- LINK
+```
+
+```
