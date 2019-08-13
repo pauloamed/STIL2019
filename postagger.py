@@ -37,9 +37,9 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 #########################################################################################
 
 macmorpho = Dataset(MACMORPHO_FILE_PATHS, "Macmorpho")
-bosque = Dataset(BOSQUE_FILE_PATHS, "Bosque")
-gsd = Dataset(GSD_FILE_PATHS, "GSD")
-linguateca = Dataset(LINGUATECA_FILE_PATHS, "Linguateca")
+bosque = Dataset(BOSQUE_FILE_PATHS, "Bosque", use_val=False)
+gsd = Dataset(GSD_FILE_PATHS, "GSD", use_val=False)
+linguateca = Dataset(LINGUATECA_FILE_PATHS, "Linguateca", use_val=False)
 
 datasets = [macmorpho, bosque, gsd, linguateca]
 

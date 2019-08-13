@@ -1,7 +1,7 @@
 import torch
 from torch import nn
 import numpy as np
-from pos_tagger.utils import get_batches
+from pos_tagger.utils import get_batches, send_output
 import matplotlib.pyplot as plt
 from sklearn.manifold import TSNE
 
