@@ -2,24 +2,16 @@ import random, sys
 import tqdm
 from pos_tagger.parameters import LOG_LVL, OUTPUT_PATH
 
-# def load_postag_checkpoint(filepath):
-#     c = torch.load(filepath)
-#     return c['min_val_loss'], c['optimizer_sd'], c['scheduler_sd']
-#
-# def load_pretrain_checkpoint(filepath):
-#     c = torch.load(filepath)
-#     return c['char2id'], c['id2char'], c['word2id'], c['wrod2freq'], c['id2word'], c['min_val_loss'], c['optimizer_sd']
-
 def send_output(str, log_level):
     if log_level <= LOG_LVL:
         print(str)
-    # try:
-    file = open(OUTPUT_PATH, "a")
-    file.write(str + "\n")
-    file.close()
-    # except:
-    #     if log_level <= LOG_LVL:
-    #         print("Was not able to open output file")
+    try:
+        file = open(OUTPUT_PATH, "a")
+        file.write(str + "\n")
+        file.close()
+    except:
+        if log_level <= LOG_LVL:
+            print("Was not able to open and write on output file")
 
 def do_policy(policy, datasets, batch_size, list_samples):
     seed = random.randrange(sys.maxsize)
