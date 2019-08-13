@@ -1,13 +1,15 @@
 # Datasets paths
-MACMORPHO_FILE_PATHS = ['data/macmorpho-train.mm', 'data/macmorpho-dev.mm', 'data/macmorpho-test.mm']
-BOSQUE_FILE_PATHS = ['data/pt_bosque-ud-train.mm', 'data/pt_bosque-ud-dev.mm', 'data/pt_bosque-ud-test.mm']
-GSD_FILE_PATHS = ['data/pt_gsd-ud-train.mm', 'data/pt_gsd-ud-dev.mm', 'data/pt_gsd-ud-test.mm']
-LINGUATECA_FILE_PATHS = ['data/lgtc-train.mm', 'data/lgtc-dev.mm', 'data/lgtc-test.mm']
-# Output path
+MACMORPHO_FILE_PATHS = ['data/macmorpho-train.mm.txt', 'data/macmorpho-dev.mm.txt', 'data/macmorpho-test.mm.txt']
+BOSQUE_FILE_PATHS = ['data/pt_bosque-ud-train.mm.txt', 'data/pt_bosque-ud-dev.mm.txt', 'data/pt_bosque-ud-test.mm.txt']
+GSD_FILE_PATHS = ['data/pt_gsd-ud-train.mm.txt', 'data/pt_gsd-ud-dev.mm.txt', 'data/pt_gsd-ud-test.mm.txt']
+LINGUATECA_FILE_PATHS = ['data/lgtc-train.mm.txt', 'data/lgtc-dev.mm.txt', 'data/lgtc-test.mm.txt']
+
+
+# Output path for all LOGs
 OUTPUT_PATH = 'output.txt'
 
 # Settings
-LOG_LVL = 1 # serao impressas na tela mensagens com level menor que ou igual a LOG_LVL 
+LOG_LVL = 1 # serao impressas na tela mensagens com level menor que ou igual a LOG_LVL
 TEST_MODE = True
 
 

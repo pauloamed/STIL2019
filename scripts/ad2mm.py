@@ -6,11 +6,11 @@ import string
 
 def open_file(file_name):
     print(">> Trying to open file...")
-    # try:
-    f = open(file_name, "rt", encoding="utf-8").read()
-    # except:
-    #     print(">>>> Unable to open file")
-    #     exit()
+    try:
+        f = open(file_name, "rt", encoding="utf-8").read()
+    except:
+        print(">>>> Unable to open file")
+        exit()
     print(">>> File was successfully opened")
     return f
 
@@ -63,9 +63,18 @@ def extract_from_sample(sample):
     return converted_sample
 
 
-file_dest = sys.argv[1]
+# getting sys args
+file_path = sys.argv[1]
 processed_file_dest = sys.argv[2]
-f = open_file(file_dest)
+
+# openning input file
+f = open_file(file_path)
+
+# splitting input file in samples
 samples = split_file(f)
+
+# extracting pos_tags from samples
 samples = [extract_from_sample(sample) for sample in samples]
+
+# creates file
 create_file(processed_file_dest, samples)

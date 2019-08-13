@@ -1,4 +1,4 @@
-# Converts corpus on mm format to prolos format
+# script for visualization on prolo format
 import sys
 
 def open_file(file_name):

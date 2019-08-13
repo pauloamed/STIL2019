@@ -1,4 +1,4 @@
-# Converts corpus on conll format to the macmorpho format
+# Counts intersections between different files of different datasets
 import sys
 import itertools
 from itertools import combinations, chain
@@ -56,6 +56,8 @@ def process_file(data_path, file_name, d):
 
 
 
+# saves all samples on a dict, where the key is the sample and the value are the
+# files in which it appears
 d = dict()
 for file_name in FILES:
     d = process_file(data_path, file_name, d)
@@ -63,59 +65,44 @@ for file_name in FILES:
 
 print('\n')
 
-counter = 0
 
-intersect_datasets = dict()
 intersect_files = dict()
 
 for sent, files in d.items():
-    datasets = set()
-    subsets = set()
     files = list(set(files))
     files.sort()
     files = tuple(files)
+
+    # recovers all datasets from files the sentence appears
+    datasets = set()
     for f in files:
         datasets.add(f.split('-')[0])
-        subsets.add(f.split('-')[-1])
-
     datasets = list(datasets)
-    subsets = list(subsets)
-
     datasets.sort()
-    subsets.sort()
-
-    subsets = tuple(subsets)
     datasets = tuple(datasets)
 
+    # only interested in intersection between two or more different datasets
     if(len(datasets) == 1):
         continue
 
-    if datasets not in intersect_datasets:
-        intersect_datasets[datasets] = 1
-    else:
-        intersect_datasets[datasets] += 1
-
+    # generate all pairs from retrieved files
     x = findsubsets(files, 2)
     for e in x:
+        # orders and make e hashing possible
         e = list(e)
         e.sort()
         e = tuple(e)
+
+        # counter for each possible pair of files
         if e not in intersect_files:
             intersect_files[e] = 1
         else:
             intersect_files[e] += 1
 
-
-    counter += 1
-#     print("{}: Frase é: {}".format(counter, sent))
-#     print("Ocorreu em: {}".format(" ".join(files)))
-#     print()
-# print(counter)
-
-# for datasets, count in intersect_datasets.items():
-#     print(datasets, count)
-# print()
+# recovers values from dict and orders them
 l = list(intersect_files.items())
 l.sort()
+
+# show results
 for files, count in l:
     print(files, count)

@@ -1,4 +1,5 @@
-# Converts corpus on conll format to the macmorpho format
+# file splitter, given weights for each file
+# assumes that consecutive elements are separated using \n
 import sys
 
 def open_file(file_name):

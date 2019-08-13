@@ -6,17 +6,17 @@ from itertools import combinations, chain
 data_path = "../data/"
 
 FILES_UD = [
-    'pt_bosque-ud-train.mm',
-    'pt_bosque-ud-dev.mm',
-    'pt_bosque-ud-test.mm',
+    'pt_bosque-ud-train.mm.txt',
+    'pt_bosque-ud-dev.mm.txt',
+    'pt_bosque-ud-test.mm.txt',
 ]
 
-FILE_LGTC = 'Bosque_CF_lgtc.mm'
+FILE_LGTC = 'Bosque_CF_lgtc.mm.txt'
 
 FILES_DEST_LGTC = [
-    'lgtc-train.mm',
-    'lgtc-dev.mm',
-    'lgtc-test.mm',
+    'lgtc-train.mm.txt',
+    'lgtc-dev.mm.txt',
+    'lgtc-test.mm.txt',
 ]
 
 def open_file(file_name):
@@ -95,28 +95,37 @@ def create_file(file_name, samples):
 
     print(">>> File was successfully created")
 
+# opens files and loads to texts, then saves them on a hash for further usage
 ud_train = process_ud_file(data_path, FILES_UD[0])
 ud_dev = process_ud_file(data_path, FILES_UD[1])
 ud_test = process_ud_file(data_path, FILES_UD[2])
 
+# retrieves all tagged samples from one-file linguateca dataset
 lgtc_text =  get_sents(open_file(data_path + FILE_LGTC), tagged=True)
+
+# eliminates duplicates
 lgtc_text = list(set(lgtc_text))
 
+# calculating sizes of training, dev(Val) and test sets (following a 1/1/8) split
 train_size = int(len(lgtc_text) * 0.8)
 dev_size = int(len(lgtc_text) * 0.1)
 test_size = len(lgtc_text) - (train_size + dev_size)
 
+# hash for marking the already designated-to-sets samples
 gone = set()
 
-
+# uses the already built hashes for each set of Bosque-UD and designates the intersections
+# to sets of linguateca's sets
 lgtc_train = set_sents(gone, lgtc_text, ud_train)
 lgtc_dev = set_sents(gone, lgtc_text, ud_dev)
 lgtc_test = set_sents(gone, lgtc_text, ud_test)
 
+# completes the linguateca's sets
 complete_set(gone, lgtc_text, lgtc_train, train_size)
 complete_set(gone, lgtc_text, lgtc_dev, dev_size)
 complete_set(gone, lgtc_text, lgtc_test, test_size)
 
+# creates linguatecas giles
 create_file(data_path + FILES_DEST_LGTC[0], lgtc_train)
 create_file(data_path + FILES_DEST_LGTC[1], lgtc_dev)
 create_file(data_path + FILES_DEST_LGTC[2], lgtc_test)

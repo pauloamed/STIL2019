@@ -1,4 +1,4 @@
-# Concat list of texts and removes tags
+# script for concating different files on mm format, removing their tags
 import sys
 
 def open_file(file_name):
@@ -30,7 +30,7 @@ def create_file(file_name, samples):
 
     print(">>> File was successfully created")
 
-def rm_tokens(samples):
+def rm_tags(samples):
     for i in range(len(samples)):
         samples[i] = samples[i].split(" ")
         for ii in range(len(samples[i])):
@@ -41,5 +41,5 @@ def rm_tokens(samples):
 
 num_files = int(sys.argv[1])
 samples = [sample for i in range(num_files) for sample in open_file(sys.argv[i+2])]
-samples = rm_tokens(samples)
+samples = rm_tags(samples)
 create_file(sys.argv[num_files+2], samples)

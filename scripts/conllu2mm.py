@@ -64,9 +64,18 @@ def create_file(file_name, converted_samples):
     print(">>> File was successfully created")
 
 
-file_dest = sys.argv[1]
+# getting sys args
+file_path = sys.argv[1]
 processed_file_dest = sys.argv[2]
-f = open_file(file_dest)
+
+# openning input file
+f = open_file(file_path)
+
+# splitting input file in samples
 samples = split_file(f)
+
+# extracting pos_tags from samples
 samples = [extract_from_sample(sample) for sample in samples]
+
+# creates file
 create_file(processed_file_dest, samples)
