@@ -72,6 +72,7 @@ if TEST_MODE == False:
 # Loading the model with best loss on the validation
 try:
     pos_model.load_state_dict(torch.load(STATE_DICT_PATH, map_location=device))
+    send_output("Successfully load trained model", 1)
 except:
     send_output("Was not able to load trained model\nLoading the newly generated model", 0)
 

@@ -8,7 +8,6 @@ class POSTagger(nn.Module):
         super().__init__()
 
         # Retrieving the model size (#layers and #units)
-        self.n_tag_bilstm_layers = n_bilstm_layers
         self.n_tag_bilstm_hidden = n_bilstm_hidden
 
         # Retrieving the word emebedding size from the embedding model

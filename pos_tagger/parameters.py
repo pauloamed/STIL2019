@@ -82,7 +82,6 @@ STATE_DICT_PATH:    path for saving the model during training that is going to b
 
 OUTPUT_PATH = 'output.txt'
 LOG_LVL = 1
-STATE_DICT_PATH = 'postag_sdict_WED_{}_CED_{}_NBL_{}_BS_{}.pt'.format(WORD_EMBEDDING_DIM,
+STATE_DICT_PATH = 'postag_sdict_WED_{}_CED_{}_BS_{}.pt'.format(WORD_EMBEDDING_DIM,
                                                                  CHAR_EMBEDDING_DIM,
-                                                                 NUM_BILSTM_LAYERS,
                                                                  BILSTM_SIZE)
