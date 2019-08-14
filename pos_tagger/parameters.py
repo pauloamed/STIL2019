@@ -8,7 +8,7 @@ TEST_MODE:  dont train, just test. if there is no model on the STATE_DICT_PATH
             generated model
 '''
 
-TEST_MODE = True
+TEST_MODE = False
 
 '''
 ================================================================================
