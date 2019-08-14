@@ -32,7 +32,6 @@ Breve descrição
   #### `prolo.py`
   #### `splitter.py`
   #### `cat.py`
-    `
 
 #### References
 If you used our model, please cite our paper:
