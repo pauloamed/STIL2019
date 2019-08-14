@@ -1,22 +1,26 @@
 import torch
-from torch import nn
-import time
+import numpy as np
 from pos_tagger.utils import get_batches, send_output
+from pos_tagger.parameters import STATE_DICT_PATH, EPOCHS, BATCH_SIZE
 
-def train(device, model, optimizer, datasets, min_val_loss, state_dict_path, epochs, training_policy, batch_size, clip=25):
+
+def train(device, model, datasets, min_val_loss=np.inf):
+
+    # optimizer and loss function
+    optimizer = torch.optim.Adadelta(model.parameters())
+    criterion = torch.nn.CrossEntropyLoss()
 
     name2dataset = {d.name:d for d in datasets}
 
-    criterion = nn.CrossEntropyLoss()
 
-    for epoch in range(epochs):
+    for epoch in range(EPOCHS):
         inicio = time.time()
 
         for d in datasets:
             d.train_loss = d.val_loss = 0.0
 
         model.train()
-        for itr in get_batches(datasets, "train", batch_size, training_policy):
+        for itr in get_batches(datasets, "train", BATCH_SIZE, "visconde"):
             # Getting vars
             inputs, targets, dataset_name = itr
 
@@ -36,7 +40,7 @@ def train(device, model, optimizer, datasets, min_val_loss, state_dict_path, epo
             loss.backward()
 
             # `clip_grad_norm` helps prevent the exploding gradient problem in RNNs / LSTMs.
-            nn.utils.clip_grad_norm_(model.parameters(), clip)
+            torch.nn.utils.clip_grad_norm_(model.parameters(), GRADIENT_CLIPPING)
 
             # Adjusting the weights
             optimizer.step()
@@ -94,7 +98,7 @@ def train(device, model, optimizer, datasets, min_val_loss, state_dict_path, epo
         out_str += ('Comparing loss on {} dataset(s)\n'.format([d.name for d in datasets if d.use_val]))
 
         if total_val_loss <= min_val_loss:
-            torch.save(model.state_dict(), state_dict_path)
+            torch.save(model.state_dict(), STATE_DICT_PATH)
             out_str += ('Validation loss decreased ({:.6f} --> {:.6f}).  Saving model ...\n'.format(
                                                                                 min_val_loss,
                                                                                 total_val_loss))

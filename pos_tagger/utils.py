@@ -1,6 +1,6 @@
 import random, sys
 import tqdm
-from pos_tagger.parameters import LOG_LVL, OUTPUT_PATH
+from pos_tagger.parameters import LOG_LVL, OUTPUT_PATH, DATASETS_FOLDER, DATASETS
 
 def send_output(str, log_level):
     if log_level <= LOG_LVL:
@@ -12,6 +12,17 @@ def send_output(str, log_level):
     except:
         if log_level <= LOG_LVL:
             print("Was not able to open and write on output file")
+
+from pos_tagger.Dataset import Dataset
+def load_datasets():
+    pf = DATASETS_FOLDER
+    datasets = [
+        Dataset([pf + dataset[1][0], pf + dataset[2][0], pf + dataset[3]], dataset[0], use_train=dataset[1][1],
+                        use_val=dataset[2][1])
+        for dataset in DATASETS
+    ]
+
+    return datasets
 
 def do_policy(policy, datasets, batch_size, list_samples):
     seed = random.randrange(sys.maxsize)

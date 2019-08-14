@@ -4,7 +4,7 @@ from torch.nn.utils import rnn
 
 class POSTagger(nn.Module):
 
-    def __init__(self, charBILSTM, wordBILSTM1, wordBILSTM2, n_bilstm_layers, n_bilstm_hidden, datasets):
+    def __init__(self, charBILSTM, wordBILSTM1, wordBILSTM2, n_bilstm_hidden, datasets):
         super().__init__()
 
         # Retrieving the model size (#layers and #units)
@@ -20,16 +20,9 @@ class POSTagger(nn.Module):
         self.wordBILSTM2 = wordBILSTM2
 
         # Defining the bilstm layer(s)
-        if n_bilstm_layers == 1:
-            # If there is only one layer, there can be no dropout
-            self.tag_bilstm = nn.LSTM(word_embedding_size, self.n_tag_bilstm_hidden,
-                                      self.n_tag_bilstm_layers, batch_first=True,
-                                      bidirectional=True)
-        else:
-            # Setting dropout when there is more than one layer
-            self.tag_bilstm = nn.LSTM(word_embedding_size, self.n_tag_bilstm_hidden,
-                                      self.n_tag_bilstm_layers, dropout=0.5,
-                                      batch_first=True,  bidirectional=True)
+        self.tag_bilstm = nn.LSTM(word_embedding_size, self.n_tag_bilstm_hidden,
+                                  1, batch_first=True,
+                                  bidirectional=True)
 
         # Setting the final layer (classifier) for each dataset being used
         classifiers = []
