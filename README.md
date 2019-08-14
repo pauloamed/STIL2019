@@ -16,9 +16,9 @@ Breve descrição
 
 ## Usage of the POS Tagger
   ### Requirements
-  Very basic knowledge of `python` is needed in order to fill the `parameters.py` file.
+  Very basic knowledge of `python` is needed in order to fill the `pos_tagger/parameters.py` file.
 
-  ### `parameters.py` file
+  ### `pos_tagger/parameters.py` file
   Follow the instructions at the file to fill it.
 
   ### Executing
