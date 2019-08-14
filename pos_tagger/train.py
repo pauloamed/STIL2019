@@ -1,5 +1,6 @@
 import torch
 import numpy as np
+import time
 from pos_tagger.utils import get_batches, send_output
 from pos_tagger.parameters import STATE_DICT_PATH, EPOCHS, BATCH_SIZE
 
