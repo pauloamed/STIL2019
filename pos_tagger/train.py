@@ -2,7 +2,7 @@ import torch
 import numpy as np
 import time
 from pos_tagger.utils import get_batches, send_output
-from pos_tagger.parameters import STATE_DICT_PATH, EPOCHS, BATCH_SIZE
+from pos_tagger.parameters import STATE_DICT_PATH, EPOCHS, BATCH_SIZE, GRADIENT_CLIPPING
 
 
 def train(device, model, datasets, min_val_loss=np.inf):
@@ -36,8 +36,8 @@ def train(device, model, datasets, min_val_loss=np.inf):
             optimizer.zero_grad()
 
             # Calculating the loss and the gradients
-            loss = criterion(output[dataset_name].view(batch_size*output["length"], -1),
-                             targets.view(batch_size*output["length"]))
+            loss = criterion(output[dataset_name].view(BATCH_SIZE*output["length"], -1),
+                             targets.view(BATCH_SIZE*output["length"]))
             loss.backward()
 
             # `clip_grad_norm` helps prevent the exploding gradient problem in RNNs / LSTMs.
@@ -47,7 +47,7 @@ def train(device, model, datasets, min_val_loss=np.inf):
             optimizer.step()
 
             # Updating the train loss
-            name2dataset[dataset_name].train_loss += loss.item() * batch_size
+            name2dataset[dataset_name].train_loss += loss.item() * BATCH_SIZE
 
 
         model.eval()
