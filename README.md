@@ -2,6 +2,12 @@
 
 Breve descrição
 
+### Requirements
+- python
+- pytorch
+- tqdm
+- Very basic knowledge of `python` is needed in order to fill the `pos_tagger/parameters.py` file.
+
 ## Dataset generation
 ### Links for downloading the datasets
   - MacMorpho: http://nilc.icmc.usp.br/macmorpho/
@@ -15,10 +21,7 @@ Breve descrição
    #### `build_lgtc.py`
 
 ## Usage of the POS Tagger
-  ### Requirements
-  Very basic knowledge of `python` is needed in order to fill the `pos_tagger/parameters.py` file.
-
-  ### `pos_tagger/parameters.py` file
+  #### `pos_tagger/parameters.py` file
   Follow the instructions at the file to fill it.
 
   ### Executing
