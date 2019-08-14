@@ -1,4 +1,4 @@
-# Part-of-Speech Embeddings for Portuguese
+# Part-of-Speech Embeddings for Portuguese (STIL 2019)
 
 Breve descrição
 
