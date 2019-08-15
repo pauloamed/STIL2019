@@ -51,9 +51,9 @@ python postagger.py
 
 ### Output
 #### Terminal
-Only log messages with rank <= LOG_LEVEL will be printed on the terminal.
-- Rank 0 messages: erros, warnings, train and test output, tqdm
-- Rank 1 messages: success messages, descriptive log
+Only log messages with `rank <= LOG_LEVEL` will be printed on the terminal.
+- `rank=0` messages: erros, warnings, train and test output, tqdm
+- `rank=1` messages: success messages, descriptive log
 
 #### Log file (`output.txt`)
 A log file with all the log messages will be generated.
@@ -63,7 +63,7 @@ A file with the samples form the validation set, along with their tags predictio
     
 ## Aditional scripts
 ##### `intersect.py`
- Script used for checking the intersection of sentences between all the files from the dataset. The path of the files must be setted for the variable `FILES`. To execute the script, run
+ Script used for checking the intersection of sentences between all the files from the dataset. The path of the files must be hardcoded for the variable `FILES`. To execute the script, run
  ```
  python intersect.py
  ```
