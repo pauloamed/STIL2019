@@ -1,6 +1,12 @@
 # Part-of-Speech Embeddings for Portuguese (STIL 2019)
 
-Implementation of the work ...
+Work presented at STIL 2019. This repository contains
+- dataset files
+- scripts for dataset generation
+- files used for model definition + training, using `pytorch` framework
+- logs of some training experiments (test accuracy too)
+- pretrained models
+- pdf of the paper
 
 ### Requirements
 - `python v3.6.3`  
