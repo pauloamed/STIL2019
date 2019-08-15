@@ -6,18 +6,18 @@ from itertools import combinations, chain
 data_path = "../data/"
 
 FILES = [
-    'macmorpho-train.mm',
-    'macmorpho-dev.mm',
-    'macmorpho-test.mm',
-    'pt_bosque-ud-train.mm',
-    'pt_bosque-ud-dev.mm',
-    'pt_bosque-ud-test.mm',
-    'pt_gsd-ud-train.mm',
-    'pt_gsd-ud-dev.mm',
-    'pt_gsd-ud-test.mm',
-    'lgtc-train.mm',
-    'lgtc-dev.mm',
-    'lgtc-test.mm',
+    'macmorpho-train.mm.txt',
+    'macmorpho-dev.mm.txt',
+    'macmorpho-test.mm.txt',
+    'pt_bosque-ud-train.mm.txt',
+    'pt_bosque-ud-dev.mm.txt',
+    'pt_bosque-ud-test.mm.txt',
+    'pt_gsd-ud-train.mm.txt',
+    'pt_gsd-ud-dev.mm.txt',
+    'pt_gsd-ud-test.mm.txt',
+    'lgtc-train.mm.txt',
+    'lgtc-dev.mm.txt',
+    'lgtc-test.mm.txt',
 ]
 
 

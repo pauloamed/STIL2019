@@ -3,21 +3,18 @@ import sys
 import itertools
 from itertools import combinations, chain
 
-data_path = "../data/"
+DATA_PATH = "../data/"
 
-FILES_UD = [
-    'pt_bosque-ud-train.mm.txt',
-    'pt_bosque-ud-dev.mm.txt',
-    'pt_bosque-ud-test.mm.txt',
-]
+UD_TRAIN_FILE = 'pt_bosque-ud-train.mm.txt'
+UD_DEV_FILE = 'pt_bosque-ud-dev.mm.txt'
+UD_TEST_FILE = 'pt_bosque-ud-test.mm.txt'
 
 FILE_LGTC = 'Bosque_CF_lgtc.mm.txt'
 
-FILES_DEST_LGTC = [
-    'lgtc-train.mm.txt',
-    'lgtc-dev.mm.txt',
-    'lgtc-test.mm.txt',
-]
+DEST_LGTC_TRAIN = 'lgtc-train.mm.txt'
+DEST_LGTC_DEV = 'lgtc-dev.mm.txt'
+DEST_LGTC_TEST = 'lgtc-test.mm.txt'
+
 
 def open_file(file_name):
     print(">> Trying to open file...")
@@ -96,12 +93,12 @@ def create_file(file_name, samples):
     print(">>> File was successfully created")
 
 # opens files and loads to texts, then saves them on a hash for further usage
-ud_train = process_ud_file(data_path, FILES_UD[0])
-ud_dev = process_ud_file(data_path, FILES_UD[1])
-ud_test = process_ud_file(data_path, FILES_UD[2])
+ud_train = process_ud_file(DATA_PATH, UD_TRAIN_FILE)
+ud_dev = process_ud_file(DATA_PATH, UD_DEV_FILE])
+ud_test = process_ud_file(DATA_PATH, UD_TEST_FILE)
 
 # retrieves all tagged samples from one-file linguateca dataset
-lgtc_text =  get_sents(open_file(data_path + FILE_LGTC), tagged=True)
+lgtc_text =  get_sents(open_file(DATA_PATH + FILE_LGTC), tagged=True)
 
 # eliminates duplicates
 lgtc_text = list(set(lgtc_text))
@@ -126,6 +123,6 @@ complete_set(gone, lgtc_text, lgtc_dev, dev_size)
 complete_set(gone, lgtc_text, lgtc_test, test_size)
 
 # creates linguatecas giles
-create_file(data_path + FILES_DEST_LGTC[0], lgtc_train)
-create_file(data_path + FILES_DEST_LGTC[1], lgtc_dev)
-create_file(data_path + FILES_DEST_LGTC[2], lgtc_test)
+create_file(DATA_PATH + DEST_LGTC_TRAIN, lgtc_train)
+create_file(DATA_PATH + DEST_LGTC_DEV, lgtc_dev)
+create_file(DATA_PATH + DEST_LGTC_TEST, lgtc_test)
