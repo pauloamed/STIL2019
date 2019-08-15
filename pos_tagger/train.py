@@ -67,7 +67,7 @@ def train(device, model, datasets, min_val_loss=np.inf):
                              targets.view(output["length"]))
 
             # Updating the loss accu
-            name2dataset[dataset_name].val_loss += loss.item() * batch_size
+            name2dataset[dataset_name].val_loss += loss.item()
 
         # Normalizing the losses
         for i in range(len(datasets)):
