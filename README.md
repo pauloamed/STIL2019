@@ -1,12 +1,12 @@
 # Part-of-Speech Embeddings for Portuguese (STIL 2019)
 
 Work presented at STIL 2019. This repository contains
-- dataset files
-- scripts for dataset generation
-- files used for model definition + training, using `pytorch` framework
-- logs of some training experiments (test accuracy too)
-- pretrained models
-- pdf of the paper
+- dataset files: `data` directory
+- scripts for dataset generation: `scripts` directory
+- files used for model definition + training: `models`, `pos_tagger` and `postagger.py`
+- logs of some training experiments (test accuracies too): `runs` directory
+- pretrained models: `runs` directory
+- pdf of the paper: `STIL2019.pdf`
 
 ### Requirements
 - `python v3.6.3`  
@@ -43,7 +43,10 @@ Work presented at STIL 2019. This repository contains
  - `DEST_LGTC_TRAIN`: Destination path to the Bosque-LT train file
  - `DEST_LGTC_DEV`: Destination path to the Bosque-LT dev file
  - `DEST_LGTC_TEST`: Destination path to the Bosque-LT test file
- 
+ Then run
+  ```
+  python build_lgtc.py
+ ```
 
 ## Usage of the POS Tagger
 #### `pos_tagger/parameters.py` file
