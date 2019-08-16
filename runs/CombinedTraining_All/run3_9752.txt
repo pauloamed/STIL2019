@@ -1,0 +1,711 @@
+
+>> Initializing Macmorpho dataset
+>>> Started loading dataset
+<<< Finished loading dataset
+>>> Started parsing data from dataset
+<<< Finished parsing data from dataset
+>>> Started building tag dict for dataset
+<<< Finished building tag dict for dataset
+<< Finished initializing Macmorpho dataset
+
+>> Initializing Bosque dataset
+>>> Started loading dataset
+<<< Finished loading dataset
+>>> Started parsing data from dataset
+<<< Finished parsing data from dataset
+>>> Started building tag dict for dataset
+<<< Finished building tag dict for dataset
+<< Finished initializing Bosque dataset
+
+>> Initializing GSD dataset
+>>> Started loading dataset
+<<< Finished loading dataset
+>>> Started parsing data from dataset
+<<< Finished parsing data from dataset
+>>> Started building tag dict for dataset
+<<< Finished building tag dict for dataset
+<< Finished initializing GSD dataset
+
+>> Initializing Linguateca dataset
+>>> Started loading dataset
+<<< Finished loading dataset
+>>> Started parsing data from dataset
+<<< Finished parsing data from dataset
+>>> Started building tag dict for dataset
+<<< Finished building tag dict for dataset
+<< Finished initializing Linguateca dataset
+
+>> Building char dict...
+>>> Started extracting chars from Macmorpho dataset
+<<< Finished extracting chars from Macmorpho dataset
+>>> Started extracting chars from Bosque dataset
+<<< Finished extracting chars from Bosque dataset
+>>> Started extracting chars from GSD dataset
+<<< Finished extracting chars from GSD dataset
+>>> Started extracting chars from Linguateca dataset
+<<< Finished extracting chars from Linguateca dataset
+<< Finished building dicts!
+
+>> Started preparing Macmorpho dataset
+<< Finished preparing Macmorpho dataset
+
+>> Started preparing Bosque dataset
+<< Finished preparing Bosque dataset
+
+>> Started preparing GSD dataset
+<< Finished preparing GSD dataset
+
+>> Started preparing Linguateca dataset
+<< Finished preparing Linguateca dataset
+=================================================================
+Macmorpho Dataset
+Train dataset #sents: 37948 #words: 728497
+Val dataset #sents: 1997 #words: 38881
+Test dataset #sents: 9987 #words: 178373
+Tag set: [BOS, EOS, ADJ, ADV, ADV-KS, ART, CUR, IN, KC, KS, N, NPROP, NUM, PCP, PDEN, PREP, PREP+ADV, PREP+ART, PREP+PRO-KS, PREP+PROADJ, PREP+PROPESS, PREP+PROSUB, PRO-KS, PROADJ, PROPESS, PROSUB, PU, V]
+=================================================================
+
+=================================================================
+Bosque Dataset
+Train dataset #sents: 8328 #words: 206744
+Val dataset #sents: 560 #words: 10851
+Test dataset #sents: 477 #words: 10199
+Tag set: [BOS, EOS, ADJ, ADP, ADV, AUX, CCONJ, DET, INTJ, NOUN, NUM, PART, PRON, PROPN, PUNCT, SCONJ, SYM, VERB, X]
+=================================================================
+
+=================================================================
+GSD Dataset
+Train dataset #sents: 9664 #words: 255755
+Val dataset #sents: 1210 #words: 32129
+Test dataset #sents: 1204 #words: 31496
+Tag set: [BOS, EOS, ADJ, ADP, ADV, AUX, CCONJ, DET, NOUN, NUM, PART, PRON, PROPN, PUNCT, SYM, VERB, X]
+=================================================================
+
+=================================================================
+Linguateca Dataset
+Train dataset #sents: 3355 #words: 65086
+Val dataset #sents: 419 #words: 7229
+Test dataset #sents: 420 #words: 7995
+Tag set: [BOS, EOS, adj, adv, art, conj-c, conj-s, ec, intj, n, n-adj, n:, num, pron-det, pron-indp, pron-pers, prop, prp, punct, v-fin, v-ger, v-inf, v-pcp, vp]
+=================================================================
+
+POSTagger(
+  (charBILSTM): CharBILSTM(
+    (char_embeddings_table): Embedding(197, 70, padding_idx=0)
+    (bilstm): LSTM(70, 350, batch_first=True, bidirectional=True)
+    (projection_layer): Linear(in_features=700, out_features=350, bias=True)
+    (dropout): Dropout(p=0.1)
+  )
+  (wordBILSTM1): WordBILSTM(
+    (bilstm): LSTM(350, 350, batch_first=True, bidirectional=True)
+    (projection_layer): Linear(in_features=700, out_features=350, bias=True)
+    (dropout): Dropout(p=0.2)
+  )
+  (wordBILSTM2): WordBILSTM(
+    (bilstm): LSTM(350, 350, batch_first=True, bidirectional=True)
+    (projection_layer): Linear(in_features=700, out_features=350, bias=True)
+    (dropout): Dropout(p=0.2)
+  )
+  (tag_bilstm): LSTM(350, 150, batch_first=True, bidirectional=True)
+  (classifiers): ModuleList(
+    (0): Linear(in_features=300, out_features=28, bias=True)
+    (1): Linear(in_features=300, out_features=19, bias=True)
+    (2): Linear(in_features=300, out_features=17, bias=True)
+    (3): Linear(in_features=300, out_features=24, bias=True)
+  )
+  (dropout): Dropout(p=0.4)
+)
+
+=======================================================================================Epoch: 0 	 Learning Rate: 1.000	Total Training Loss: 2086.995259 	Total Validation Loss: 66.114077 	 Duration: 814.249
+>> Dataset Macmorpho:	Training Loss: 1099.451178	Validation Loss:30.142737
+>> Dataset Bosque:	Training Loss: 746.752508	Validation Loss:12.241296
+>> Dataset GSD:	Training Loss: 149.895353	Validation Loss:11.549679
+>> Dataset Linguateca:	Training Loss: 90.896221	Validation Loss:12.180364
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+Validation loss decreased (inf --> 66.114077).  Saving model ...
+=======================================================================================
+
+
+=======================================================================================Epoch: 1 	 Learning Rate: 1.000	Total Training Loss: 696.861408 	Total Validation Loss: 36.921246 	 Duration: 791.322
+>> Dataset Macmorpho:	Training Loss: 358.212750	Validation Loss:17.231194
+>> Dataset Bosque:	Training Loss: 256.166505	Validation Loss:6.672064
+>> Dataset GSD:	Training Loss: 52.797524	Validation Loss:6.650901
+>> Dataset Linguateca:	Training Loss: 29.684628	Validation Loss:6.367087
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+Validation loss decreased (66.114077 --> 36.921246).  Saving model ...
+=======================================================================================
+
+
+=======================================================================================Epoch: 2 	 Learning Rate: 1.000	Total Training Loss: 471.781052 	Total Validation Loss: 27.768628 	 Duration: 820.985
+>> Dataset Macmorpho:	Training Loss: 237.820444	Validation Loss:13.172956
+>> Dataset Bosque:	Training Loss: 179.602800	Validation Loss:5.042547
+>> Dataset GSD:	Training Loss: 35.165555	Validation Loss:4.925412
+>> Dataset Linguateca:	Training Loss: 19.192253	Validation Loss:4.627712
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+Validation loss decreased (36.921246 --> 27.768628).  Saving model ...
+=======================================================================================
+
+
+=======================================================================================Epoch: 3 	 Learning Rate: 1.000	Total Training Loss: 379.655194 	Total Validation Loss: 23.029397 	 Duration: 801.298
+>> Dataset Macmorpho:	Training Loss: 190.049714	Validation Loss:10.720680
+>> Dataset Bosque:	Training Loss: 146.601380	Validation Loss:4.374551
+>> Dataset GSD:	Training Loss: 28.405522	Validation Loss:4.061116
+>> Dataset Linguateca:	Training Loss: 14.598578	Validation Loss:3.873049
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+Validation loss decreased (27.768628 --> 23.029397).  Saving model ...
+=======================================================================================
+
+
+=======================================================================================Epoch: 4 	 Learning Rate: 1.000	Total Training Loss: 331.250343 	Total Validation Loss: 20.799104 	 Duration: 809.787
+>> Dataset Macmorpho:	Training Loss: 163.456670	Validation Loss:9.850173
+>> Dataset Bosque:	Training Loss: 130.211513	Validation Loss:3.937254
+>> Dataset GSD:	Training Loss: 25.003442	Validation Loss:3.623875
+>> Dataset Linguateca:	Training Loss: 12.578718	Validation Loss:3.387803
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+Validation loss decreased (23.029397 --> 20.799104).  Saving model ...
+=======================================================================================
+
+
+=======================================================================================Epoch: 5 	 Learning Rate: 1.000	Total Training Loss: 299.158456 	Total Validation Loss: 19.036086 	 Duration: 773.717
+>> Dataset Macmorpho:	Training Loss: 147.278324	Validation Loss:8.966812
+>> Dataset Bosque:	Training Loss: 118.424167	Validation Loss:3.675537
+>> Dataset GSD:	Training Loss: 22.512645	Validation Loss:3.390205
+>> Dataset Linguateca:	Training Loss: 10.943319	Validation Loss:3.003532
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+Validation loss decreased (20.799104 --> 19.036086).  Saving model ...
+=======================================================================================
+
+
+=======================================================================================Epoch: 6 	 Learning Rate: 1.000	Total Training Loss: 276.142275 	Total Validation Loss: 17.954514 	 Duration: 759.838
+>> Dataset Macmorpho:	Training Loss: 135.288467	Validation Loss:8.577063
+>> Dataset Bosque:	Training Loss: 110.142725	Validation Loss:3.450405
+>> Dataset GSD:	Training Loss: 20.776004	Validation Loss:3.171395
+>> Dataset Linguateca:	Training Loss: 9.935078	Validation Loss:2.755651
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+Validation loss decreased (19.036086 --> 17.954514).  Saving model ...
+=======================================================================================
+
+
+=======================================================================================Epoch: 7 	 Learning Rate: 1.000	Total Training Loss: 258.331977 	Total Validation Loss: 17.127931 	 Duration: 782.111
+>> Dataset Macmorpho:	Training Loss: 126.310445	Validation Loss:8.150180
+>> Dataset Bosque:	Training Loss: 103.563876	Validation Loss:3.343098
+>> Dataset GSD:	Training Loss: 19.411257	Validation Loss:2.997303
+>> Dataset Linguateca:	Training Loss: 9.046399	Validation Loss:2.637350
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+Validation loss decreased (17.954514 --> 17.127931).  Saving model ...
+=======================================================================================
+
+
+=======================================================================================Epoch: 8 	 Learning Rate: 1.000	Total Training Loss: 244.236594 	Total Validation Loss: 16.235703 	 Duration: 782.501
+>> Dataset Macmorpho:	Training Loss: 119.087720	Validation Loss:7.684147
+>> Dataset Bosque:	Training Loss: 98.309000	Validation Loss:3.200286
+>> Dataset GSD:	Training Loss: 18.463641	Validation Loss:2.795941
+>> Dataset Linguateca:	Training Loss: 8.376233	Validation Loss:2.555329
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+Validation loss decreased (17.127931 --> 16.235703).  Saving model ...
+=======================================================================================
+
+
+=======================================================================================Epoch: 9 	 Learning Rate: 1.000	Total Training Loss: 233.257833 	Total Validation Loss: 15.679583 	 Duration: 807.851
+>> Dataset Macmorpho:	Training Loss: 113.005925	Validation Loss:7.530989
+>> Dataset Bosque:	Training Loss: 94.793404	Validation Loss:3.114153
+>> Dataset GSD:	Training Loss: 17.585298	Validation Loss:2.723642
+>> Dataset Linguateca:	Training Loss: 7.873207	Validation Loss:2.310799
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+Validation loss decreased (16.235703 --> 15.679583).  Saving model ...
+=======================================================================================
+
+
+=======================================================================================Epoch: 10 	 Learning Rate: 1.000	Total Training Loss: 222.308728 	Total Validation Loss: 14.766414 	 Duration: 823.917
+>> Dataset Macmorpho:	Training Loss: 107.843588	Validation Loss:7.069617
+>> Dataset Bosque:	Training Loss: 90.111519	Validation Loss:2.942079
+>> Dataset GSD:	Training Loss: 16.951103	Validation Loss:2.549658
+>> Dataset Linguateca:	Training Loss: 7.402518	Validation Loss:2.205059
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+Validation loss decreased (15.679583 --> 14.766414).  Saving model ...
+=======================================================================================
+
+
+=======================================================================================Epoch: 11 	 Learning Rate: 1.000	Total Training Loss: 212.958058 	Total Validation Loss: 14.571051 	 Duration: 823.947
+>> Dataset Macmorpho:	Training Loss: 102.689634	Validation Loss:7.025446
+>> Dataset Bosque:	Training Loss: 87.328173	Validation Loss:2.887650
+>> Dataset GSD:	Training Loss: 15.968376	Validation Loss:2.498523
+>> Dataset Linguateca:	Training Loss: 6.971875	Validation Loss:2.159431
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+Validation loss decreased (14.766414 --> 14.571051).  Saving model ...
+=======================================================================================
+
+
+=======================================================================================Epoch: 12 	 Learning Rate: 1.000	Total Training Loss: 205.228179 	Total Validation Loss: 14.061516 	 Duration: 823.885
+>> Dataset Macmorpho:	Training Loss: 99.073698	Validation Loss:6.792716
+>> Dataset Bosque:	Training Loss: 83.985658	Validation Loss:2.800664
+>> Dataset GSD:	Training Loss: 15.473950	Validation Loss:2.405723
+>> Dataset Linguateca:	Training Loss: 6.694874	Validation Loss:2.062414
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+Validation loss decreased (14.571051 --> 14.061516).  Saving model ...
+=======================================================================================
+
+
+=======================================================================================Epoch: 13 	 Learning Rate: 1.000	Total Training Loss: 197.611657 	Total Validation Loss: 13.786161 	 Duration: 792.494
+>> Dataset Macmorpho:	Training Loss: 95.666585	Validation Loss:6.639496
+>> Dataset Bosque:	Training Loss: 80.649403	Validation Loss:2.767796
+>> Dataset GSD:	Training Loss: 15.079528	Validation Loss:2.315090
+>> Dataset Linguateca:	Training Loss: 6.216142	Validation Loss:2.063780
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+Validation loss decreased (14.061516 --> 13.786161).  Saving model ...
+=======================================================================================
+
+
+=======================================================================================Epoch: 14 	 Learning Rate: 1.000	Total Training Loss: 192.292086 	Total Validation Loss: 13.589098 	 Duration: 801.661
+>> Dataset Macmorpho:	Training Loss: 92.857815	Validation Loss:6.576413
+>> Dataset Bosque:	Training Loss: 78.936546	Validation Loss:2.711057
+>> Dataset GSD:	Training Loss: 14.505376	Validation Loss:2.313156
+>> Dataset Linguateca:	Training Loss: 5.992348	Validation Loss:1.988472
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+Validation loss decreased (13.786161 --> 13.589098).  Saving model ...
+=======================================================================================
+
+
+=======================================================================================Epoch: 15 	 Learning Rate: 1.000	Total Training Loss: 186.065597 	Total Validation Loss: 13.187966 	 Duration: 845.866
+>> Dataset Macmorpho:	Training Loss: 89.721938	Validation Loss:6.505092
+>> Dataset Bosque:	Training Loss: 76.351411	Validation Loss:2.582598
+>> Dataset GSD:	Training Loss: 14.167336	Validation Loss:2.213393
+>> Dataset Linguateca:	Training Loss: 5.824913	Validation Loss:1.886883
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+Validation loss decreased (13.589098 --> 13.187966).  Saving model ...
+=======================================================================================
+
+
+=======================================================================================Epoch: 16 	 Learning Rate: 1.000	Total Training Loss: 181.002421 	Total Validation Loss: 12.694439 	 Duration: 805.498
+>> Dataset Macmorpho:	Training Loss: 87.106844	Validation Loss:6.162291
+>> Dataset Bosque:	Training Loss: 74.506181	Validation Loss:2.512295
+>> Dataset GSD:	Training Loss: 13.853888	Validation Loss:2.200399
+>> Dataset Linguateca:	Training Loss: 5.535507	Validation Loss:1.819454
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+Validation loss decreased (13.187966 --> 12.694439).  Saving model ...
+=======================================================================================
+
+
+=======================================================================================Epoch: 17 	 Learning Rate: 1.000	Total Training Loss: 175.787258 	Total Validation Loss: 12.636641 	 Duration: 775.639
+>> Dataset Macmorpho:	Training Loss: 84.677463	Validation Loss:6.071516
+>> Dataset Bosque:	Training Loss: 72.477003	Validation Loss:2.541459
+>> Dataset GSD:	Training Loss: 13.351636	Validation Loss:2.117353
+>> Dataset Linguateca:	Training Loss: 5.281156	Validation Loss:1.906313
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+Validation loss decreased (12.694439 --> 12.636641).  Saving model ...
+=======================================================================================
+
+
+=======================================================================================Epoch: 18 	 Learning Rate: 1.000	Total Training Loss: 172.080989 	Total Validation Loss: 12.733833 	 Duration: 789.989
+>> Dataset Macmorpho:	Training Loss: 82.644284	Validation Loss:6.257694
+>> Dataset Bosque:	Training Loss: 71.136204	Validation Loss:2.529943
+>> Dataset GSD:	Training Loss: 13.186481	Validation Loss:2.146831
+>> Dataset Linguateca:	Training Loss: 5.114020	Validation Loss:1.799366
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+=======================================================================================
+
+
+=======================================================================================Epoch: 19 	 Learning Rate: 1.000	Total Training Loss: 167.695699 	Total Validation Loss: 12.266814 	 Duration: 753.646
+>> Dataset Macmorpho:	Training Loss: 80.482613	Validation Loss:6.004470
+>> Dataset Bosque:	Training Loss: 69.450718	Validation Loss:2.403550
+>> Dataset GSD:	Training Loss: 12.825707	Validation Loss:2.111952
+>> Dataset Linguateca:	Training Loss: 4.936662	Validation Loss:1.746843
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+Validation loss decreased (12.636641 --> 12.266814).  Saving model ...
+=======================================================================================
+
+
+=======================================================================================Epoch: 20 	 Learning Rate: 1.000	Total Training Loss: 163.807255 	Total Validation Loss: 12.052751 	 Duration: 742.140
+>> Dataset Macmorpho:	Training Loss: 78.515253	Validation Loss:5.904330
+>> Dataset Bosque:	Training Loss: 67.886701	Validation Loss:2.426110
+>> Dataset GSD:	Training Loss: 12.611165	Validation Loss:2.052082
+>> Dataset Linguateca:	Training Loss: 4.794135	Validation Loss:1.670229
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+Validation loss decreased (12.266814 --> 12.052751).  Saving model ...
+=======================================================================================
+
+
+=======================================================================================Epoch: 21 	 Learning Rate: 1.000	Total Training Loss: 160.778774 	Total Validation Loss: 11.986961 	 Duration: 740.211
+>> Dataset Macmorpho:	Training Loss: 76.749351	Validation Loss:5.960590
+>> Dataset Bosque:	Training Loss: 67.057089	Validation Loss:2.314805
+>> Dataset GSD:	Training Loss: 12.332803	Validation Loss:2.028750
+>> Dataset Linguateca:	Training Loss: 4.639532	Validation Loss:1.682817
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+Validation loss decreased (12.052751 --> 11.986961).  Saving model ...
+=======================================================================================
+
+
+=======================================================================================Epoch: 22 	 Learning Rate: 1.000	Total Training Loss: 156.183802 	Total Validation Loss: 11.846647 	 Duration: 733.493
+>> Dataset Macmorpho:	Training Loss: 75.107490	Validation Loss:5.826229
+>> Dataset Bosque:	Training Loss: 64.504038	Validation Loss:2.345747
+>> Dataset GSD:	Training Loss: 12.017960	Validation Loss:2.027252
+>> Dataset Linguateca:	Training Loss: 4.554315	Validation Loss:1.647419
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+Validation loss decreased (11.986961 --> 11.846647).  Saving model ...
+=======================================================================================
+
+
+=======================================================================================Epoch: 23 	 Learning Rate: 1.000	Total Training Loss: 153.321111 	Total Validation Loss: 11.471665 	 Duration: 733.967
+>> Dataset Macmorpho:	Training Loss: 73.563039	Validation Loss:5.599306
+>> Dataset Bosque:	Training Loss: 63.498263	Validation Loss:2.254002
+>> Dataset GSD:	Training Loss: 11.832956	Validation Loss:2.007912
+>> Dataset Linguateca:	Training Loss: 4.426853	Validation Loss:1.610445
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+Validation loss decreased (11.846647 --> 11.471665).  Saving model ...
+=======================================================================================
+
+
+=======================================================================================Epoch: 24 	 Learning Rate: 1.000	Total Training Loss: 150.062505 	Total Validation Loss: 11.394237 	 Duration: 726.947
+>> Dataset Macmorpho:	Training Loss: 71.922883	Validation Loss:5.574066
+>> Dataset Bosque:	Training Loss: 62.316006	Validation Loss:2.259646
+>> Dataset GSD:	Training Loss: 11.740368	Validation Loss:1.996148
+>> Dataset Linguateca:	Training Loss: 4.083247	Validation Loss:1.564377
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+Validation loss decreased (11.471665 --> 11.394237).  Saving model ...
+=======================================================================================
+
+
+=======================================================================================Epoch: 25 	 Learning Rate: 1.000	Total Training Loss: 147.366952 	Total Validation Loss: 11.662544 	 Duration: 729.438
+>> Dataset Macmorpho:	Training Loss: 70.667139	Validation Loss:5.751874
+>> Dataset Bosque:	Training Loss: 61.182954	Validation Loss:2.269725
+>> Dataset GSD:	Training Loss: 11.441564	Validation Loss:1.974766
+>> Dataset Linguateca:	Training Loss: 4.075295	Validation Loss:1.666179
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+=======================================================================================
+
+
+=======================================================================================Epoch: 26 	 Learning Rate: 1.000	Total Training Loss: 145.420073 	Total Validation Loss: 11.495653 	 Duration: 724.742
+>> Dataset Macmorpho:	Training Loss: 69.464456	Validation Loss:5.724418
+>> Dataset Bosque:	Training Loss: 60.640836	Validation Loss:2.235227
+>> Dataset GSD:	Training Loss: 11.300800	Validation Loss:1.983013
+>> Dataset Linguateca:	Training Loss: 4.013982	Validation Loss:1.552995
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+=======================================================================================
+
+
+=======================================================================================Epoch: 27 	 Learning Rate: 1.000	Total Training Loss: 142.608885 	Total Validation Loss: 11.363868 	 Duration: 725.690
+>> Dataset Macmorpho:	Training Loss: 68.137709	Validation Loss:5.628264
+>> Dataset Bosque:	Training Loss: 59.481318	Validation Loss:2.247108
+>> Dataset GSD:	Training Loss: 11.128809	Validation Loss:1.911593
+>> Dataset Linguateca:	Training Loss: 3.861049	Validation Loss:1.576902
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+Validation loss decreased (11.394237 --> 11.363868).  Saving model ...
+=======================================================================================
+
+
+=======================================================================================Epoch: 28 	 Learning Rate: 1.000	Total Training Loss: 138.888196 	Total Validation Loss: 11.073078 	 Duration: 740.831
+>> Dataset Macmorpho:	Training Loss: 66.348900	Validation Loss:5.439537
+>> Dataset Bosque:	Training Loss: 57.901936	Validation Loss:2.185283
+>> Dataset GSD:	Training Loss: 10.787226	Validation Loss:1.915888
+>> Dataset Linguateca:	Training Loss: 3.850134	Validation Loss:1.532370
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+Validation loss decreased (11.363868 --> 11.073078).  Saving model ...
+=======================================================================================
+
+
+=======================================================================================Epoch: 29 	 Learning Rate: 1.000	Total Training Loss: 136.914664 	Total Validation Loss: 11.201735 	 Duration: 740.242
+>> Dataset Macmorpho:	Training Loss: 65.430637	Validation Loss:5.483145
+>> Dataset Bosque:	Training Loss: 57.250084	Validation Loss:2.227139
+>> Dataset GSD:	Training Loss: 10.692090	Validation Loss:1.929128
+>> Dataset Linguateca:	Training Loss: 3.541853	Validation Loss:1.562323
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+=======================================================================================
+
+
+=======================================================================================Epoch: 30 	 Learning Rate: 1.000	Total Training Loss: 134.635323 	Total Validation Loss: 11.101172 	 Duration: 754.587
+>> Dataset Macmorpho:	Training Loss: 64.273761	Validation Loss:5.498962
+>> Dataset Bosque:	Training Loss: 56.179918	Validation Loss:2.160588
+>> Dataset GSD:	Training Loss: 10.583618	Validation Loss:1.925757
+>> Dataset Linguateca:	Training Loss: 3.598027	Validation Loss:1.515865
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+=======================================================================================
+
+
+=======================================================================================Epoch: 31 	 Learning Rate: 1.000	Total Training Loss: 132.371975 	Total Validation Loss: 11.165351 	 Duration: 735.917
+>> Dataset Macmorpho:	Training Loss: 63.063986	Validation Loss:5.569916
+>> Dataset Bosque:	Training Loss: 55.262562	Validation Loss:2.163801
+>> Dataset GSD:	Training Loss: 10.511460	Validation Loss:1.897608
+>> Dataset Linguateca:	Training Loss: 3.533967	Validation Loss:1.534026
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+=======================================================================================
+
+
+=======================================================================================Epoch: 32 	 Learning Rate: 1.000	Total Training Loss: 130.364819 	Total Validation Loss: 10.813953 	 Duration: 737.981
+>> Dataset Macmorpho:	Training Loss: 62.200467	Validation Loss:5.406908
+>> Dataset Bosque:	Training Loss: 54.456639	Validation Loss:2.057751
+>> Dataset GSD:	Training Loss: 10.251994	Validation Loss:1.881456
+>> Dataset Linguateca:	Training Loss: 3.455719	Validation Loss:1.467838
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+Validation loss decreased (11.073078 --> 10.813953).  Saving model ...
+=======================================================================================
+
+
+=======================================================================================Epoch: 33 	 Learning Rate: 1.000	Total Training Loss: 128.245028 	Total Validation Loss: 10.757993 	 Duration: 754.794
+>> Dataset Macmorpho:	Training Loss: 61.059381	Validation Loss:5.337919
+>> Dataset Bosque:	Training Loss: 53.686413	Validation Loss:2.068119
+>> Dataset GSD:	Training Loss: 10.213117	Validation Loss:1.840612
+>> Dataset Linguateca:	Training Loss: 3.286117	Validation Loss:1.511343
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+Validation loss decreased (10.813953 --> 10.757993).  Saving model ...
+=======================================================================================
+
+
+=======================================================================================Epoch: 34 	 Learning Rate: 1.000	Total Training Loss: 126.264668 	Total Validation Loss: 11.046365 	 Duration: 750.469
+>> Dataset Macmorpho:	Training Loss: 59.628891	Validation Loss:5.546857
+>> Dataset Bosque:	Training Loss: 53.209438	Validation Loss:2.097632
+>> Dataset GSD:	Training Loss: 10.117778	Validation Loss:1.895783
+>> Dataset Linguateca:	Training Loss: 3.308561	Validation Loss:1.506093
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+=======================================================================================
+
+
+=======================================================================================Epoch: 35 	 Learning Rate: 1.000	Total Training Loss: 123.909125 	Total Validation Loss: 10.629965 	 Duration: 741.814
+>> Dataset Macmorpho:	Training Loss: 58.482996	Validation Loss:5.297198
+>> Dataset Bosque:	Training Loss: 52.399183	Validation Loss:2.039486
+>> Dataset GSD:	Training Loss: 9.845065	Validation Loss:1.831072
+>> Dataset Linguateca:	Training Loss: 3.181882	Validation Loss:1.462209
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+Validation loss decreased (10.757993 --> 10.629965).  Saving model ...
+=======================================================================================
+
+
+=======================================================================================Epoch: 36 	 Learning Rate: 1.000	Total Training Loss: 122.210592 	Total Validation Loss: 10.655909 	 Duration: 735.697
+>> Dataset Macmorpho:	Training Loss: 57.600356	Validation Loss:5.393074
+>> Dataset Bosque:	Training Loss: 51.736555	Validation Loss:2.049900
+>> Dataset GSD:	Training Loss: 9.754661	Validation Loss:1.837476
+>> Dataset Linguateca:	Training Loss: 3.119020	Validation Loss:1.375458
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+=======================================================================================
+
+
+=======================================================================================Epoch: 37 	 Learning Rate: 1.000	Total Training Loss: 120.337175 	Total Validation Loss: 10.745084 	 Duration: 735.927
+>> Dataset Macmorpho:	Training Loss: 56.712344	Validation Loss:5.305568
+>> Dataset Bosque:	Training Loss: 50.906644	Validation Loss:2.080832
+>> Dataset GSD:	Training Loss: 9.712930	Validation Loss:1.853987
+>> Dataset Linguateca:	Training Loss: 3.005257	Validation Loss:1.504697
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+=======================================================================================
+
+
+=======================================================================================Epoch: 38 	 Learning Rate: 1.000	Total Training Loss: 118.312839 	Total Validation Loss: 10.641565 	 Duration: 735.120
+>> Dataset Macmorpho:	Training Loss: 55.806302	Validation Loss:5.323232
+>> Dataset Bosque:	Training Loss: 50.055122	Validation Loss:2.099827
+>> Dataset GSD:	Training Loss: 9.503523	Validation Loss:1.794823
+>> Dataset Linguateca:	Training Loss: 2.947891	Validation Loss:1.423683
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+=======================================================================================
+
+
+=======================================================================================Epoch: 39 	 Learning Rate: 1.000	Total Training Loss: 116.011808 	Total Validation Loss: 10.705103 	 Duration: 734.922
+>> Dataset Macmorpho:	Training Loss: 54.530528	Validation Loss:5.375363
+>> Dataset Bosque:	Training Loss: 49.220880	Validation Loss:2.079950
+>> Dataset GSD:	Training Loss: 9.408445	Validation Loss:1.812464
+>> Dataset Linguateca:	Training Loss: 2.851956	Validation Loss:1.437325
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+=======================================================================================
+
+
+=======================================================================================Epoch: 40 	 Learning Rate: 1.000	Total Training Loss: 114.457556 	Total Validation Loss: 10.494016 	 Duration: 734.130
+>> Dataset Macmorpho:	Training Loss: 53.889142	Validation Loss:5.368857
+>> Dataset Bosque:	Training Loss: 48.433908	Validation Loss:1.977507
+>> Dataset GSD:	Training Loss: 9.362077	Validation Loss:1.795863
+>> Dataset Linguateca:	Training Loss: 2.772429	Validation Loss:1.351789
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+Validation loss decreased (10.629965 --> 10.494016).  Saving model ...
+=======================================================================================
+
+
+=======================================================================================Epoch: 41 	 Learning Rate: 1.000	Total Training Loss: 112.978410 	Total Validation Loss: 10.493368 	 Duration: 734.486
+>> Dataset Macmorpho:	Training Loss: 52.873101	Validation Loss:5.318985
+>> Dataset Bosque:	Training Loss: 48.098921	Validation Loss:2.010131
+>> Dataset GSD:	Training Loss: 9.174925	Validation Loss:1.805703
+>> Dataset Linguateca:	Training Loss: 2.831462	Validation Loss:1.358549
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+Validation loss decreased (10.494016 --> 10.493368).  Saving model ...
+=======================================================================================
+
+
+=======================================================================================Epoch: 42 	 Learning Rate: 1.000	Total Training Loss: 111.364884 	Total Validation Loss: 10.442174 	 Duration: 733.935
+>> Dataset Macmorpho:	Training Loss: 52.084206	Validation Loss:5.342567
+>> Dataset Bosque:	Training Loss: 47.573184	Validation Loss:1.985019
+>> Dataset GSD:	Training Loss: 9.001947	Validation Loss:1.788475
+>> Dataset Linguateca:	Training Loss: 2.705547	Validation Loss:1.326114
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+Validation loss decreased (10.493368 --> 10.442174).  Saving model ...
+=======================================================================================
+
+
+=======================================================================================Epoch: 43 	 Learning Rate: 1.000	Total Training Loss: 109.009794 	Total Validation Loss: 10.502191 	 Duration: 731.261
+>> Dataset Macmorpho:	Training Loss: 51.334295	Validation Loss:5.337666
+>> Dataset Bosque:	Training Loss: 46.178957	Validation Loss:1.950159
+>> Dataset GSD:	Training Loss: 8.894501	Validation Loss:1.816768
+>> Dataset Linguateca:	Training Loss: 2.602041	Validation Loss:1.397598
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+=======================================================================================
+
+
+=======================================================================================Epoch: 44 	 Learning Rate: 1.000	Total Training Loss: 108.352223 	Total Validation Loss: 10.687262 	 Duration: 731.516
+>> Dataset Macmorpho:	Training Loss: 50.329453	Validation Loss:5.399102
+>> Dataset Bosque:	Training Loss: 46.559518	Validation Loss:2.069035
+>> Dataset GSD:	Training Loss: 8.829231	Validation Loss:1.832644
+>> Dataset Linguateca:	Training Loss: 2.634020	Validation Loss:1.386481
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+=======================================================================================
+
+
+=======================================================================================Epoch: 45 	 Learning Rate: 1.000	Total Training Loss: 106.572205 	Total Validation Loss: 10.481856 	 Duration: 732.927
+>> Dataset Macmorpho:	Training Loss: 49.672504	Validation Loss:5.440805
+>> Dataset Bosque:	Training Loss: 45.634118	Validation Loss:1.920959
+>> Dataset GSD:	Training Loss: 8.676622	Validation Loss:1.807315
+>> Dataset Linguateca:	Training Loss: 2.588961	Validation Loss:1.312778
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+=======================================================================================
+
+
+=======================================================================================Epoch: 46 	 Learning Rate: 1.000	Total Training Loss: 104.895984 	Total Validation Loss: 10.549955 	 Duration: 731.255
+>> Dataset Macmorpho:	Training Loss: 49.055058	Validation Loss:5.349178
+>> Dataset Bosque:	Training Loss: 44.714828	Validation Loss:2.054307
+>> Dataset GSD:	Training Loss: 8.650039	Validation Loss:1.776789
+>> Dataset Linguateca:	Training Loss: 2.476058	Validation Loss:1.369681
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+=======================================================================================
+
+
+=======================================================================================Epoch: 47 	 Learning Rate: 1.000	Total Training Loss: 103.146768 	Total Validation Loss: 10.650439 	 Duration: 732.273
+>> Dataset Macmorpho:	Training Loss: 47.974559	Validation Loss:5.492896
+>> Dataset Bosque:	Training Loss: 44.165561	Validation Loss:1.998571
+>> Dataset GSD:	Training Loss: 8.634093	Validation Loss:1.767855
+>> Dataset Linguateca:	Training Loss: 2.372556	Validation Loss:1.391117
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+=======================================================================================
+
+
+=======================================================================================Epoch: 48 	 Learning Rate: 1.000	Total Training Loss: 102.263037 	Total Validation Loss: 10.706100 	 Duration: 731.433
+>> Dataset Macmorpho:	Training Loss: 47.428342	Validation Loss:5.486343
+>> Dataset Bosque:	Training Loss: 44.015922	Validation Loss:2.024414
+>> Dataset GSD:	Training Loss: 8.472442	Validation Loss:1.800596
+>> Dataset Linguateca:	Training Loss: 2.346331	Validation Loss:1.394747
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+=======================================================================================
+
+
+=======================================================================================Epoch: 49 	 Learning Rate: 1.000	Total Training Loss: 101.175679 	Total Validation Loss: 10.576620 	 Duration: 734.624
+>> Dataset Macmorpho:	Training Loss: 46.574136	Validation Loss:5.454669
+>> Dataset Bosque:	Training Loss: 43.889811	Validation Loss:1.931701
+>> Dataset GSD:	Training Loss: 8.393969	Validation Loss:1.783679
+>> Dataset Linguateca:	Training Loss: 2.317763	Validation Loss:1.406572
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+=======================================================================================
+
+
+=======================================================================================Epoch: 50 	 Learning Rate: 1.000	Total Training Loss: 99.757203 	Total Validation Loss: 10.508323 	 Duration: 730.103
+>> Dataset Macmorpho:	Training Loss: 45.840025	Validation Loss:5.531223
+>> Dataset Bosque:	Training Loss: 43.338183	Validation Loss:1.931886
+>> Dataset GSD:	Training Loss: 8.204381	Validation Loss:1.746313
+>> Dataset Linguateca:	Training Loss: 2.374614	Validation Loss:1.298901
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+=======================================================================================
+
+
+=======================================================================================Epoch: 51 	 Learning Rate: 1.000	Total Training Loss: 97.851594 	Total Validation Loss: 10.557387 	 Duration: 729.999
+>> Dataset Macmorpho:	Training Loss: 45.084146	Validation Loss:5.528114
+>> Dataset Bosque:	Training Loss: 42.180114	Validation Loss:1.940503
+>> Dataset GSD:	Training Loss: 8.256109	Validation Loss:1.792972
+>> Dataset Linguateca:	Training Loss: 2.331225	Validation Loss:1.295798
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+=======================================================================================
+
+
+=======================================================================================Epoch: 52 	 Learning Rate: 1.000	Total Training Loss: 96.887157 	Total Validation Loss: 10.557015 	 Duration: 730.204
+>> Dataset Macmorpho:	Training Loss: 44.795215	Validation Loss:5.471128
+>> Dataset Bosque:	Training Loss: 41.765075	Validation Loss:1.954023
+>> Dataset GSD:	Training Loss: 8.122495	Validation Loss:1.762703
+>> Dataset Linguateca:	Training Loss: 2.204371	Validation Loss:1.369161
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+=======================================================================================
+
+
+=======================================================================================Epoch: 53 	 Learning Rate: 1.000	Total Training Loss: 95.220055 	Total Validation Loss: 10.532376 	 Duration: 729.085
+>> Dataset Macmorpho:	Training Loss: 43.506174	Validation Loss:5.512758
+>> Dataset Bosque:	Training Loss: 41.424104	Validation Loss:1.898138
+>> Dataset GSD:	Training Loss: 8.047130	Validation Loss:1.805107
+>> Dataset Linguateca:	Training Loss: 2.242647	Validation Loss:1.316373
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+=======================================================================================
+
+
+=======================================================================================Epoch: 54 	 Learning Rate: 1.000	Total Training Loss: 93.968080 	Total Validation Loss: 10.831687 	 Duration: 728.576
+>> Dataset Macmorpho:	Training Loss: 43.096531	Validation Loss:5.563783
+>> Dataset Bosque:	Training Loss: 40.753878	Validation Loss:1.989220
+>> Dataset GSD:	Training Loss: 7.965591	Validation Loss:1.853566
+>> Dataset Linguateca:	Training Loss: 2.152080	Validation Loss:1.425118
+----------------------------------------------------------------------------------------
+Comparing loss on ['Macmorpho', 'Bosque', 'GSD', 'Linguateca'] dataset(s)
+=======================================================================================
+
+Successfully load trained model
+test: batch_size=1, policy=emilia: 100%|████████| 12088/12088 [09:21<00:00, 21.51it/s]
+
+Test Accuracy (Overall): 97% (222402/228061)
+
+Test Accuracy (on Macmorpho Dataset): 97.46% (173847/178373)
+
+Test Accuracy (on Bosque Dataset): 97.13% (9906/10199)
+
+Test Accuracy (on GSD Dataset): 97.83% (30811/31496)
+
+Test Accuracy (on Linguateca Dataset): 98.06% (7838/7993)

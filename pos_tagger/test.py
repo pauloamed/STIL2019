@@ -1,5 +1,6 @@
 import torch
 from torch import nn
+import numpy as np
 from pos_tagger.utils import get_batches, send_output
 
 def accuracy(device, model, datasets):
