@@ -5,7 +5,7 @@ Work presented at STIL 2019. This repository contains
 - scripts for dataset generation: `scripts` directory
 - files used for model definition + training: `models`, `pos_tagger` and `postagger.py`
 - logs of some training experiments (test accuracies too): `runs` directory
-- pretrained models: `runs` directory
+- pretrained models: `pretrained` directory
 - pdf of the paper: `STIL2019.pdf`
 
 ### Requirements
